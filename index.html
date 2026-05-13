@@ -827,6 +827,27 @@ footer {
 .footer-link.accent-link:hover { background: #163e42; border-color: #163e42; }
 
 /* ─────────────────────────────────────────
+   Company logos
+───────────────────────────────────────── */
+.co-logo {
+  height: 36px;
+  width: auto;
+  max-width: 130px;
+  object-fit: contain;
+  object-position: right center;
+  align-self: end;
+  padding-bottom: 10px;
+  opacity: 0.8;
+}
+.co-logo-invert {
+  filter: brightness(0) invert(1);
+  opacity: 0.55;
+}
+@media (max-width: 960px) {
+  .co-logo { display: none; }
+}
+
+/* ─────────────────────────────────────────
    Scroll-reveal
 ───────────────────────────────────────── */
 .reveal {
@@ -959,6 +980,7 @@ footer {
         <div class="work-company">SmartStamp AG</div>
         <div class="work-role-tag">Head of Product &nbsp;·&nbsp; formerly Founding PM</div>
       </div>
+      <img class="co-logo" src="logo_sst.png" alt="SmartStamp AG" />
     </div>
 
     <p class="lead reveal">
@@ -1052,6 +1074,7 @@ footer {
         <div class="work-company light">Open Systems AG</div>
         <div class="work-role-tag light">Connectivity Business Manager &nbsp;·&nbsp; Product &amp; Commercial Lead</div>
       </div>
+      <img class="co-logo co-logo-invert" src="https://logo.clearbit.com/open-systems.com" alt="Open Systems AG" />
     </div>
 
     <p class="lead light reveal">
@@ -1130,6 +1153,7 @@ footer {
         <div class="work-company">Huawei Technologies</div>
         <div class="work-role-tag">Technical Project Manager &nbsp;·&nbsp; fmr. Wireless Engineer</div>
       </div>
+      <img class="co-logo" src="https://logo.clearbit.com/huawei.com" alt="Huawei Technologies" />
     </div>
 
     <p class="lead reveal">
