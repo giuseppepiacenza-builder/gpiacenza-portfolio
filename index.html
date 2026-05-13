@@ -839,9 +839,21 @@ footer {
   padding-bottom: 10px;
   opacity: 0.85;
 }
-.co-logo-invert {
-  filter: brightness(0) invert(1);
-  opacity: 0.6;
+.co-logo-pill {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.92);
+  border-radius: 6px;
+  padding: 6px 12px;
+  align-self: end;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+.co-logo-pill img {
+  height: 26px;
+  width: auto;
+  max-width: 130px;
+  object-fit: contain;
 }
 .co-logo-wrap {
   height: 52px;
@@ -851,16 +863,17 @@ footer {
   align-self: end;
   margin-bottom: 10px;
   flex-shrink: 0;
+  background: #be5d3d;
 }
 .co-logo-wrap img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 .co-logo-edu {
-  height: 32px;
+  height: 44px;
   width: auto;
-  max-width: 120px;
+  max-width: 140px;
   object-fit: contain;
   object-position: right center;
   opacity: 0.8;
@@ -1101,7 +1114,7 @@ footer {
         <div class="work-company light">Open Systems AG</div>
         <div class="work-role-tag light">Connectivity Business Manager</div>
       </div>
-      <img class="co-logo co-logo-invert" src="logo_opensystems.png" alt="Open Systems AG" />
+      <div class="co-logo-pill"><img src="logo_opensystems.png" alt="Open Systems AG" /></div>
     </div>
 
     <p class="lead light reveal">
