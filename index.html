@@ -847,7 +847,18 @@ footer {
   border-radius: 50%;
   width: 52px;
   max-width: 52px;
-  object-fit: cover;
+  object-fit: contain;
+  overflow: hidden;
+}
+.co-logo-edu {
+  height: 30px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  object-position: right center;
+  opacity: 0.7;
+  filter: brightness(0) invert(1);
+  flex-shrink: 0;
 }
 @media (max-width: 960px) {
   .co-logo { display: none; }
@@ -1159,7 +1170,7 @@ footer {
         <div class="work-company">Huawei Technologies</div>
         <div class="work-role-tag">Technical Project Manager &nbsp;·&nbsp; fmr. Wireless Engineer</div>
       </div>
-      <img class="co-logo" src="logo_huawei.svg" alt="Huawei Technologies" />
+      <img class="co-logo" src="logo_huawei_text.png" alt="Huawei Technologies" />
     </div>
 
     <p class="lead reveal">
@@ -1237,6 +1248,7 @@ footer {
       <div class="edu-card">
         <div class="edu-inst-line">
           <div class="edu-years">2023 – 2025</div>
+          <img class="co-logo-edu" src="logo_eth.svg" alt="ETH Zurich" />
         </div>
         <div class="edu-inst">ETH Zurich</div>
         <div class="edu-degree">Master of Advanced Studies in Management, Technology &amp; Economics</div>
@@ -1251,6 +1263,7 @@ footer {
       <div class="edu-card">
         <div class="edu-inst-line">
           <div class="edu-years">2017 – 2019</div>
+          <img class="co-logo-edu" src="logo_poliba.svg" alt="Politecnico di Bari" />
         </div>
         <div class="edu-inst">Politecnico di Bari</div>
         <div class="edu-degree">MSc in Telecommunications Engineering</div>
@@ -1268,6 +1281,7 @@ footer {
       <div class="edu-card">
         <div class="edu-inst-line">
           <div class="edu-years">2014 – 2017</div>
+          <img class="co-logo-edu" src="logo_poliba.svg" alt="Politecnico di Bari" />
         </div>
         <div class="edu-inst">Politecnico di Bari</div>
         <div class="edu-degree">BSc in Electronics &amp; Telecommunications Engineering</div>
