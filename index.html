@@ -950,6 +950,58 @@ footer {
 @media (max-width: 640px) {
   .hero-name { font-size: 42px; }
   .hero-links { flex-direction: column; align-items: center; }
+
+  /* Layout spacing */
+  .section { padding: 56px 20px; }
+  .hero { padding: 64px 20px 0; }
+  footer { padding: 0 20px; }
+
+  /* Nav */
+  .nav { top: 12px; }
+
+  /* Work section numbers */
+  .work-num { font-size: 32px; }
+
+  /* Hero stats */
+  .hero-stat { padding: 20px 12px; }
+  .hero-bio-lead { font-size: 15px; }
+
+  /* Metric cells */
+  .metric { padding: 20px 14px; }
+
+  /* Project screenshots */
+  .project-card-screenshot { height: 180px; }
+
+  /* Cert image wrappers */
+  .cert-img-wrap { height: 110px; }
+
+  /* Hero links — full-width touch targets */
+  .hero-link { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  /* Hero name: further reduction for very small phones */
+  .hero-name { font-size: 36px; }
+
+  /* Hero kicker */
+  .hero-kicker { font-size: 11px; letter-spacing: 0.1em; margin-bottom: 24px; }
+
+  /* Hero stats: stack all 4 full-width */
+  .hero-stat { min-width: 100%; }
+
+  /* Metrics: 1-column on very small phones */
+  .metrics { grid-template-columns: 1fr; }
+  .metrics .metric { border-right: none; }
+  .metrics .metric:nth-child(n) { border-top: 1px solid var(--border-med); }
+  .metrics .metric:first-child { border-top: none; }
+  .metrics.dark .metric:nth-child(n) { border-top-color: rgba(255,255,255,0.1); }
+  .metrics.dark .metric:first-child { border-top: none; }
+
+  /* Skill pills */
+  .skill-pill { font-size: 12px; padding: 6px 12px; }
+
+  /* Work section numbers */
+  .work-num { font-size: 28px; }
 }
 
 </style>
