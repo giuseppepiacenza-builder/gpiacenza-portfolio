@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SmartStamp Mobile — Portfolio</title>
+<title>SmartStamp Mobile, portfolio case study</title>
 <meta name="description" content="Case study: the SmartStamp iOS and Android app. Fingerprint scanning, digital passports, ownership transfer, and certificate generation. Built by Giuseppe Piacenza." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -28,11 +28,9 @@ h1, h2, h3, .playfair {
   font-family: 'Playfair Display', Georgia, serif;
 }
 .eyebrow {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #b8502f;
+  color: #c7755b;
   margin-bottom: 12px;
 }
 
@@ -59,13 +57,11 @@ nav {
   letter-spacing: -0.01em;
 }
 .nav-brand span {
-  color: #b8502f;
+  color: #c7755b;
   margin-left: 6px;
-  font-size: 11px;
+  font-size: 12px;
   font-family: Inter, system-ui, sans-serif;
   font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
   vertical-align: middle;
 }
 .nav-links {
@@ -179,7 +175,7 @@ nav {
 }
 .hero-body {
   font-size: 15px;
-  color: rgba(255,255,255,0.38);
+  color: rgba(255,255,255,0.55);
   line-height: 1.7;
   max-width: 400px;
 }
@@ -256,14 +252,6 @@ nav {
   line-height: 1;
   margin-bottom: 6px;
 }
-.stat-item .stat-label {
-  font-size: 12px;
-  font-weight: 500;
-  color: #999;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
 /* ── Feature sections ── */
 .feature {
   padding: 96px 80px;
@@ -354,19 +342,18 @@ nav {
 }
 .screen-cell .iphone-frame .iphone-home-bar { width: 64px; height: 3px; }
 .screen-caption { text-align: center; }
-.screen-section {
+/* A quiet caption, not a chip. */
+.screen-cat {
   display: block;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #b8502f;
+  font-size: 12px;
+  font-weight: 400;
+  color: #696969;
   margin-bottom: 3px;
 }
 .screen-title {
   display: block;
   font-size: 12px;
-  color: #888;
+  color: #4a4a4a;
   font-weight: 500;
 }
 
@@ -386,7 +373,7 @@ nav {
 }
 .tech-stack-intro {
   font-size: 15px;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.55);
   max-width: 560px;
   line-height: 1.7;
   margin-bottom: 64px;
@@ -412,7 +399,7 @@ nav {
 }
 .arch-card-body {
   font-size: 13px;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.57);
   line-height: 1.65;
 }
 .stack-table {
@@ -422,11 +409,9 @@ nav {
 }
 .stack-table th {
   text-align: left;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.55);
   padding: 8px 16px 8px 0;
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
@@ -436,7 +421,7 @@ nav {
   color: rgba(255,255,255,0.7);
   vertical-align: top;
 }
-.stack-table td:first-child { color: rgba(255,255,255,0.35); width: 140px; }
+.stack-table td:first-child { color: rgba(255,255,255,0.49); width: 140px; }
 
 /* ── Footer ── */
 footer {
@@ -454,7 +439,7 @@ footer {
 }
 .footer-credit {
   font-size: 12px;
-  color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.49);
 }
 
 </style>
@@ -479,7 +464,7 @@ footer {
   <div class="hero-text">
     <h1>SmartStamp - Mobile</h1>
     <p class="hero-subtitle">Mobile fingerprinting and provenance for physical art</p>
-    <p class="hero-body">The SmartStamp mobile app gives galleries and collectors a way to register, verify, and transfer artworks with cryptographic certainty. A scan session captures up to nine micro-detail surface readings and combines them into a tamper-evident fingerprint tied to the physical piece. No certificate alone can replicate that.</p>
+    <p class="hero-body">The SmartStamp mobile app gives galleries and collectors a way to register, verify, and transfer artworks with cryptographic certainty. A scan session captures up to nine micro-detail surface readings and combines them into a tamper-evident fingerprint tied to the physical piece, which a paper certificate cannot reproduce.</p>
   </div>
   <div class="hero-phones">
     <div class="iphone-frame hero-phone-left">
@@ -504,7 +489,7 @@ footer {
 <section class="overview" id="overview">
   <div class="overview-inner">
     <h2>What the app does</h2>
-    <p class="overview-body">The SmartStamp mobile app handles the physical side of artwork authentication. It walks the user through capturing surface scans, registers a fingerprint on the blockchain-backed backend, and produces a digital passport that travels with the work. When a piece changes hands, the transfer is confirmed by both parties in the app and the ownership record updates in real time — visible immediately in the web dashboard used by gallery staff.</p>
+    <p class="overview-body">The SmartStamp mobile app handles the physical side of artwork authentication. It walks the user through capturing surface scans, registers a fingerprint on the blockchain-backed backend, and produces a digital passport that travels with the work. When a piece changes hands, the transfer is confirmed by both parties in the app and the ownership record updates in real time, visible immediately in the web dashboard used by gallery staff.</p>
   </div>
 </section>
 
@@ -639,8 +624,8 @@ footer {
       <div class="iphone-home-bar"></div>
     </div>
         <div class="screen-caption">
-          <span class="screen-section">Onboarding</span>
-          <span class="screen-title">Sign In</span>
+          <span class="screen-cat">Onboarding</span>
+          <span class="screen-title">Sign in</span>
         </div>
       </div>
       <div class="screen-cell">
@@ -650,7 +635,6 @@ footer {
       <div class="iphone-home-bar"></div>
     </div>
         <div class="screen-caption">
-          <span class="screen-section">Dashboard</span>
           <span class="screen-title">Dashboard</span>
         </div>
       </div>
@@ -661,8 +645,8 @@ footer {
       <div class="iphone-home-bar"></div>
     </div>
         <div class="screen-caption">
-          <span class="screen-section">Fingerprinting</span>
-          <span class="screen-title">Register Artwork</span>
+          <span class="screen-cat">Fingerprinting</span>
+          <span class="screen-title">Register artwork</span>
         </div>
       </div>
       <div class="screen-cell">
@@ -672,8 +656,8 @@ footer {
       <div class="iphone-home-bar"></div>
     </div>
         <div class="screen-caption">
-          <span class="screen-section">Fingerprinting</span>
-          <span class="screen-title">Artwork Verification</span>
+          <span class="screen-cat">Fingerprinting</span>
+          <span class="screen-title">Artwork verification</span>
         </div>
       </div>
       <div class="screen-cell">
@@ -683,8 +667,8 @@ footer {
       <div class="iphone-home-bar"></div>
     </div>
         <div class="screen-caption">
-          <span class="screen-section">Fingerprinting</span>
-          <span class="screen-title">ID Confirmed</span>
+          <span class="screen-cat">Fingerprinting</span>
+          <span class="screen-title">ID confirmed</span>
         </div>
       </div>
       <div class="screen-cell">
@@ -694,8 +678,8 @@ footer {
       <div class="iphone-home-bar"></div>
     </div>
         <div class="screen-caption">
-          <span class="screen-section">Digital Passport</span>
-          <span class="screen-title">Artwork Detail</span>
+          <span class="screen-cat">Digital passport</span>
+          <span class="screen-title">Artwork detail</span>
         </div>
       </div>
       <div class="screen-cell">
@@ -705,8 +689,8 @@ footer {
       <div class="iphone-home-bar"></div>
     </div>
         <div class="screen-caption">
-          <span class="screen-section">Digital Passport</span>
-          <span class="screen-title">Surface Images</span>
+          <span class="screen-cat">Digital passport</span>
+          <span class="screen-title">Surface images</span>
         </div>
       </div>
       <div class="screen-cell">
@@ -716,8 +700,7 @@ footer {
       <div class="iphone-home-bar"></div>
     </div>
         <div class="screen-caption">
-          <span class="screen-section">Transfer</span>
-          <span class="screen-title">Transfer Ownership</span>
+          <span class="screen-title">Transfer ownership</span>
         </div>
       </div>
       <div class="screen-cell">
@@ -727,8 +710,8 @@ footer {
       <div class="iphone-home-bar"></div>
     </div>
         <div class="screen-caption">
-          <span class="screen-section">Documents</span>
-          <span class="screen-title">Document Library</span>
+          <span class="screen-cat">Documents</span>
+          <span class="screen-title">Document library</span>
         </div>
       </div>
       <div class="screen-cell">
@@ -738,8 +721,8 @@ footer {
       <div class="iphone-home-bar"></div>
     </div>
         <div class="screen-caption">
-          <span class="screen-section">Documents</span>
-          <span class="screen-title">Add Document</span>
+          <span class="screen-cat">Documents</span>
+          <span class="screen-title">Add document</span>
         </div>
       </div>
       <div class="screen-cell">
@@ -749,8 +732,8 @@ footer {
       <div class="iphone-home-bar"></div>
     </div>
         <div class="screen-caption">
-          <span class="screen-section">Documents</span>
-          <span class="screen-title">Certificate Ready</span>
+          <span class="screen-cat">Documents</span>
+          <span class="screen-title">Certificate ready</span>
         </div>
       </div>
     </div>
@@ -760,17 +743,17 @@ footer {
 <!-- Tech Stack -->
 <section class="tech-stack" id="tech">
   <div class="tech-stack-inner">
-    <p class="eyebrow" style="color:#b8502f;">Architecture</p>
+    <p class="eyebrow">Architecture</p>
     <h2>How it is built</h2>
     <p class="tech-stack-intro">A single Flutter codebase targets iOS and Android from one source. Firebase handles real-time sync, authentication, and file storage. PostHog tracks product behaviour. Postmark delivers transactional email for ownership transfers and document sharing.</p>
     <div class="arch-cards">
       <div class="arch-card">
         <div class="arch-card-title">Flutter, single codebase</div>
-        <div class="arch-card-body">One Dart codebase ships to both iOS and Android. The UI layer is entirely custom with no third-party component libraries, giving full control over the interaction and visual design of each fingerprinting flow.</div>
+        <div class="arch-card-body">One Dart codebase ships to both iOS and Android. The UI layer is entirely custom, with no third-party component libraries, so we control the interaction and visual design of every fingerprinting flow.</div>
       </div>
       <div class="arch-card">
         <div class="arch-card-title">Firebase, real-time sync</div>
-        <div class="arch-card-body">Firestore keeps the mobile app and the web dashboard in sync with no polling. Auth, storage, and functions all live under the same project, eliminating infrastructure coordination between platforms.</div>
+        <div class="arch-card-body">Firestore keeps the mobile app and the web dashboard in sync with no polling. Auth, storage, and functions all live under the same project, so the two platforms need no infrastructure coordination.</div>
       </div>
       <div class="arch-card">
         <div class="arch-card-title">PostHog and Postmark</div>
