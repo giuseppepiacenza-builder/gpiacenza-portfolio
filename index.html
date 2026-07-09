@@ -966,8 +966,11 @@ footer {
   transform: none;
 }
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .project-card, .cert-card, .footer-link, .hero-link, .nav a { transition: none !important; }
+  .project-card:hover { transform: none; }
+  .skip-link { transition: none; }
 }
 
 /* ─────────────────────────────────────────
