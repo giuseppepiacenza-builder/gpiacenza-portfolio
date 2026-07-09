@@ -1,0 +1,13 @@
+# The Pages workflow publishes the repo root (upload-pages-artifact path: .)
+# and this repo is public. Anything committed here is served at gpiacenza.com.
+# Keep local tooling context out of both.
+.impeccable/
+PRODUCT.md
+DESIGN.md
+CLAUDE.md
+.claude/
+
+.DS_Store
+
+# Unreferenced: index.html uses logo_eth.svg
+logo_eth.png
