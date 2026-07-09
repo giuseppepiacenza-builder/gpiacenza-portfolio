@@ -449,7 +449,9 @@ footer {
 
 /* ── Phones. The phone mockups sat in fixed-width rows. ── */
 @media (max-width: 1099px) {
-  nav { padding: 0 16px; }
+  nav { padding: 0 16px; gap: 12px; }
+  .nav-brand { flex-shrink: 0; white-space: nowrap; font-size: 16px; }
+  .nav-brand span { display: none; }
   .nav-links { gap: 18px; overflow-x: auto; scrollbar-width: none; min-width: 0; }
   .nav-links::-webkit-scrollbar { display: none; }
   .nav-links a { white-space: nowrap; }
@@ -484,7 +486,7 @@ footer {
 <!-- Hero -->
 <section class="hero">
   <div class="hero-text">
-    <h1>SmartStamp - Mobile</h1>
+    <h1>SmartStamp Mobile</h1>
     <p class="hero-subtitle">Mobile fingerprinting and provenance for physical art</p>
     <p class="hero-body">The SmartStamp mobile app gives galleries and collectors a way to register, verify, and transfer artworks with cryptographic certainty. A scan session captures up to nine micro-detail surface readings and combines them into a tamper-evident fingerprint tied to the physical piece, which a paper certificate cannot reproduce.</p>
   </div>
