@@ -1032,6 +1032,11 @@ footer {
 }
 
 @media (max-width: 480px) {
+  /* The four section links fit exactly once the Contact pill steps aside.
+     Contact is already the hero's Email link and the footer's first action. */
+  .nav a.nav-cta { display: none; }
+  .nav a.nav-item { padding: 0 9px; letter-spacing: 0; }
+
   /* Hero name: further reduction for very small phones */
   .hero-name { font-size: 36px; }
 
