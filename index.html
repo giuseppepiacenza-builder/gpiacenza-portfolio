@@ -111,15 +111,13 @@ a { color: inherit; text-decoration: none; }
 }
 .nav a.nav-item:hover { color: #fff; background: rgba(255,255,255,0.06); }
 .nav a.nav-cta {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   color: #fff;
   background: var(--accent);
   border-radius: 9999px;
   padding: 0 16px;
   margin-left: 4px;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
 }
 .nav a.nav-cta:hover { background: #163e42; }
 
@@ -152,23 +150,10 @@ a { color: inherit; text-decoration: none; }
   width: 100%;
 }
 .hero-kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
-  margin-bottom: 36px;
-}
-.hero-kicker::before,
-.hero-kicker::after {
-  content: '';
-  display: block;
-  width: 32px;
-  height: 1px;
-  background: rgba(255,255,255,0.15);
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.61);
+  margin-bottom: 32px;
 }
 .hero-name {
   font-family: var(--font-display);
@@ -210,11 +195,9 @@ a { color: inherit; text-decoration: none; }
 }
 .hero-stat-val span { color: #fff; }
 .hero-stat-lbl {
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 400;
   color: rgba(255,255,255,0.48);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
   line-height: 1.4;
 }
 .hero-photo {
@@ -252,8 +235,6 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   justify-content: center;
   min-height: 44px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
   border-radius: 9999px;
   transition: all 0.18s;
   cursor: pointer;
@@ -269,9 +250,9 @@ a { color: inherit; text-decoration: none; }
 }
 .hero-link.solid:hover { background: #163e42; }
 .hero-link.ghost {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
-  padding: 0 20px;
+  padding: 0 22px;
   color: rgba(255,255,255,0.5);
   border: 1px solid rgba(255,255,255,0.12);
 }
@@ -387,13 +368,11 @@ a { color: inherit; text-decoration: none; }
 .achievement:last-child { border-bottom: 1px solid var(--border); }
 .achievement.dark-border:last-child { border-bottom-color: rgba(255,255,255,0.08); }
 .ach-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 600;
   color: var(--accent);
-  padding-top: 4px;
-  line-height: 1.4;
+  padding-top: 6px;
+  line-height: 1.5;
 }
 .achievement.dark-border .ach-label { color: var(--accent-light); }
 .ach-content {}
@@ -418,26 +397,18 @@ a { color: inherit; text-decoration: none; }
 /* ─────────────────────────────────────────
    Tags
 ───────────────────────────────────────── */
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+/* The stack, read as a sentence rather than a row of chips. */
+.stack {
   margin-top: 48px;
-}
-.tag {
-  font-size: 11px;
-  font-weight: 500;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-med);
+  font-size: 14px;
+  line-height: 1.8;
   color: var(--text-muted);
-  padding: 6px 14px;
-  border: 1px solid var(--border-med);
-  border-radius: 9999px;
-  letter-spacing: 0.02em;
-  background: rgba(255,255,255,0.5);
 }
-.tag.dark {
-  color: rgba(255,255,255,0.48);
-  border-color: rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.04);
+.stack.light {
+  border-top-color: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.61);
 }
 
 /* ─────────────────────────────────────────
@@ -500,20 +471,15 @@ a { color: inherit; text-decoration: none; }
 .context-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border-med);
+  gap: 0 48px;
+  border-top: 1px solid var(--border-med);
+  padding-top: 28px;
   margin-bottom: 48px;
 }
-.context-cell {
-  background: var(--bg-1);
-  padding: 28px 26px;
-}
+.context-cell { padding: 0; }
 .context-cell-lbl {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 600;
   color: var(--accent);
   margin-bottom: 10px;
 }
@@ -534,10 +500,8 @@ a { color: inherit; text-decoration: none; }
   gap: 16px;
 }
 .cert-showcase-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 600;
   color: var(--accent);
 }
 .cert-showcase-img {
@@ -556,10 +520,8 @@ a { color: inherit; text-decoration: none; }
   padding-top: 14px;
 }
 .edu-projects-toggle {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
   color: rgba(255,255,255,0.49);
   cursor: pointer;
   list-style: none;
@@ -591,16 +553,14 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.4;
 }
 .edu-projects-list li a {
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 500;
   color: var(--accent-light);
-  padding: 2px 8px;
-  border: 1px solid rgba(119,176,182,0.4);
-  border-radius: 9999px;
   flex-shrink: 0;
-  transition: all 0.15s;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s;
 }
-.edu-projects-list li a:hover { background: var(--accent-light); color: var(--bg-dark); }
+.edu-projects-list li a:hover { border-bottom-color: var(--accent-light); }
 
 /* ─────────────────────────────────────────
    Certifications
@@ -655,10 +615,8 @@ a { color: inherit; text-decoration: none; }
   justify-content: space-between;
 }
 .cert-issuer {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 500;
   color: rgba(255,255,255,0.48);
   margin-bottom: 6px;
 }
@@ -709,9 +667,8 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 20px;
 }
 .edu-years {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: 12px;
+  font-weight: 500;
   color: var(--accent-light);
 }
 .edu-inst {
@@ -752,10 +709,8 @@ a { color: inherit; text-decoration: none; }
 }
 .section-title-wrap { margin-bottom: 52px; }
 .subsection-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
   color: var(--accent-light);
   margin-bottom: 20px;
 }
@@ -770,32 +725,18 @@ a { color: inherit; text-decoration: none; }
   gap: 48px 56px;
 }
 .skill-group-lbl {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
   color: var(--accent);
-  margin-bottom: 16px;
-  padding-bottom: 12px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
   border-bottom: 1px solid var(--border);
 }
-.skill-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.skill-list {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--text-muted);
 }
-.skill-pill {
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--text);
-  padding: 7px 16px;
-  border: 1px solid var(--border-med);
-  border-radius: 9999px;
-  background: #fff;
-  letter-spacing: 0.01em;
-  transition: border-color 0.15s, color 0.15s;
-}
-.skill-pill:hover { border-color: var(--accent); color: var(--accent); }
 
 /* ─────────────────────────────────────────
    Footer
@@ -832,14 +773,12 @@ footer {
   flex-wrap: wrap;
 }
 .footer-link {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: rgba(255,255,255,0.48);
   padding: 8px 16px;
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 9999px;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
   transition: all 0.15s;
   cursor: pointer;
 }
@@ -1089,9 +1028,6 @@ footer {
   .metrics .metric:first-child { border-top: none; }
   .metrics.dark .metric:nth-child(n) { border-top-color: rgba(255,255,255,0.1); }
   .metrics.dark .metric:first-child { border-top: none; }
-
-  /* Skill pills */
-  .skill-pill { font-size: 12px; padding: 6px 12px; }
 }
 
 </style>
@@ -1132,19 +1068,19 @@ footer {
     <div class="hero-stats">
       <div class="hero-stat">
         <div class="hero-stat-val"><span>2</span>×</div>
-        <div class="hero-stat-lbl">ARR Growth</div>
+        <div class="hero-stat-lbl">ARR growth</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-val">€<span>14.6</span>M</div>
-        <div class="hero-stat-lbl">Peak ARR Reached</div>
+        <div class="hero-stat-lbl">Peak ARR reached</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-val"><span>0</span>→1</div>
-        <div class="hero-stat-lbl">MVP in 6 Months</div>
+        <div class="hero-stat-lbl">MVP in 6 months</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-val"><span>180</span>+</div>
-        <div class="hero-stat-lbl">Countries Covered</div>
+        <div class="hero-stat-lbl">Countries covered</div>
       </div>
     </div>
 
@@ -1219,11 +1155,11 @@ footer {
 
     <div class="context-row reveal stagger">
       <div class="context-cell">
-        <div class="context-cell-lbl">The Problem</div>
+        <div class="context-cell-lbl">The problem</div>
         <div class="context-cell-txt">The art market has <strong>no reliable way to verify the physical identity of an artwork</strong>. Forgery, fractured provenance, and fragmented document workflows cost galleries, collectors, and auctioneers, with no reliable record that survives the next sale.</div>
       </div>
       <div class="context-cell">
-        <div class="context-cell-lbl">What I Did</div>
+        <div class="context-cell-lbl">What I did</div>
         <div class="context-cell-txt">Ran <strong>60+ discovery interviews</strong> with collectors, galleries, and appraisers. Built the backlog and GTM from zero. <strong>Repositioned from mobile-first to web-first</strong> after usage data revealed galleries as the growth driver. Shipped the <strong>fingerprint verification system</strong> and co-pitched <strong>tier-1 auction houses</strong> directly.</div>
       </div>
       <div class="context-cell">
@@ -1232,14 +1168,7 @@ footer {
       </div>
     </div>
 
-    <div class="tags reveal reveal-fade">
-      <span class="tag">Product Strategy</span>
-      <span class="tag">0→1 Delivery</span>
-      <span class="tag">iOS &amp; Android Apps</span>
-      <span class="tag">Customer Discovery</span>
-      <span class="tag">Engineering Leadership</span>
-      <span class="tag">GTM</span>
-    </div>
+    <p class="stack reveal reveal-fade">Product strategy, 0→1 delivery, iOS and Android, customer discovery, engineering leadership, GTM.</p>
 
   </div>
 </section>
@@ -1283,21 +1212,21 @@ footer {
 
     <div class="achievements reveal stagger">
       <div class="achievement dark-border">
-        <div class="ach-label">Commercial Scale</div>
+        <div class="ach-label">Commercial scale</div>
         <div class="ach-content">
           <h3 class="ach-title light">Grew ARR 2× while lifting margins by 8 points</h3>
           <div class="ach-body light">The connectivity line was capped at €7.5M because our global coverage had gaps that enterprise deals couldn't accept and our pricing model didn't fit the network we'd actually built. I mapped the coverage gaps, rebuilt pricing to match the expanded footprint, and restructured how we targeted verticals. That cleared the blockers. The line grew to <strong>€14.6M ARR, 2× over four years</strong>, with an <strong>8-point margin improvement (14% to 22%)</strong> from pricing discipline and tighter cost management. At peak it was <strong>56% of the company's total product-line revenue</strong>.</div>
         </div>
       </div>
       <div class="achievement dark-border">
-        <div class="ach-label">Enterprise Logos</div>
+        <div class="ach-label">Enterprise logos</div>
         <div class="ach-content">
           <h3 class="ach-title light">Renewed a ~€10B flagship customer and signed a ~€4B new logo</h3>
           <div class="ach-body light">Both cycles were too large and too technical for sales to own alone, so I ran them jointly. The first was a flagship renewal: the customer had outgrown the original scope, so I rebuilt the roadmap case around their actual network direction and got it re-signed: <strong>a multi-million euro renewal with a ~€10B public company</strong>. The second was a new logo: I scoped a custom global coverage package from scratch and <strong>closed a new contract with a ~€4B public company</strong>.</div>
         </div>
       </div>
       <div class="achievement dark-border">
-        <div class="ach-label">API Quoting Platform</div>
+        <div class="ach-label">API quoting platform</div>
         <div class="ach-content">
           <h3 class="ach-title light">Revived a near-zero product line, then shipped the tooling to scale it</h3>
           <div class="ach-body light">When I took ownership in 2021, the product line had stalled following a leadership transition. I rebuilt from scratch: conducted fresh market research, rewrote pricing and segmentation logic, and <strong>shipped an API-based quoting platform and, separately, real-time KPI dashboards</strong>. The quoting tool replaced spreadsheets and manual calculations; the dashboards gave leadership a live view of where deals stood. Both tools stuck and the team still uses them.</div>
@@ -1305,14 +1234,7 @@ footer {
       </div>
     </div>
 
-    <div class="tags reveal reveal-fade">
-      <span class="tag dark">Pricing &amp; Packaging</span>
-      <span class="tag dark">GTM Strategy</span>
-      <span class="tag dark">P&amp;L Ownership</span>
-      <span class="tag dark">API Platform</span>
-      <span class="tag dark">Market Segmentation</span>
-      <span class="tag dark">Enterprise B2B</span>
-    </div>
+    <p class="stack light reveal reveal-fade">Pricing and packaging, GTM strategy, P&amp;L ownership, API platform, market segmentation, enterprise B2B.</p>
 
   </div>
 </section>
@@ -1356,14 +1278,14 @@ footer {
 
     <div class="achievements reveal stagger">
       <div class="achievement">
-        <div class="ach-label">Automation Tool</div>
+        <div class="ach-label">Automation tool</div>
         <div class="ach-content">
           <h3 class="ach-title">Built a team sync tool, cut delivery time by 66%, got promoted</h3>
           <div class="ach-body">Two teams were working in sequence but had no shared view of where things stood: each was blocked waiting on the other without knowing it. I mapped the dependency, built a tool that showed both teams each other's live status, and fixed it. <strong>Weekly output jumped 66%</strong>, delivery sped up, and I got the <strong>Huawei Future Star 2020</strong> award and a promotion to Technical Project Manager.</div>
         </div>
       </div>
       <div class="achievement">
-        <div class="ach-label">Network Rollout Leadership</div>
+        <div class="ach-label">Network rollout leadership</div>
         <div class="ach-content">
           <h3 class="ach-title">Led two teams through 250+ 4G/5G deployments across Switzerland</h3>
           <div class="ach-body">After the promotion I ran two engineering teams, 10 people total, through the full deployment chain: RF planning, site design, civil coordination, commissioning, delivery. Dozens of sites in parallel, each with hard dependencies on field crews, contractors, and network ops. We delivered <strong>250+ 4G/5G site activations</strong> on schedule.</div>
@@ -1371,17 +1293,10 @@ footer {
       </div>
     </div>
 
-    <div class="tags reveal reveal-fade">
-      <span class="tag">4G / 5G</span>
-      <span class="tag">RF Planning</span>
-      <span class="tag">Technical Project Management</span>
-      <span class="tag">Cross-Functional Teams</span>
-      <span class="tag">Network Deployment</span>
-      <span class="tag">Team Leadership (10 engineers)</span>
-    </div>
+    <p class="stack reveal reveal-fade">4G and 5G, RF planning, technical project management, cross-functional teams, network deployment, team leadership.</p>
 
     <div class="cert-showcase reveal">
-      <div class="cert-showcase-label">Award Certificate</div>
+      <div class="cert-showcase-label">Award certificate</div>
       <img class="cert-showcase-img" src="future-star-cert-1.png" alt="2020 Huawei Future Star Certificate of Commendation, Giuseppe Piacenza" width="1754" height="1241" loading="lazy" decoding="async" />
     </div>
 
@@ -1527,49 +1442,20 @@ footer {
 
     <div class="skills-grid reveal stagger">
       <div>
-        <div class="skill-group-lbl">Product Management</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Product Strategy</span>
-          <span class="skill-pill">Roadmap</span>
-          <span class="skill-pill">Discovery</span>
-          <span class="skill-pill">Prioritisation</span>
-          <span class="skill-pill">GTM</span>
-          <span class="skill-pill">Pricing</span>
-        </div>
+        <h3 class="skill-group-lbl">Product management</h3>
+        <p class="skill-list">Product strategy, roadmap, discovery, prioritisation, GTM, pricing.</p>
       </div>
       <div>
-        <div class="skill-group-lbl">AI &amp; Data</div>
-        <div class="skill-pills">
-          <span class="skill-pill">AI/ML Product</span>
-          <span class="skill-pill">LLM &amp; Gen AI</span>
-          <span class="skill-pill">Experimentation</span>
-          <span class="skill-pill">User Research</span>
-          <span class="skill-pill">Product Analytics</span>
-          <span class="skill-pill">SQL</span>
-          <span class="skill-pill">Power BI</span>
-        </div>
+        <h3 class="skill-group-lbl">AI and data</h3>
+        <p class="skill-list">AI/ML product, LLM and gen AI, experimentation, user research, product analytics, SQL, Power BI.</p>
       </div>
       <div>
-        <div class="skill-group-lbl">Build &amp; Tools</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Claude Code</span>
-          <span class="skill-pill">Figma</span>
-          <span class="skill-pill">GitHub</span>
-          <span class="skill-pill">Firebase</span>
-          <span class="skill-pill">PostHog</span>
-          <span class="skill-pill">Stripe</span>
-          <span class="skill-pill">Agile / Scrum</span>
-        </div>
+        <h3 class="skill-group-lbl">Build and tools</h3>
+        <p class="skill-list">Claude Code, Figma, GitHub, Firebase, PostHog, Stripe, Agile/Scrum.</p>
       </div>
       <div>
-        <div class="skill-group-lbl">Languages</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Italian (Native)</span>
-          <span class="skill-pill">English (C1)</span>
-          <span class="skill-pill">Spanish (C1)</span>
-          <span class="skill-pill">French (B2)</span>
-          <span class="skill-pill">German (B1)</span>
-        </div>
+        <h3 class="skill-group-lbl">Languages</h3>
+        <p class="skill-list">Italian (native), English (C1), Spanish (C1), French (B2), German (B1).</p>
       </div>
     </div>
 
