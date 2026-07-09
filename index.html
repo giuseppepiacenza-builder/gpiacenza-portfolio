@@ -1013,6 +1013,9 @@ footer {
 }
 
 </style>
+<noscript><style>
+  .reveal { opacity: 1 !important; transform: none !important; }
+</style></noscript>
 </head>
 <body>
 
@@ -1536,22 +1539,37 @@ footer {
 ════════════════════════════════════════ -->
 <script>
 (function() {
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
+  var reveals = [].slice.call(document.querySelectorAll('.reveal'));
 
-  document.querySelectorAll('.reveal').forEach(function(el) {
-    observer.observe(el);
-  });
+  function revealAll() {
+    reveals.forEach(function(el) { el.classList.add('visible'); });
+  }
+
+  /* The reveal is an enhancement, never a gate: any failure path shows the content. */
+  if (!('IntersectionObserver' in window)) {
+    revealAll();
+    return;
+  }
+
+  try {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    reveals.forEach(function(el) { observer.observe(el); });
+  } catch (err) {
+    revealAll();
+    return;
+  }
 
   /* stagger children inside each reveal block */
-  document.querySelectorAll('.metrics, .achievements, .project-cards, .context-row, .edu-grid, .skills-grid').forEach(function(parent) {
-    Array.from(parent.children).forEach(function(child, i) {
+  [].slice.call(document.querySelectorAll('.metrics, .achievements, .project-cards, .context-row, .edu-grid, .skills-grid')).forEach(function(parent) {
+    [].slice.call(parent.children).forEach(function(child, i) {
       child.style.transitionDelay = (i * 80) + 'ms';
     });
   });
