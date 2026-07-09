@@ -27,6 +27,7 @@
   }
 
   html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   body { font-family: var(--font-body); background: var(--bg); color: var(--dark); -webkit-font-smoothing: antialiased; }
 
   /* ── Navigation ── */
@@ -223,7 +224,7 @@
     .nav-logo-text { display: none; }
     .nav-links { overflow-x: auto; scrollbar-width: none; min-width: 0; }
     .nav-links::-webkit-scrollbar { display: none; }
-    .nav-links a { white-space: nowrap; }
+    .nav-links a { white-space: nowrap; display: inline-flex; align-items: center; min-height: 44px; }
 
     .hero { padding-left: 20px; padding-right: 20px; }
     .overview, .feature, .screens, .architecture, .design-system, .footer { padding-left: 20px; padding-right: 20px; }
