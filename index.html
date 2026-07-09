@@ -971,6 +971,20 @@ footer {
 }
 
 /* ─────────────────────────────────────────
+   Screen-reader-only text
+───────────────────────────────────────── */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ─────────────────────────────────────────
    Skip link
 ───────────────────────────────────────── */
 .skip-link {
@@ -1146,8 +1160,8 @@ footer {
 
     <div class="hero-links">
       <a href="GPiacenza-CV.pdf" download class="hero-link solid">Download CV</a>
-      <a href="https://linkedin.com/in/gpiacenza" class="hero-link ghost" rel="noopener noreferrer">LinkedIn</a>
-      <a href="https://github.com/giuseppepiacenza-builder" class="hero-link ghost" rel="noopener noreferrer">GitHub</a>
+      <a href="https://linkedin.com/in/gpiacenza" class="hero-link ghost" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
+      <a href="https://github.com/giuseppepiacenza-builder" class="hero-link ghost" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
       <a href="mailto:giuseppe.piacenza@outlook.com" class="hero-link ghost">Email</a>
     </div>
   </div>
@@ -1199,7 +1213,7 @@ footer {
             <div class="project-card-lbl">Web Platform Case Study</div>
             <div class="project-card-sub">Gallery management, provenance, documents &amp; imports</div>
           </div>
-          <div class="project-card-arrow">→</div>
+          <div class="project-card-arrow" aria-hidden="true">→</div>
         </div>
       </a>
       <a class="project-card" href="SmartStamp-Mobile-Portfolio.html">
@@ -1209,7 +1223,7 @@ footer {
             <div class="project-card-lbl">iOS &amp; Android App Case Study</div>
             <div class="project-card-sub">Fingerprint scanning, digital passports &amp; transfers</div>
           </div>
-          <div class="project-card-arrow">→</div>
+          <div class="project-card-arrow" aria-hidden="true">→</div>
         </div>
       </a>
     </div>
@@ -1430,11 +1444,11 @@ footer {
         <div class="edu-degree">MSc in Telecommunications Engineering</div>
         <div class="edu-note">Graduated <strong>with honours</strong>. Specialisation in <strong>wireless communications</strong> and signal processing.</div>
         <details class="edu-projects">
-          <summary class="edu-projects-toggle">Projects <span>+</span></summary>
+          <summary class="edu-projects-toggle">Projects <span aria-hidden="true">+</span></summary>
           <ul class="edu-projects-list">
-            <li><span>Ka-Band Radar Target Characterisation</span><a href="GB-SAR-Data-Analysis.pdf" target="_blank">↓</a></li>
-            <li><span>Data Analysis: Twitter, 2016 US Election</span><a href="Big-Data-Project.pdf" target="_blank">↓</a></li>
-            <li><span>End-to-End Encryption in Telegram</span><a href="telegram_encryption.pdf" download>↓</a></li>
+            <li><span>Ka-Band Radar Target Characterisation</span><a href="GB-SAR-Data-Analysis.pdf" download aria-label="Download Ka-Band Radar Target Characterisation (PDF)"><span aria-hidden="true">↓</span></a></li>
+            <li><span>Data Analysis: Twitter, 2016 US Election</span><a href="Big-Data-Project.pdf" download aria-label="Download Data Analysis: Twitter, 2016 US Election (PDF)"><span aria-hidden="true">↓</span></a></li>
+            <li><span>End-to-End Encryption in Telegram</span><a href="telegram_encryption.pdf" download aria-label="Download End-to-End Encryption in Telegram (PDF)"><span aria-hidden="true">↓</span></a></li>
           </ul>
         </details>
       </div>
@@ -1447,10 +1461,10 @@ footer {
         <div class="edu-degree">Mobility Semester · MSIoT: Innovative &amp; Secure IoT Systems</div>
         <div class="edu-note">Exchange semester, part of my MSc at Politecnico di Bari. Courses in <strong>smart devices</strong>, embedded security, IoT, and <strong>innovation &amp; entrepreneurship</strong>.</div>
         <details class="edu-projects">
-          <summary class="edu-projects-toggle">Projects <span>+</span></summary>
+          <summary class="edu-projects-toggle">Projects <span aria-hidden="true">+</span></summary>
           <ul class="edu-projects-list">
-            <li><span>Smart Home with Renewable Energy</span><a href="Smart-Home-Presentation.pdf" target="_blank">↓</a></li>
-            <li><span>MSIoT Portfolio</span><a href="insa-portfolio.pdf" download>↓</a></li>
+            <li><span>Smart Home with Renewable Energy</span><a href="Smart-Home-Presentation.pdf" download aria-label="Download Smart Home with Renewable Energy (PDF)"><span aria-hidden="true">↓</span></a></li>
+            <li><span>MSIoT Portfolio</span><a href="insa-portfolio.pdf" download aria-label="Download MSIoT Portfolio (PDF)"><span aria-hidden="true">↓</span></a></li>
           </ul>
         </details>
       </div>
@@ -1463,9 +1477,9 @@ footer {
         <div class="edu-degree">BSc in Electronics &amp; Telecommunications Engineering</div>
         <div class="edu-note"><strong>Electronics</strong>, <strong>telecommunications</strong>, signal processing, RF systems.</div>
         <details class="edu-projects">
-          <summary class="edu-projects-toggle">Projects <span>+</span></summary>
+          <summary class="edu-projects-toggle">Projects <span aria-hidden="true">+</span></summary>
           <ul class="edu-projects-list">
-            <li><span>Plasmonic Nano-Antenna for On-Chip Communications</span><a href="plasmonic_project.pdf" download>↓</a></li>
+            <li><span>Plasmonic Nano-Antenna for On-Chip Communications</span><a href="plasmonic_project.pdf" download aria-label="Download Plasmonic Nano-Antenna for On-Chip Communications (PDF)"><span aria-hidden="true">↓</span></a></li>
           </ul>
         </details>
       </div>
@@ -1475,48 +1489,48 @@ footer {
       <h3 class="subsection-label">Certifications</h3>
       <div class="cert-grid">
 
-        <a class="cert-card cert-featured" href="https://www.credly.com/badges/f007a558-2ba8-4a14-979f-6eef5dfa12f5/public_url" target="_blank" rel="noopener">
+        <a class="cert-card cert-featured" href="https://www.credly.com/badges/f007a558-2ba8-4a14-979f-6eef5dfa12f5/public_url" target="_blank" rel="noopener noreferrer">
           <div class="cert-img-wrap"><img src="cert-pspo.png" alt="PSPO I Badge" width="600" height="600" loading="lazy" decoding="async" /></div>
           <div class="cert-body">
             <div class="cert-issuer">Scrum.org</div>
             <div class="cert-name">Professional Scrum Product Owner I</div>
-            <div class="cert-arrow">↗</div>
+            <div class="cert-arrow" aria-hidden="true">↗</div><span class="visually-hidden">(opens in a new tab)</span>
           </div>
         </a>
 
-        <a class="cert-card" href="https://www.credly.com/badges/a14d890a-5460-49b2-b25f-1cfe5aa50181/public_url" target="_blank" rel="noopener">
+        <a class="cert-card" href="https://www.credly.com/badges/a14d890a-5460-49b2-b25f-1cfe5aa50181/public_url" target="_blank" rel="noopener noreferrer">
           <div class="cert-img-wrap"><img src="cert-google-bi.png" alt="Google BI Badge" width="1440" height="1440" loading="lazy" decoding="async" /></div>
           <div class="cert-body">
             <div class="cert-issuer">Google · Credly</div>
             <div class="cert-name">Business Intelligence Certificate</div>
-            <div class="cert-arrow">↗</div>
+            <div class="cert-arrow" aria-hidden="true">↗</div><span class="visually-hidden">(opens in a new tab)</span>
           </div>
         </a>
 
-        <a class="cert-card" href="https://www.coursera.org/account/accomplishments/verify/8GDED73XJKQD" target="_blank" rel="noopener">
+        <a class="cert-card" href="https://www.coursera.org/account/accomplishments/verify/8GDED73XJKQD" target="_blank" rel="noopener noreferrer">
           <div class="cert-img-wrap cert-img-cover"><img src="cert-rutgers.jpg" alt="Rutgers BI Certificate" width="1772" height="928" loading="lazy" decoding="async" /></div>
           <div class="cert-body">
             <div class="cert-issuer">Rutgers University · Coursera</div>
             <div class="cert-name">Business Intelligence &amp; Competitive Analysis</div>
-            <div class="cert-arrow">↗</div>
+            <div class="cert-arrow" aria-hidden="true">↗</div><span class="visually-hidden">(opens in a new tab)</span>
           </div>
         </a>
 
-        <a class="cert-card" href="https://courses.edx.org/certificates/d970ba7273a448d3921a0c6053a4255f" target="_blank" rel="noopener">
+        <a class="cert-card" href="https://courses.edx.org/certificates/d970ba7273a448d3921a0c6053a4255f" target="_blank" rel="noopener noreferrer">
           <div class="cert-img-wrap cert-img-cover"><img src="cert-edx-bu.jpg" alt="BU edX Certificate" width="378" height="225" loading="lazy" decoding="async" /></div>
           <div class="cert-body">
             <div class="cert-issuer">Boston University · edX</div>
             <div class="cert-name">Business Analytics for Data-Driven Decision Making</div>
-            <div class="cert-arrow">↗</div>
+            <div class="cert-arrow" aria-hidden="true">↗</div><span class="visually-hidden">(opens in a new tab)</span>
           </div>
         </a>
 
-        <a class="cert-card" href="https://www.coursera.org/account/accomplishments/specialization/JFML4PJ4QEC6" target="_blank" rel="noopener">
+        <a class="cert-card" href="https://www.coursera.org/account/accomplishments/specialization/JFML4PJ4QEC6" target="_blank" rel="noopener noreferrer">
           <div class="cert-img-wrap cert-img-cover"><img src="cert-stats.jpg" alt="Business Statistics Certificate" width="1772" height="928" loading="lazy" decoding="async" /></div>
           <div class="cert-body">
             <div class="cert-issuer">Rice University · Coursera</div>
             <div class="cert-name">Business Statistics and Analysis</div>
-            <div class="cert-arrow">↗</div>
+            <div class="cert-arrow" aria-hidden="true">↗</div><span class="visually-hidden">(opens in a new tab)</span>
           </div>
         </a>
 
@@ -1611,8 +1625,8 @@ footer {
       <div class="footer-links">
         <a class="footer-link accent-link" href="mailto:giuseppe.piacenza@outlook.com">Contact</a>
         <a class="footer-link accent-link" href="GPiacenza-CV.pdf" download>Download CV</a>
-        <a class="footer-link" href="https://linkedin.com/in/gpiacenza" rel="noopener noreferrer">LinkedIn</a>
-        <a class="footer-link" href="https://github.com/giuseppepiacenza-builder" rel="noopener noreferrer">GitHub</a>
+        <a class="footer-link" href="https://linkedin.com/in/gpiacenza" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
+        <a class="footer-link" href="https://github.com/giuseppepiacenza-builder" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
       </div>
     </div>
   </div>
