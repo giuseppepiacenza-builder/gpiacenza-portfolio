@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SmartStamp Web — Portfolio Case Study</title>
+  <title>SmartStamp Web, portfolio case study</title>
   <meta name="description" content="Case study: the SmartStamp web platform. Gallery inventory, artwork fingerprinting, provenance records, and document generation. Built by Giuseppe Piacenza." />
   <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -17,6 +17,8 @@
     --darker: #111111;
     --teal: #1e5459;
     --orange: #b8502f;
+    --orange-light: #c7755b;   /* the brand orange, legible on dark surfaces */
+    --orange-ink: #af4c2d;     /* the brand orange, legible as small text on every light surface */
     --gray: #696969;
     --border: rgba(0,0,0,0.09);
     --font-display: Georgia, 'Times New Roman', serif;
@@ -54,16 +56,12 @@
     align-items: center; justify-content: center;
     padding: 80px 48px 64px; text-align: center;
   }
-  .hero-eyebrow {
-    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--orange); margin-bottom: 24px; font-weight: 600;
-  }
   .hero-title {
     font-family: var(--font-display); font-size: 76px; font-weight: normal;
     color: #fcfcfc; letter-spacing: -0.03em; line-height: 0.95; margin-bottom: 22px;
   }
   .hero-subtitle {
-    font-size: 19px; color: rgba(255,255,255,0.45);
+    font-size: 19px; color: rgba(255,255,255,0.55);
     font-weight: 400; margin-bottom: 36px; max-width: 540px;
   }
   .hero-pills { display: flex; gap: 10px; justify-content: center; margin-bottom: 72px; flex-wrap: wrap; }
@@ -117,8 +115,7 @@
 
   /* ── Section headers ── */
   .section-eyebrow {
-    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--orange); margin-bottom: 14px; font-weight: 600;
+    font-size: 13px; color: var(--orange-ink); margin-bottom: 12px; font-weight: 600;
   }
   .section-title {
     font-family: var(--font-display); font-size: 30px; color: var(--teal);
@@ -149,18 +146,17 @@
   .screen-cell { border: 1px solid rgba(0,0,0,0.08); background: #fff; overflow: hidden; }
   .screen-cell img { width: 100%; display: block; vertical-align: bottom; }
   .screen-caption { padding: 10px 14px; display: flex; align-items: center; gap: 8px; }
-  .screen-chip {
-    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--orange); border: 1px solid rgba(184,80,47,0.22);
-    padding: 2px 7px; white-space: nowrap; flex-shrink: 0;
+  /* A quiet category prefix, not a chip. */
+  .screen-cat {
+    font-size: 13px; color: var(--gray); white-space: nowrap; flex-shrink: 0;
   }
+  .screen-cat::after { content: ' \00b7'; margin-left: 6px; }
   .screen-name { font-size: 11px; color: var(--gray); }
 
   /* ── Architecture ── */
   .architecture { background: var(--dark); padding: 96px 48px; }
   .arch-eyebrow {
-    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--orange); margin-bottom: 14px; font-weight: 600;
+    font-size: 13px; color: var(--orange-light); margin-bottom: 12px; font-weight: 600;
   }
   .arch-title {
     font-family: var(--font-display); font-size: 30px; color: #fcfcfc;
@@ -173,16 +169,16 @@
   }
   .arch-card { background: var(--dark); padding: 30px; }
   .arch-card-title { font-size: 13px; font-weight: 600; color: #fcfcfc; margin-bottom: 10px; letter-spacing: -0.01em; }
-  .arch-card-body { font-size: 13px; line-height: 1.75; color: rgba(255,255,255,0.45); }
+  .arch-card-body { font-size: 13px; line-height: 1.75; color: rgba(255,255,255,0.55); }
   .arch-card-body code { font-family: var(--font-mono); font-size: 12px; color: rgba(255,255,255,0.65); }
   .tech-table { width: 100%; border-collapse: collapse; }
   .tech-table thead tr { background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.08); }
   .tech-table th {
-    text-align: left; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-    color: rgba(255,255,255,0.35); padding: 10px 18px; font-weight: 400;
+    text-align: left; font-size: 12px;
+    color: rgba(255,255,255,0.55); padding: 10px 18px; font-weight: 600;
   }
   .tech-table td { padding: 12px 18px; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .tech-table td:first-child { color: rgba(255,255,255,0.3); width: 180px; font-size: 12px; letter-spacing: 0.01em; }
+  .tech-table td:first-child { color: rgba(255,255,255,0.49); width: 180px; font-size: 12px; letter-spacing: 0.01em; }
   .tech-table td:last-child { color: rgba(255,255,255,0.6); }
   .tech-table tbody tr:last-child td { border-bottom: none; }
 
@@ -190,7 +186,7 @@
   .footer { background: var(--darker); padding: 52px 48px; }
   .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; }
   .footer-brand { font-family: var(--font-display); font-size: 17px; color: rgba(255,255,255,0.65); }
-  .footer-brand-sub { font-size: 12px; color: rgba(255,255,255,0.28); margin-top: 5px; }
+  .footer-brand-sub { font-size: 12px; color: rgba(255,255,255,0.49); margin-top: 5px; }
   .footer-center { text-align: center; font-size: 11px; color: rgba(255,255,255,0.25); line-height: 1.7; }
   .footer-right { text-align: right; font-size: 11px; color: rgba(255,255,255,0.25); }
 
@@ -204,7 +200,7 @@
     padding: 6px 8px; position: relative;
   }
   .ds-swatch-label { font-size: 9px; color: rgba(255,255,255,0.75); line-height: 1.4; font-family: var(--font-mono); }
-  .ds-caption { font-size: 11px; color: var(--gray); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 12px; }
+  .ds-caption { font-size: 12px; color: var(--gray); margin-top: 12px; }
   .ds-type-samples { margin-bottom: 4px; }
   .ds-heading-sample { font-family: var(--font-display); font-size: 22px; color: var(--dark); letter-spacing: -0.02em; margin-bottom: 10px; }
   .ds-body-sample { font-size: 13px; line-height: 1.7; color: #555; margin-bottom: 10px; }
@@ -397,7 +393,7 @@
   <div class="feature feature-alt">
     <div class="container">
       <div class="feature-text">
-        <p class="section-eyebrow">Documents &amp; Signatures</p>
+        <p class="section-eyebrow">Documents and signatures</p>
         <h2 class="section-title">Generated, editable, and signed without a third-party tool</h2>
         <p class="section-body">
           SmartStamp generates 13 artwork document types and 6 gallery-level ones from branded HTML
@@ -491,148 +487,142 @@
       <div class="screen-cell">
         <img src="portfolio-screenshots/01-login.png" alt="Login" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Authentication</span>
+          <span class="screen-cat">Authentication</span>
           <span class="screen-name">Login</span>
         </div>
       </div>
       <div class="screen-cell">
         <img src="portfolio-screenshots/02-dashboard.png" alt="Dashboard" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Dashboard</span>
           <span class="screen-name">Dashboard</span>
         </div>
       </div>
       <div class="screen-cell">
-        <img src="portfolio-screenshots/03-collection-grid.png" alt="Collection — Grid View" width="1440" height="900" loading="lazy" decoding="async" />
+        <img src="portfolio-screenshots/03-collection-grid.png" alt="Collection, Grid View" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Collection</span>
-          <span class="screen-name">Collection — Grid View</span>
+          <span class="screen-cat">Collection</span>
+          <span class="screen-name">Grid view</span>
         </div>
       </div>
       <div class="screen-cell">
-        <img src="portfolio-screenshots/04-collection-list.png" alt="Collection — List View" width="1440" height="900" loading="lazy" decoding="async" />
+        <img src="portfolio-screenshots/04-collection-list.png" alt="Collection, List View" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Collection</span>
-          <span class="screen-name">Collection — List View</span>
+          <span class="screen-cat">Collection</span>
+          <span class="screen-name">List view</span>
         </div>
       </div>
       <div class="screen-cell">
         <img src="portfolio-screenshots/05-artwork-create.png" alt="Add Artwork" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Collection</span>
-          <span class="screen-name">Add Artwork</span>
+          <span class="screen-cat">Collection</span>
+          <span class="screen-name">Add artwork</span>
         </div>
       </div>
       <div class="screen-cell">
-        <img src="portfolio-screenshots/06-artwork-fingerprinted.png" alt="Artwork Detail — Fingerprinted" width="1440" height="900" loading="lazy" decoding="async" />
+        <img src="portfolio-screenshots/06-artwork-fingerprinted.png" alt="Artwork Detail, Fingerprinted" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Artwork Detail</span>
-          <span class="screen-name">Artwork Detail — Fingerprinted</span>
+          <span class="screen-cat">Artwork detail</span>
+          <span class="screen-name">Fingerprinted</span>
         </div>
       </div>
       <div class="screen-cell">
-        <img src="portfolio-screenshots/07-artwork-documents.png" alt="Artwork Detail — Documents" width="1440" height="900" loading="lazy" decoding="async" />
+        <img src="portfolio-screenshots/07-artwork-documents.png" alt="Artwork Detail, Documents" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Artwork Detail</span>
-          <span class="screen-name">Artwork Detail — Documents</span>
+          <span class="screen-cat">Artwork detail</span>
+          <span class="screen-name">Documents</span>
         </div>
       </div>
       <div class="screen-cell">
-        <img src="portfolio-screenshots/08-artwork-not-fingerprinted.png" alt="Artwork Detail — Not Fingerprinted" width="1440" height="900" loading="lazy" decoding="async" />
+        <img src="portfolio-screenshots/08-artwork-not-fingerprinted.png" alt="Artwork Detail, Not Fingerprinted" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Artwork Detail</span>
-          <span class="screen-name">Artwork Detail — Not Fingerprinted</span>
+          <span class="screen-cat">Artwork detail</span>
+          <span class="screen-name">Not fingerprinted</span>
         </div>
       </div>
       <div class="screen-cell">
-        <img src="portfolio-screenshots/09-artwork-history.png" alt="Artwork Detail — History" width="1440" height="900" loading="lazy" decoding="async" />
+        <img src="portfolio-screenshots/09-artwork-history.png" alt="Artwork Detail, History" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Artwork Detail</span>
-          <span class="screen-name">Artwork Detail — History</span>
+          <span class="screen-cat">Artwork detail</span>
+          <span class="screen-name">History</span>
         </div>
       </div>
       <div class="screen-cell">
         <img src="portfolio-screenshots/10-provenance.png" alt="Provenance Record" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Provenance</span>
-          <span class="screen-name">Provenance Record</span>
+          <span class="screen-name">Provenance record</span>
         </div>
       </div>
       <div class="screen-cell">
-        <img src="portfolio-screenshots/11-documents-artworks.png" alt="Documents Vault — Artwork Documents" width="1440" height="900" loading="lazy" decoding="async" />
+        <img src="portfolio-screenshots/11-documents-artworks.png" alt="Documents Vault, Artwork Documents" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Documents</span>
-          <span class="screen-name">Documents Vault — Artwork Documents</span>
+          <span class="screen-cat">Documents vault</span>
+          <span class="screen-name">Artwork documents</span>
         </div>
       </div>
       <div class="screen-cell">
-        <img src="portfolio-screenshots/12-documents-gallery.png" alt="Documents Vault — Gallery Documents" width="1440" height="900" loading="lazy" decoding="async" />
+        <img src="portfolio-screenshots/12-documents-gallery.png" alt="Documents Vault, Gallery Documents" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Documents</span>
-          <span class="screen-name">Documents Vault — Gallery Documents</span>
+          <span class="screen-cat">Documents vault</span>
+          <span class="screen-name">Gallery documents</span>
         </div>
       </div>
       <div class="screen-cell">
         <img src="portfolio-screenshots/13-document-signing.png" alt="Document Signing" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Documents</span>
-          <span class="screen-name">Document Signing</span>
+          <span class="screen-name">Document signing</span>
         </div>
       </div>
       <div class="screen-cell">
         <img src="portfolio-screenshots/14-import.png" alt="Import Hub" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Integrations</span>
-          <span class="screen-name">Import Hub</span>
+          <span class="screen-cat">Integrations</span>
+          <span class="screen-name">Import hub</span>
         </div>
       </div>
       <div class="screen-cell">
         <img src="portfolio-screenshots/15-artists.png" alt="Artists & Collaborators" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Team</span>
-          <span class="screen-name">Artists & Collaborators</span>
+          <span class="screen-cat">Team</span>
+          <span class="screen-name">Artists and collaborators</span>
         </div>
       </div>
       <div class="screen-cell">
         <img src="portfolio-screenshots/16-artist-detail.png" alt="Artist Detail" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Team</span>
-          <span class="screen-name">Artist Detail</span>
+          <span class="screen-cat">Team</span>
+          <span class="screen-name">Artist detail</span>
         </div>
       </div>
       <div class="screen-cell">
         <img src="portfolio-screenshots/17-activity.png" alt="Activity Log" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Activity</span>
-          <span class="screen-name">Activity Log</span>
+          <span class="screen-name">Activity log</span>
         </div>
       </div>
       <div class="screen-cell">
         <img src="portfolio-screenshots/18-archive.png" alt="Archived Works" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Archive</span>
-          <span class="screen-name">Archived Works</span>
+          <span class="screen-name">Archived works</span>
         </div>
       </div>
       <div class="screen-cell">
         <img src="portfolio-screenshots/19-settings.png" alt="Gallery Settings" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Settings</span>
-          <span class="screen-name">Gallery Settings</span>
+          <span class="screen-name">Gallery settings</span>
         </div>
       </div>
       <div class="screen-cell">
         <img src="portfolio-screenshots/20-artwork-edit.png" alt="Edit Artwork" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Collection</span>
-          <span class="screen-name">Edit Artwork</span>
+          <span class="screen-cat">Collection</span>
+          <span class="screen-name">Edit artwork</span>
         </div>
       </div>
       <div class="screen-cell">
-        <img src="portfolio-screenshots/21-onboarding.png" alt="Onboarding — Gallery Setup" width="1440" height="900" loading="lazy" decoding="async" />
+        <img src="portfolio-screenshots/21-onboarding.png" alt="Onboarding, Gallery Setup" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="screen-caption">
-          <span class="screen-chip">Onboarding</span>
-          <span class="screen-name">Onboarding — Gallery Setup</span>
+          <span class="screen-cat">Onboarding</span>
+          <span class="screen-name">Gallery setup</span>
         </div>
       </div>
     </div>
@@ -642,7 +632,7 @@
 <!-- Design System -->
 <section class="design-system" id="design-system">
   <div class="container">
-    <p class="section-eyebrow">Design System</p>
+    <p class="section-eyebrow">Design system</p>
     <h2 class="section-title" style="color:var(--teal)">Built on a custom token system</h2>
     <p class="section-body" style="margin-bottom:52px;max-width:680px">
       The UI is built around a gallery viewing room aesthetic: warm whites, near-black text,
@@ -673,8 +663,8 @@
       </div>
       <div class="ds-block">
         <div class="ds-radius-demo">
-          <div class="ds-radius-item" style="border-radius:0">0px &mdash; default</div>
-          <div class="ds-radius-item ds-radius-pill">9999px &mdash; pills only</div>
+          <div class="ds-radius-item" style="border-radius:0">0px : default</div>
+          <div class="ds-radius-item ds-radius-pill">9999px : pills only</div>
         </div>
         <p class="ds-caption">Border radius</p>
       </div>
@@ -688,7 +678,7 @@
 <!-- Architecture -->
 <section class="architecture" id="architecture">
   <div class="container">
-    <p class="arch-eyebrow">Technical Architecture</p>
+    <p class="arch-eyebrow">Technical architecture</p>
     <h2 class="arch-title">Built to be extended</h2>
 
     <div class="arch-cards">
