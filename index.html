@@ -1503,8 +1503,15 @@ footer {
   function stopWatching() { window.removeEventListener('scroll', onScroll); }
   function onScroll() { clearTimeout(scrollTimer); scrollTimer = setTimeout(bailIfStuck, 150); }
   function bailIfStuck() {
-    if (reveals.some(isStuck)) { showEverything(); stopWatching(); return; }
-    if (reveals.every(function(el) { return el.classList.contains('visible'); })) stopWatching();
+    if (!reveals.some(isStuck)) {
+      if (reveals.every(function(el) { return el.classList.contains('visible'); })) stopWatching();
+      return;
+    }
+    /* Confirm before giving up: a healthy observer coalesces entries and can lag
+       a fast flick by a frame or two. A dead one is still stuck 300ms later. */
+    setTimeout(function() {
+      if (reveals.some(isStuck)) { showEverything(); stopWatching(); }
+    }, 300);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('load', function() { setTimeout(bailIfStuck, 800); });
