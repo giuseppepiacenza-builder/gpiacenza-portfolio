@@ -928,9 +928,29 @@ footer {
   opacity: 1;
   transform: none;
 }
+
+/* Each kind of content earns its own entrance rather than one uniform fade. */
+.reveal-fade { transform: none; }
+
+.reveal-cards {
+  transform: translateY(14px) scale(0.995);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* The container arrives at once; its cells cascade. */
+.stagger { opacity: 1; transform: none; }
+.stagger > * {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.stagger.visible > * { opacity: 1; transform: none; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
+  .stagger > * { opacity: 1; transform: none; transition: none; }
   .project-card, .cert-card, .footer-link, .hero-link, .nav a { transition: none !important; }
   .project-card:hover { transform: none; }
   .skip-link { transition: none; }
@@ -1065,7 +1085,7 @@ footer {
 
 </style>
 <noscript><style>
-  .reveal { opacity: 1 !important; transform: none !important; }
+  .reveal, .stagger > * { opacity: 1 !important; transform: none !important; }
 </style></noscript>
 </head>
 <body>
@@ -1132,7 +1152,7 @@ footer {
 <section id="smartstamp" class="section bg-0">
   <div class="container">
 
-    <div class="work-header reveal">
+    <div class="work-header">
       <div class="work-info">
         <h2 class="work-company">SmartStamp AG</h2>
         <div class="work-role-tag">Head of Product &nbsp;·&nbsp; formerly Founding PM</div>
@@ -1140,11 +1160,11 @@ footer {
       <div class="co-logo-wrap"><img src="logo_sst.png" alt="SmartStamp AG" width="384" height="418" loading="lazy" decoding="async" /></div>
     </div>
 
-    <p class="lead reveal">
+    <p class="lead">
       SmartStamp builds <strong>digital passports for physical artworks</strong>: a fingerprint tied to the physical piece, linked to the full provenance chain. I came in as <strong>Founding PM</strong> at the seed stage, delivered the full iOS, Android, and web MVP in under six months, then stepped up to <strong>Head of Product</strong> with direct line management of engineering and UX, reporting to the CEO. It started as my ETH Master's capstone under Prof. Fredrik Hacklin and turned into a funded company.
     </p>
 
-    <div class="metrics reveal">
+    <div class="metrics reveal stagger">
       <div class="metric">
         <div class="metric-val">CHF 1M</div>
         <div class="metric-lbl">Seed funding raised</div>
@@ -1163,7 +1183,7 @@ footer {
       </div>
     </div>
 
-    <div class="project-cards reveal">
+    <div class="project-cards reveal reveal-cards">
       <a class="project-card" href="SmartStamp-Portfolio.html">
         <img class="project-card-screenshot" src="portfolio-screenshots/02-dashboard.png" alt="SmartStamp Web Platform Dashboard" width="1440" height="900" loading="lazy" decoding="async" />
         <div class="project-card-foot">
@@ -1186,7 +1206,7 @@ footer {
       </a>
     </div>
 
-    <div class="context-row reveal">
+    <div class="context-row reveal stagger">
       <div class="context-cell">
         <div class="context-cell-lbl">The Problem</div>
         <div class="context-cell-txt">The art market has <strong>no reliable way to verify the physical identity of an artwork</strong>. Forgery, fractured provenance, and fragmented document workflows cost galleries, collectors, and auctioneers, with no reliable record that survives the next sale.</div>
@@ -1201,7 +1221,7 @@ footer {
       </div>
     </div>
 
-    <div class="tags reveal">
+    <div class="tags reveal reveal-fade">
       <span class="tag">Product Strategy</span>
       <span class="tag">0→1 Delivery</span>
       <span class="tag">iOS &amp; Android Apps</span>
@@ -1219,7 +1239,7 @@ footer {
 <section id="opensystems" class="section bg-dark">
   <div class="container">
 
-    <div class="work-header light reveal">
+    <div class="work-header light">
       <div class="work-info">
         <h2 class="work-company light">Open Systems AG</h2>
         <div class="work-role-tag light">Connectivity Business Manager</div>
@@ -1227,11 +1247,11 @@ footer {
       <div class="co-logo-pill"><img src="logo_opensystems.png" alt="Open Systems AG" width="575" height="151" loading="lazy" decoding="async" /></div>
     </div>
 
-    <p class="lead light reveal">
+    <p class="lead light">
       Open Systems sells managed network security to mid-market and enterprise. As Connectivity Business Manager, I had <strong>full P&L ownership</strong> of the connectivity line: strategy, pricing, partnerships, commercial support, and product. I ran the biggest sales cycles, rebuilt the pricing model, shipped tooling for the commercial team, and pushed global coverage into markets we couldn't win before.
     </p>
 
-    <div class="metrics dark reveal">
+    <div class="metrics dark reveal stagger">
       <div class="metric">
         <div class="metric-val">€14.6M</div>
         <div class="metric-lbl">ARR at peak (from €7.5M)</div>
@@ -1250,7 +1270,7 @@ footer {
       </div>
     </div>
 
-    <div class="achievements reveal">
+    <div class="achievements reveal stagger">
       <div class="achievement dark-border">
         <div class="ach-label">Commercial Scale</div>
         <div class="ach-content">
@@ -1274,7 +1294,7 @@ footer {
       </div>
     </div>
 
-    <div class="tags reveal">
+    <div class="tags reveal reveal-fade">
       <span class="tag dark">Pricing &amp; Packaging</span>
       <span class="tag dark">GTM Strategy</span>
       <span class="tag dark">P&amp;L Ownership</span>
@@ -1292,7 +1312,7 @@ footer {
 <section id="huawei" class="section bg-1">
   <div class="container">
 
-    <div class="work-header reveal">
+    <div class="work-header">
       <div class="work-info">
         <h2 class="work-company">Huawei Technologies</h2>
         <div class="work-role-tag">Technical Project Manager &nbsp;·&nbsp; fmr. Wireless Engineer</div>
@@ -1300,11 +1320,11 @@ footer {
       <img class="co-logo co-logo-huawei" src="logo_huawei_text.png" alt="Huawei Technologies" width="3000" height="2000" loading="lazy" decoding="async" />
     </div>
 
-    <p class="lead reveal">
+    <p class="lead">
       Joined Huawei as a Wireless Engineer on the 4G/5G national rollout of Switzerland's second-largest provider. After identifying that <strong>two interdependent teams had no visibility into each other's work status</strong>, I designed and shipped a tool to sync them, <strong>lifting team output by 66%</strong>. That got me the <strong>Huawei Future Star 2020</strong> award and a promotion to Technical Project Manager, where I ran two teams of 10 engineers through <strong>250+ site deployments</strong> across Switzerland.
     </p>
 
-    <div class="metrics reveal">
+    <div class="metrics reveal stagger">
       <div class="metric">
         <div class="metric-val">+66%</div>
         <div class="metric-lbl">Weekly site output increase</div>
@@ -1323,7 +1343,7 @@ footer {
       </div>
     </div>
 
-    <div class="achievements reveal">
+    <div class="achievements reveal stagger">
       <div class="achievement">
         <div class="ach-label">Automation Tool</div>
         <div class="ach-content">
@@ -1340,7 +1360,7 @@ footer {
       </div>
     </div>
 
-    <div class="tags reveal">
+    <div class="tags reveal reveal-fade">
       <span class="tag">4G / 5G</span>
       <span class="tag">RF Planning</span>
       <span class="tag">Technical Project Management</span>
@@ -1363,7 +1383,7 @@ footer {
 <section id="education" class="section bg-dark">
   <div class="container">
 
-    <div class="work-header light work-header-tight reveal">
+    <div class="work-header light work-header-tight">
       <div class="work-info">
         <h2 class="work-company light">Education</h2>
       </div>
@@ -1490,11 +1510,11 @@ footer {
 <section class="section bg-0">
   <div class="container">
 
-    <div class="section-title-wrap reveal">
+    <div class="section-title-wrap">
       <h2 class="section-title">Skills</h2>
     </div>
 
-    <div class="skills-grid reveal">
+    <div class="skills-grid reveal stagger">
       <div>
         <div class="skill-group-lbl">Product Management</div>
         <div class="skill-pills">
@@ -1599,10 +1619,9 @@ footer {
     return;
   }
 
-  /* stagger children inside each reveal block */
-  [].slice.call(document.querySelectorAll('.metrics, .achievements, .project-cards, .context-row, .edu-grid, .skills-grid')).forEach(function(parent) {
+  [].slice.call(document.querySelectorAll('.stagger')).forEach(function(parent) {
     [].slice.call(parent.children).forEach(function(child, i) {
-      child.style.transitionDelay = (i * 80) + 'ms';
+      child.style.transitionDelay = (i * 70) + 'ms';
     });
   });
 })();
