@@ -40,6 +40,10 @@
   "knowsLanguage": ["it", "en", "es", "fr", "de"]
 }
 </script>
+<script>
+  /* Opt in to the reveal only when the observer that undoes it exists. */
+  if ('IntersectionObserver' in window) document.documentElement.classList.add('js');
+</script>
 <style>
 
 /* ─────────────────────────────────────────
@@ -877,38 +881,39 @@ footer {
 /* ─────────────────────────────────────────
    Scroll-reveal
 ───────────────────────────────────────── */
-.reveal {
+/* The reveal is an enhancement. Without `html.js` the content is simply there. */
+.js .reveal {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.55s ease, transform 0.55s ease;
 }
-.reveal.visible {
+.js .reveal.visible {
   opacity: 1;
   transform: none;
 }
 
 /* Each kind of content earns its own entrance rather than one uniform fade. */
-.reveal-fade { transform: none; }
+.js .reveal-fade { transform: none; }
 
-.reveal-cards {
+.js .reveal-cards {
   transform: translateY(14px) scale(0.995);
   transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
               transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* The container arrives at once; its cells cascade. */
-.stagger { opacity: 1; transform: none; }
-.stagger > * {
+.js .stagger { opacity: 1; transform: none; }
+.js .stagger > * {
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.stagger.visible > * { opacity: 1; transform: none; }
+.js .stagger.visible > * { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
-  .stagger > * { opacity: 1; transform: none; transition: none; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .js .stagger > * { opacity: 1; transform: none; transition: none; }
   .project-card, .cert-card, .footer-link, .hero-link, .nav a { transition: none !important; }
   .project-card:hover { transform: none; }
   .skip-link { transition: none; }
@@ -1040,9 +1045,6 @@ footer {
 }
 
 </style>
-<noscript><style>
-  .reveal, .stagger > * { opacity: 1 !important; transform: none !important; }
-</style></noscript>
 </head>
 <body>
 
@@ -1499,17 +1501,14 @@ footer {
 ════════════════════════════════════════ -->
 <script>
 (function() {
+  var root = document.documentElement;
+
+  /* Any failure path drops back to the visible default. */
+  function showEverything() { root.classList.remove('js'); }
+
+  if (!root.classList.contains('js')) return;
+
   var reveals = [].slice.call(document.querySelectorAll('.reveal'));
-
-  function revealAll() {
-    reveals.forEach(function(el) { el.classList.add('visible'); });
-  }
-
-  /* The reveal is an enhancement, never a gate: any failure path shows the content. */
-  if (!('IntersectionObserver' in window)) {
-    revealAll();
-    return;
-  }
 
   try {
     var observer = new IntersectionObserver(function(entries) {
@@ -1523,9 +1522,30 @@ footer {
 
     reveals.forEach(function(el) { observer.observe(el); });
   } catch (err) {
-    revealAll();
+    showEverything();
     return;
   }
+
+  /* If the observer is present but never fires (some in-app webviews), anything
+     already on screen would sit invisible. Notice that and drop the whole effect.
+     The half-visible test keeps a fast scroll past a barely-peeking element from
+     tripping this before the observer's 0.08 threshold has had a chance to fire. */
+  function isStuck(el) {
+    if (el.classList.contains('visible')) return false;
+    var box = el.getBoundingClientRect();
+    if (!box.height) return false;
+    var onScreen = Math.min(box.bottom, window.innerHeight) - Math.max(box.top, 0);
+    return onScreen / box.height > 0.25;
+  }
+  var scrollTimer;
+  function stopWatching() { window.removeEventListener('scroll', onScroll); }
+  function onScroll() { clearTimeout(scrollTimer); scrollTimer = setTimeout(bailIfStuck, 150); }
+  function bailIfStuck() {
+    if (reveals.some(isStuck)) { showEverything(); stopWatching(); return; }
+    if (reveals.every(function(el) { return el.classList.contains('visible'); })) stopWatching();
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('load', function() { setTimeout(bailIfStuck, 800); });
 
   [].slice.call(document.querySelectorAll('.stagger')).forEach(function(parent) {
     [].slice.call(parent.children).forEach(function(child, i) {
