@@ -46,20 +46,16 @@
    Design Tokens
 ───────────────────────────────────────── */
 :root {
-  --black:       #0C0C0B;
-  --white:       #F8F6F1;
-  --accent:      #1E5459;
-  --teal-dark:   #0E2628;
-  --text:        #1A1714;
-  --text-muted:  #6B6660;
-  --text-faint:  #A09890;
-  --bg-0:        #F8F6F1;
-  --bg-1:        #EDE9E2;
-  --bg-2:        #E2DDD4;
-  --bg-dark:     #0C0C0B;
-  --bg-teal:     #0E2628;
-  --border:      rgba(26,23,20,0.08);
-  --border-med:  rgba(26,23,20,0.14);
+  --accent:        #1E5459;
+  --accent-light:  #77B0B6;
+  --text:          #202727;
+  --text-muted:    #4D5454;
+  --text-faint:    #656B6C;
+  --bg-0:          #F5F9F9;
+  --bg-1:          #E8EEEF;
+  --bg-dark:       #0C0C0B;
+  --border:        rgba(32,39,39,0.08);
+  --border-med:    rgba(32,39,39,0.14);
   --font-display:'Plus Jakarta Sans', system-ui, sans-serif;
   --font-body:   'Inter', system-ui, sans-serif;
 }
@@ -216,7 +212,7 @@ a { color: inherit; text-decoration: none; }
 .hero-stat-lbl {
   font-size: 11px;
   font-weight: 500;
-  color: rgba(255,255,255,0.42);
+  color: rgba(255,255,255,0.48);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   line-height: 1.4;
@@ -281,9 +277,7 @@ a { color: inherit; text-decoration: none; }
 .section { padding: 100px 48px; }
 .section.bg-0 { background: var(--bg-0); }
 .section.bg-1 { background: var(--bg-1); }
-.section.bg-2 { background: var(--bg-2); }
 .section.bg-dark { background: var(--bg-dark); }
-.section.bg-teal { background: var(--bg-teal); }
 .container { max-width: 1120px; margin: 0 auto; }
 
 /* ─────────────────────────────────────────
@@ -311,16 +305,6 @@ a { color: inherit; text-decoration: none; }
   padding-bottom: 4px;
 }
 .work-num.light { -webkit-text-stroke: 2px rgba(255,255,255,0.35); }
-.work-info {}
-.work-kicker {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 6px;
-}
-.work-kicker.light { color: rgba(255,255,255,0.4); }
 .work-company {
   font-family: var(--font-display);
   font-size: clamp(44px, 6vw, 76px);
@@ -337,17 +321,7 @@ a { color: inherit; text-decoration: none; }
   margin-top: 8px;
   letter-spacing: 0.02em;
 }
-.work-role-tag.light { color: rgba(255,255,255,0.4); }
-.work-period {
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 300;
-  color: var(--text-faint);
-  white-space: nowrap;
-  padding-bottom: 8px;
-  letter-spacing: 0.02em;
-}
-.work-period.light { color: rgba(255,255,255,0.25); }
+.work-role-tag.light { color: rgba(255,255,255,0.48); }
 
 /* ─────────────────────────────────────────
    Context / Lead text
@@ -359,7 +333,7 @@ a { color: inherit; text-decoration: none; }
   max-width: 780px;
   margin-bottom: 56px;
 }
-.lead.light { color: rgba(255,255,255,0.5); }
+.lead.light { color: rgba(255,255,255,0.61); }
 .lead strong { color: var(--text); font-weight: 600; }
 .lead.light strong { color: #fff; }
 
@@ -398,7 +372,7 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.4;
   font-weight: 500;
 }
-.metrics.dark .metric-lbl { color: rgba(255,255,255,0.3); }
+.metrics.dark .metric-lbl { color: rgba(255,255,255,0.48); }
 
 /* ─────────────────────────────────────────
    Achievement Blocks (case study style)
@@ -423,6 +397,7 @@ a { color: inherit; text-decoration: none; }
   padding-top: 4px;
   line-height: 1.4;
 }
+.achievement.dark-border .ach-label { color: var(--accent-light); }
 .ach-content {}
 .ach-title {
   font-family: var(--font-display);
@@ -440,7 +415,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--text-muted);
   max-width: 68ch;
 }
-.ach-body.light { color: rgba(255,255,255,0.5); }
+.ach-body.light { color: rgba(255,255,255,0.61); }
 
 /* ─────────────────────────────────────────
    Tags
@@ -462,7 +437,7 @@ a { color: inherit; text-decoration: none; }
   background: rgba(255,255,255,0.5);
 }
 .tag.dark {
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.48);
   border-color: rgba(255,255,255,0.12);
   background: rgba(255,255,255,0.04);
 }
@@ -587,7 +562,7 @@ a { color: inherit; text-decoration: none; }
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.49);
   cursor: pointer;
   list-style: none;
   display: flex;
@@ -614,20 +589,20 @@ a { color: inherit; text-decoration: none; }
 }
 .edu-projects-list li span {
   font-size: 12px;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.61);
   line-height: 1.4;
 }
 .edu-projects-list li a {
   font-size: 11px;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-light);
   padding: 2px 8px;
-  border: 1px solid rgba(30,84,89,0.4);
+  border: 1px solid rgba(119,176,182,0.4);
   border-radius: 9999px;
   flex-shrink: 0;
   transition: all 0.15s;
 }
-.edu-projects-list li a:hover { background: var(--accent); color: #fff; }
+.edu-projects-list li a:hover { background: var(--accent-light); color: var(--bg-dark); }
 
 /* ─────────────────────────────────────────
    Certifications
@@ -686,7 +661,7 @@ a { color: inherit; text-decoration: none; }
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.48);
   margin-bottom: 6px;
 }
 .cert-featured .cert-issuer { color: rgba(255,255,255,0.55); }
@@ -700,12 +675,12 @@ a { color: inherit; text-decoration: none; }
 .cert-featured .cert-name { color: #fff; }
 .cert-arrow {
   font-size: 13px;
-  color: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.48);
   margin-top: 10px;
   transition: color 0.15s;
 }
 .cert-card:hover .cert-arrow { color: rgba(255,255,255,0.5); }
-.cert-featured .cert-arrow { color: var(--accent); }
+.cert-featured .cert-arrow { color: var(--accent-light); }
 @media (max-width: 960px) {
   .cert-grid { grid-template-columns: repeat(3, 1fr); }
 }
@@ -739,7 +714,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.08em;
-  color: var(--accent);
+  color: var(--accent-light);
 }
 .edu-inst {
   font-family: var(--font-display);
@@ -753,13 +728,13 @@ a { color: inherit; text-decoration: none; }
 .edu-degree {
   font-size: 14px;
   font-weight: 500;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.61);
   line-height: 1.5;
   margin-bottom: 10px;
 }
 .edu-note {
   font-size: 13px;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.61);
   line-height: 1.6;
   font-weight: 400;
 }
@@ -783,7 +758,7 @@ a { color: inherit; text-decoration: none; }
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-light);
   margin-bottom: 20px;
 }
 .subsection-wrap { margin-top: 52px; }
@@ -849,7 +824,7 @@ footer {
 }
 .footer-sub {
   font-size: 13px;
-  color: rgba(255,255,255,0.28);
+  color: rgba(255,255,255,0.48);
   letter-spacing: 0.02em;
 }
 .footer-links {
@@ -861,7 +836,7 @@ footer {
 .footer-link {
   font-size: 12px;
   font-weight: 500;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.48);
   padding: 8px 16px;
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 9999px;
@@ -919,7 +894,7 @@ footer {
   align-self: end;
   margin-bottom: 10px;
   flex-shrink: 0;
-  background: #F8F6F1;
+  background: var(--bg-0);
 }
 .co-logo-wrap img {
   width: 100%;
