@@ -285,7 +285,7 @@ a { color: inherit; text-decoration: none; }
 ───────────────────────────────────────── */
 .work-header {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr auto;
   align-items: end;
   gap: 0 24px;
   margin-bottom: 56px;
@@ -293,18 +293,6 @@ a { color: inherit; text-decoration: none; }
   border-bottom: 1px solid var(--border-med);
 }
 .work-header.light { border-bottom-color: rgba(255,255,255,0.1); }
-.work-num {
-  font-family: var(--font-display);
-  font-size: 80px;
-  font-weight: 900;
-  line-height: 0.85;
-  letter-spacing: -0.05em;
-  color: transparent;
-  -webkit-text-stroke: 2px rgba(26,23,20,0.3);
-  user-select: none;
-  padding-bottom: 4px;
-}
-.work-num.light { -webkit-text-stroke: 2px rgba(255,255,255,0.35); }
 .work-company {
   font-family: var(--font-display);
   font-size: clamp(44px, 6vw, 76px);
@@ -1008,8 +996,7 @@ footer {
   .nav .nav-item:not(.nav-cta) { display: none; }
   .section { padding: 72px 24px; }
   .hero { padding: 80px 24px 0; }
-  .work-header { grid-template-columns: auto 1fr; }
-  .work-num { font-size: 56px; }
+  .work-header { grid-template-columns: 1fr; }
   .metrics { grid-template-columns: repeat(2, 1fr); }
   .metric:nth-child(2) { border-right: none; }
   .metric:nth-child(3) { border-top: 1px solid var(--border-med); }
@@ -1036,9 +1023,6 @@ footer {
 
   /* Nav */
   .nav { top: 12px; }
-
-  /* Work section numbers */
-  .work-num { font-size: 32px; }
 
   /* Hero stats */
   .hero-stat { padding: 20px 12px; }
@@ -1077,9 +1061,6 @@ footer {
 
   /* Skill pills */
   .skill-pill { font-size: 12px; padding: 6px 12px; }
-
-  /* Work section numbers */
-  .work-num { font-size: 28px; }
 }
 
 </style>
@@ -1146,13 +1127,12 @@ footer {
 </section>
 
 <!-- ════════════════════════════════════════
-     01 — SMARTSTAMP
+     SMARTSTAMP
 ════════════════════════════════════════ -->
 <section id="smartstamp" class="section bg-0">
   <div class="container">
 
     <div class="work-header reveal">
-      <div class="work-num">01</div>
       <div class="work-info">
         <h2 class="work-company">SmartStamp AG</h2>
         <div class="work-role-tag">Head of Product &nbsp;·&nbsp; formerly Founding PM</div>
@@ -1240,13 +1220,12 @@ footer {
 </section>
 
 <!-- ════════════════════════════════════════
-     02 — OPEN SYSTEMS
+     OPEN SYSTEMS
 ════════════════════════════════════════ -->
 <section id="opensystems" class="section bg-dark">
   <div class="container">
 
     <div class="work-header light reveal">
-      <div class="work-num light">02</div>
       <div class="work-info">
         <h2 class="work-company light">Open Systems AG</h2>
         <div class="work-role-tag light">Connectivity Business Manager</div>
@@ -1319,13 +1298,12 @@ footer {
 </section>
 
 <!-- ════════════════════════════════════════
-     03 — HUAWEI
+     HUAWEI
 ════════════════════════════════════════ -->
 <section id="huawei" class="section bg-1">
   <div class="container">
 
     <div class="work-header reveal">
-      <div class="work-num">03</div>
       <div class="work-info">
         <h2 class="work-company">Huawei Technologies</h2>
         <div class="work-role-tag">Technical Project Manager &nbsp;·&nbsp; fmr. Wireless Engineer</div>
