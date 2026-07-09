@@ -103,6 +103,7 @@ a { color: inherit; text-decoration: none; }
   height: 44px;
 }
 .nav a.nav-item {
+  flex-shrink: 0;
   font-size: 12px;
   font-weight: 500;
   color: rgba(255,255,255,0.5);
@@ -116,6 +117,7 @@ a { color: inherit; text-decoration: none; }
 .nav a.nav-item:hover { color: #fff; background: rgba(255,255,255,0.06); }
 .nav a.nav-item.active { color: #fff; background: rgba(255,255,255,0.08); }
 .nav a.nav-cta {
+  flex-shrink: 0;
   font-size: 12px;
   font-weight: 600;
   color: #fff;
@@ -174,36 +176,6 @@ a { color: inherit; text-decoration: none; }
   font-weight: 700;
   color: #fff;
   display: block;
-}
-.hero-stats {
-  display: flex;
-  justify-content: center;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  border-left: 1px solid rgba(255,255,255,0.1);
-  margin-bottom: 0;
-}
-.hero-stat {
-  flex: 1;
-  padding: 32px 20px;
-  border-right: 1px solid rgba(255,255,255,0.1);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  text-align: center;
-}
-.hero-stat-val {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 3.5vw, 42px);
-  font-weight: 300;
-  color: #fff;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-.hero-stat-val span { color: #fff; }
-.hero-stat-lbl {
-  font-size: 13px;
-  font-weight: 400;
-  color: rgba(255,255,255,0.48);
-  line-height: 1.4;
 }
 .hero-photo {
   width: 88px;
@@ -357,6 +329,35 @@ a { color: inherit; text-decoration: none; }
   font-weight: 500;
 }
 .metrics.dark .metric-lbl { color: rgba(255,255,255,0.48); }
+
+/* ─────────────────────────────────────────
+   Figures: a quiet run, not a bordered grid
+───────────────────────────────────────── */
+.figures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 44px;
+  margin-bottom: 72px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid var(--border-med);
+}
+.figure {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.figure-val {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  line-height: 1;
+}
+.figure-lbl {
+  font-size: 13px;
+  color: var(--text-muted);
+}
 
 /* ─────────────────────────────────────────
    Achievement Blocks (case study style)
@@ -976,7 +977,16 @@ footer {
    Responsive
 ───────────────────────────────────────── */
 @media (max-width: 960px) {
-  .nav .nav-item:not(.nav-cta) { display: none; }
+  .nav {
+    max-width: calc(100vw - 24px);
+    justify-content: flex-start;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a.nav-item { padding: 0 12px; font-size: 11px; }
+  .nav a.nav-cta { padding: 0 14px; }
   .section { padding: 72px 24px; }
   .hero { padding: 80px 24px 0; }
   .work-header { grid-template-columns: 1fr; }
@@ -992,8 +1002,6 @@ footer {
   .skills-grid { grid-template-columns: 1fr; gap: 36px; }
   .footer-inner { grid-template-columns: 1fr; }
   .footer-links { justify-content: flex-start; }
-  .hero-stats { flex-wrap: wrap; }
-  .hero-stat { min-width: 50%; flex: none; }
 }
 @media (max-width: 640px) {
   .hero-name { font-size: 42px; }
@@ -1007,8 +1015,6 @@ footer {
   /* Nav */
   .nav { top: 12px; }
 
-  /* Hero stats */
-  .hero-stat { padding: 20px 12px; }
   .hero-bio-lead { font-size: 15px; }
 
   /* Metric cells */
@@ -1031,9 +1037,6 @@ footer {
 
   /* Hero kicker */
   .hero-kicker { font-size: 11px; letter-spacing: 0.1em; margin-bottom: 24px; }
-
-  /* Hero stats: stack all 4 full-width */
-  .hero-stat { min-width: 100%; }
 
   /* Metrics: 1-column on very small phones */
   .metrics { grid-template-columns: 1fr; }
@@ -1076,24 +1079,6 @@ footer {
       <p class="hero-bio-lead">Engineering background, commercial instincts. I've shipped a 0→1 product at an ETH-backed startup, owned P&L on a €14.6M ARR line at a Swiss network security company, and led 4G/5G rollouts for Huawei before moving into product. I prototype features myself instead of handing off a spec, and I co-lead the sales cycles that are too technical for sales to run alone.</p>
     </div>
 
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-val"><span>2</span>×</div>
-        <div class="hero-stat-lbl">ARR growth</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-val">€<span>14.6</span>M</div>
-        <div class="hero-stat-lbl">Peak ARR reached</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-val"><span>0</span>→1</div>
-        <div class="hero-stat-lbl">MVP in 6 months</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-val"><span>180</span>+</div>
-        <div class="hero-stat-lbl">Countries covered</div>
-      </div>
-    </div>
 
     <div class="hero-links">
       <a href="GPiacenza-CV.pdf" download class="hero-link solid">Download CV</a>
@@ -1122,23 +1107,11 @@ footer {
       SmartStamp builds <strong>digital passports for physical artworks</strong>: a fingerprint tied to the physical piece, linked to the full provenance chain. I came in as <strong>Founding PM</strong> at the seed stage, delivered the full iOS, Android, and web MVP in under six months, then stepped up to <strong>Head of Product</strong> with direct line management of engineering and UX, reporting to the CEO. It started as my ETH Master's capstone under Prof. Fredrik Hacklin and turned into a funded company.
     </p>
 
-    <div class="metrics reveal stagger">
-      <div class="metric">
-        <div class="metric-val">CHF 1M</div>
-        <div class="metric-lbl">Seed funding raised</div>
-      </div>
-      <div class="metric">
-        <div class="metric-val">0→1</div>
-        <div class="metric-lbl">Full MVP in under 6 months</div>
-      </div>
-      <div class="metric">
-        <div class="metric-val">10+</div>
-        <div class="metric-lbl">Gallery partnerships signed</div>
-      </div>
-      <div class="metric">
-        <div class="metric-val">60+</div>
-        <div class="metric-lbl">Customer interviews run personally</div>
-      </div>
+    <div class="figures reveal stagger">
+      <p class="figure"><span class="figure-val">CHF 1M</span><span class="figure-lbl">seed funding raised</span></p>
+      <p class="figure"><span class="figure-val">0→1</span><span class="figure-lbl">full MVP in under six months</span></p>
+      <p class="figure"><span class="figure-val">10+</span><span class="figure-lbl">gallery partnerships signed</span></p>
+      <p class="figure"><span class="figure-val">60+</span><span class="figure-lbl">customer interviews run personally</span></p>
     </div>
 
     <div class="project-cards reveal reveal-cards">
@@ -1268,24 +1241,6 @@ footer {
       Joined Huawei as a Wireless Engineer on the 4G/5G national rollout of Switzerland's second-largest provider. <strong>Two interdependent teams had no visibility into each other's work status</strong>, so I designed and shipped a tool to sync them. That work got me the <strong>Huawei Future Star 2020</strong> award and a promotion to Technical Project Manager, where I ran two teams of 10 engineers through <strong>250+ site deployments</strong> across Switzerland.
     </p>
 
-    <div class="metrics reveal stagger">
-      <div class="metric">
-        <div class="metric-val">+66%</div>
-        <div class="metric-lbl">Weekly site output increase</div>
-      </div>
-      <div class="metric">
-        <div class="metric-val">250+</div>
-        <div class="metric-lbl">4G/5G sites deployed in Switzerland</div>
-      </div>
-      <div class="metric">
-        <div class="metric-val">10</div>
-        <div class="metric-lbl">Engineers led across two teams</div>
-      </div>
-      <div class="metric">
-        <div class="metric-val">★</div>
-        <div class="metric-lbl">Huawei Future Star 2020 Award</div>
-      </div>
-    </div>
 
     <div class="achievements reveal stagger">
       <div class="achievement">
@@ -1568,8 +1523,15 @@ footer {
         navLinks.forEach(function(a) {
           var current = a.getAttribute('href') === '#' + e.target.id;
           a.classList.toggle('active', current);
-          if (current) { a.setAttribute('aria-current', 'true'); }
-          else { a.removeAttribute('aria-current'); }
+          if (current) {
+            a.setAttribute('aria-current', 'true');
+            var pill = a.parentNode;
+            if (pill.scrollWidth > pill.clientWidth) {
+              pill.scrollLeft = a.offsetLeft - (pill.clientWidth - a.offsetWidth) / 2;
+            }
+          } else {
+            a.removeAttribute('aria-current');
+          }
         });
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
