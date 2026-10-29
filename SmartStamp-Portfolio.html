@@ -256,7 +256,6 @@
     <a href="#features">Features</a>
     <a href="#screens">All Screens</a>
     <a href="#design-system">Design System</a>
-    <a href="#architecture">Architecture</a>
   </div>
 </nav>
 
@@ -701,63 +700,6 @@
   </div>
 </section>
 
-<!-- Architecture -->
-<section class="architecture" id="architecture">
-  <div class="container">
-    <p class="arch-eyebrow">Technical architecture</p>
-    <h2 class="arch-title">Built to be extended</h2>
-
-    <div class="arch-cards">
-      <div class="arch-card">
-        <div class="arch-card-title">9 TypeScript Service Interfaces</div>
-        <div class="arch-card-body">
-          All data access goes through typed interfaces injected via React context. Every service
-          (Artworks, Fingerprints, Documents, Provenance, Activity, Hash Trail, Import, Auth) is
-          swappable independently. Connecting the Firebase backend is a one-line change
-          in <code>providers.ts</code>.
-        </div>
-      </div>
-      <div class="arch-card">
-        <div class="arch-card-title">URL-Driven State</div>
-        <div class="arch-card-body">
-          Pagination, filters, search, view modes, and active tabs all live in the URL.
-          Browser back and forward work without any extra state management, and filtered views
-          are shareable as links. Components read from <code>useSearchParams()</code> directly.
-        </div>
-      </div>
-      <div class="arch-card">
-        <div class="arch-card-title">Append-Only Hash Trail</div>
-        <div class="arch-card-body">
-          Fingerprint captures, ownership transfers, document signings, and provenance updates
-          each get written as a SHA-256 chained entry. The trail is write-only at the application
-          level, with Firestore security rules enforcing the same at the database level.
-        </div>
-      </div>
-    </div>
-
-    <table class="tech-table">
-      <thead>
-        <tr>
-          <th>Layer</th>
-          <th>Technology</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Framework</td><td>React 19 + TypeScript 6</td></tr>
-        <tr><td>Build</td><td>Vite 8 + SWC</td></tr>
-        <tr><td>Routing</td><td>React Router DOM 7</td></tr>
-        <tr><td>Data Fetching</td><td>TanStack React Query 5</td></tr>
-        <tr><td>Forms</td><td>React Hook Form 7 + Zod 4</td></tr>
-        <tr><td>UI Primitives</td><td>Radix UI + shadcn/ui</td></tr>
-        <tr><td>Styling</td><td>Tailwind CSS 3</td></tr>
-        <tr><td>Animation</td><td>Framer Motion 12</td></tr>
-        <tr><td>Icons</td><td>Lucide React + custom SVG</td></tr>
-        <tr><td>Backend</td><td>Firebase Auth + Firestore + Storage + Functions</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
 <!-- Footer -->
 <footer class="footer">
   <div class="footer-inner">
@@ -772,7 +714,7 @@
 
 <script>
   // Scroll-spy for nav
-  const sections = ['overview', 'features', 'screens', 'design-system', 'architecture'];
+  const sections = ['overview', 'features', 'screens', 'design-system'];
   const navLinks = document.querySelectorAll('.nav-links a');
   const obs = new IntersectionObserver((entries) => {
     for (const e of entries) {
