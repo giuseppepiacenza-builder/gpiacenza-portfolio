@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SmartStamp Web, portfolio case study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
   <meta name="description" content="Case study: the SmartStamp web platform. Gallery inventory, artwork fingerprinting, provenance records, and document generation. Built by Giuseppe Piacenza." />
   <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -51,19 +53,27 @@
   .nav-cta { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 0.04em; }
 
   /* ── Hero ── */
+  /* Same hero format as the mobile case study: text left, product shot right, stacked below 1100px. */
   .hero {
-    min-height: 100vh; background: var(--dark);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    padding: 80px 48px 64px; text-align: center;
+    min-height: calc(100vh - 56px); background: var(--dark);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 64px 80px 80px; gap: 80px;
   }
+  @media (min-width: 1100px) {
+    .hero { flex-direction: row; align-items: center; }
+  }
+  .hero-text { max-width: 480px; flex-shrink: 0; }
   .hero-title {
-    font-family: var(--font-display); font-size: clamp(38px, 7.5vw, 76px); font-weight: normal;
-    color: #fcfcfc; letter-spacing: -0.03em; line-height: 0.95; margin-bottom: 22px;
+    font-family: 'Playfair Display', Georgia, serif; font-size: clamp(48px, 6vw, 76px); font-weight: 700;
+    color: #fcfcfc; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 20px;
   }
   .hero-subtitle {
     font-size: 19px; color: rgba(255,255,255,0.55);
-    font-weight: 400; margin-bottom: 36px; max-width: 540px;
+    font-weight: 400; line-height: 1.55; margin-bottom: 28px;
+  }
+  .hero-body {
+    font-size: 15px; color: rgba(255,255,255,0.55);
+    line-height: 1.7; max-width: 400px;
   }
   .hero-pills { display: flex; gap: 10px; justify-content: center; margin-bottom: 72px; flex-wrap: wrap; }
   .pill {
@@ -71,7 +81,7 @@
     border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04);
     border-radius: 9999px; letter-spacing: 0.01em;
   }
-  .browser-wrap { width: 100%; max-width: 1120px; perspective: 2000px; }
+  .browser-wrap { flex: 1; min-width: 0; width: 100%; max-width: 1120px; perspective: 2000px; }
   .browser-frame {
     border-radius: 10px; overflow: hidden;
     box-shadow: 0 48px 120px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.07);
@@ -218,6 +228,10 @@
   .missing { display: flex; align-items: center; justify-content: center; background: #f0ede8; min-height: 200px; font-size: 13px; color: var(--gray); font-style: italic; }
 
   /* ── Phones. This page had no responsive layer at all. ── */
+  @media (max-width: 1099px) {
+    .hero { padding: 44px 20px 60px; gap: 48px; }
+  }
+
   @media (max-width: 900px) {
     .nav { padding: 0 16px; gap: 12px; }
     .nav-logo { flex-shrink: 0; margin-right: 0; }
@@ -261,8 +275,11 @@
 
 <!-- Hero -->
 <section class="hero" id="hero">
-  <h1 class="hero-title">SmartStamp Web</h1>
-  <p class="hero-subtitle">Collection management and provenance tracking for art galleries</p>
+  <div class="hero-text">
+    <h1 class="hero-title">SmartStamp Web</h1>
+    <p class="hero-subtitle">Collection management and provenance tracking for art galleries</p>
+    <p class="hero-body">SmartStamp is a collection management tool for art galleries that adds a provenance and verification layer on top of their existing processes. Most gallery tools stop at inventory.</p>
+  </div>
   <div class="browser-wrap">
     <div class="browser-frame">
       <div class="hero-screenshot-crop">
