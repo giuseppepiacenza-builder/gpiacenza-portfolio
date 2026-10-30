@@ -462,7 +462,39 @@ footer {
      be named here or it keeps row-reverse and collapses its text column to 0px. */
   .feature-inner,
   .feature-inner.reverse { flex-direction: column; gap: 40px; }
-  .feature { padding: 72px 20px; }
+  .feature, .overview, .all-screens, .tech-stack { padding: 72px 20px; }
+  footer { padding: 40px 20px; }
+}
+
+/* ── Phones. Rows of phone mockups become swipeable instead of stacking into a very long page. ── */
+.swipe-dots { display: none; }
+@media (max-width: 700px) {
+  .hero-phone-left { display: none; }
+
+  .feature-phones, .screens-grid {
+    position: relative; display: flex; flex-wrap: nowrap; justify-content: flex-start; gap: 16px;
+    width: 100%; overflow-x: auto; scroll-snap-type: x mandatory;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+    padding: 8px calc(50% - 110px) 40px; margin-bottom: -24px;
+  }
+  .feature-phones::-webkit-scrollbar, .screens-grid::-webkit-scrollbar { display: none; }
+  .phones-pair { display: contents; }
+  .feature-phones .iphone-frame,
+  .feature-phones .iphone-frame.secondary,
+  .screen-cell .iphone-frame {
+    width: 220px; height: 475px; border-radius: 42px; border-width: 6px;
+    flex-shrink: 0; scroll-snap-align: center;
+  }
+  .feature-phones .iphone-frame .iphone-screen,
+  .screen-cell .iphone-frame .iphone-screen { border-radius: 36px; }
+  .screen-cell { flex: 0 0 auto; scroll-snap-align: center; }
+
+  .swipe-dots { display: flex; justify-content: center; gap: 8px; margin-top: 4px; }
+  .swipe-dots button {
+    width: 8px; height: 8px; padding: 0; border-radius: 50%; cursor: pointer;
+    border: 1.5px solid rgba(0,0,0,0.35); background: transparent;
+  }
+  .swipe-dots button[aria-current="true"] { background: #1a1917; border-color: #1a1917; }
 }
 </style>
 </head>
@@ -787,6 +819,41 @@ footer {
   <div class="footer-brand">SmartStamp Mobile</div>
   <div class="footer-credit">Case study by Giuseppe Piacenza</div>
 </footer>
+
+<script>
+  // On phones, rows of phone mockups scroll sideways; the dots show which phone is centred.
+  document.querySelectorAll('.feature-phones, .screens-grid').forEach((row) => {
+    const items = [...row.querySelectorAll(':scope > .iphone-frame, :scope > .phones-pair > .iphone-frame, :scope > .screen-cell')];
+    if (items.length < 2) return;
+    const dots = document.createElement('div');
+    dots.className = 'swipe-dots';
+    const buttons = items.map((item, i) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.setAttribute('aria-label', `Show screen ${i + 1} of ${items.length}`);
+      button.addEventListener('click', () => {
+        row.scrollTo({ left: item.offsetLeft - (row.clientWidth - item.offsetWidth) / 2, behavior: 'smooth' });
+        markCentred(i);
+      });
+      dots.appendChild(button);
+      return button;
+    });
+    row.after(dots);
+    const centredIndex = () => {
+      const middle = row.scrollLeft + row.clientWidth / 2;
+      let closest = 0;
+      items.forEach((item, i) => {
+        const distance = Math.abs(item.offsetLeft + item.offsetWidth / 2 - middle);
+        if (distance < Math.abs(items[closest].offsetLeft + items[closest].offsetWidth / 2 - middle)) closest = i;
+      });
+      return closest;
+    };
+    const markCentred = (current = centredIndex()) =>
+      buttons.forEach((button, i) => button.setAttribute('aria-current', String(i === current)));
+    row.addEventListener('scroll', () => markCentred(), { passive: true });
+    markCentred();
+  });
+</script>
 
 </body>
 </html>

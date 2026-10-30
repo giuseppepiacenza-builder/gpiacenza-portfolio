@@ -286,6 +286,21 @@
     .tech-table { display: block; overflow-x: auto; }
     .ds-swatches { flex-wrap: wrap; }
   }
+
+  /* ── Phones. Screenshot pairs and the screen gallery swipe sideways instead of stacking into a very long page. ── */
+  .swipe-dots { display: none; }
+  @media (max-width: 700px) {
+    .screenshot-pair, .screen-grid {
+      position: relative; display: flex; gap: 12px; overflow-x: auto;
+      scroll-snap-type: x mandatory; scrollbar-width: none; padding: 0 7%;
+      margin-left: -20px; margin-right: -20px;
+    }
+    @media (prefers-reduced-motion: no-preference) { .screenshot-pair, .screen-grid { scroll-behavior: smooth; } }
+    .screenshot-pair::-webkit-scrollbar, .screen-grid::-webkit-scrollbar { display: none; }
+    .screenshot-item, .screen-cell { flex: 0 0 86%; scroll-snap-align: center; }
+    .swipe-dots { display: flex; justify-content: center; gap: 6px; margin-top: 14px; }
+    .swipe-dots button { width: 8px; height: 8px; }
+  }
 </style>
 </head>
 <body>
@@ -773,6 +788,34 @@
     dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
     track.addEventListener('scroll', () => markCurrent(), { passive: true });
     markCurrent();
+  });
+
+  // On phones, screenshot pairs and the screen gallery scroll sideways; the dots show which image is centred.
+  document.querySelectorAll('.screenshot-pair, .screen-grid').forEach((row) => {
+    const items = [...row.children];
+    const dots = document.createElement('div');
+    dots.className = 'carousel-dots swipe-dots';
+    const centredIndex = () => {
+      const middle = row.scrollLeft + row.clientWidth / 2;
+      const distances = items.map((item) => Math.abs(item.offsetLeft + item.offsetWidth / 2 - middle));
+      return distances.indexOf(Math.min(...distances));
+    };
+    const buttons = items.map((item, i) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.setAttribute('aria-label', `Show image ${i + 1} of ${items.length}`);
+      button.addEventListener('click', () => {
+        row.scrollTo({ left: item.offsetLeft - (row.clientWidth - item.offsetWidth) / 2 });
+        markCentred(i);
+      });
+      dots.appendChild(button);
+      return button;
+    });
+    const markCentred = (current = centredIndex()) =>
+      buttons.forEach((button, i) => button.setAttribute('aria-current', String(i === current)));
+    row.after(dots);
+    row.addEventListener('scroll', () => markCentred(), { passive: true });
+    markCentred();
   });
 
   const reel = document.querySelector('.hero-reel video');
