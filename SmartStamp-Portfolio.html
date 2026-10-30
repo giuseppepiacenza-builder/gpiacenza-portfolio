@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
-  <meta name="description" content="Case study: the SmartStamp web platform for artworks and collectibles, built for galleries and auction houses. Fingerprint registration and verification, provenance records and document signing. Built by Giuseppe Piacenza." />
+  <meta name="description" content="Case study: the SmartStamp web platform for artworks and collectibles, built for galleries and auction houses. Fingerprint registration and verification, provenance records and document signing. Case study by Giuseppe Piacenza." />
   <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   img { max-width: 100%; height: auto; }
@@ -345,8 +345,9 @@
       which capture the surface texture of selected details as a digital fingerprint. The piece can then be verified with a mobile phone or
       with another microscope, by matching new captures against that fingerprint. The web platform holds
       everything around it: the ownership history, documents and signatures, and collection data imported
-      from CSV files or the mobile app. I built the full frontend from scratch, with a service layer where
-      every data dependency is injected through typed interfaces, so the UI stays independent of the backend.
+      from CSV files or the mobile app. My role was product lead: I ran discovery, set the roadmap and
+      priorities, and prototyped the web platform hands-on in code and Figma so the engineering team had a
+      working specification to build from. The screens on this page come from that prototype.
     </p>
 
     <div class="problem-grid">
@@ -520,7 +521,7 @@
         <p class="section-body">
           The dashboard shows fingerprint coverage as an animated progress bar, a breakdown of where
           artworks came from (CSV, mobile app, or manual entry), a summary of the documents
-          vault, and a recent activity feed. The stat numbers count up on load using a custom easing curve.
+          vault, and a recent activity feed.
         </p>
       </div>
       <div class="screenshot-full" style="margin-bottom:16px">
@@ -693,8 +694,7 @@
       The UI follows the look of a gallery viewing room: warm whites, near-black text, sharp edges
       (no border radius except on pills) and restrained colour. Orange is reserved for the brand.
       Verified works carry a near-black Integrity Stamp, and unverified works a muted grey outline.
-      Every colour, shadow and spacing value is a CSS custom property, consumed through Tailwind
-      utility classes.
+      Colours, shadows and spacing are defined once as design tokens and reused on every screen.
     </p>
     <div class="ds-grid">
       <div class="ds-block">
@@ -732,7 +732,7 @@
   <div class="footer-inner">
     <div>
       <div class="footer-brand">SmartStamp</div>
-      <div class="footer-brand-sub">Built by Giuseppe Piacenza</div>
+      <div class="footer-brand-sub">Case study by Giuseppe Piacenza</div>
     </div>
     <div class="footer-center"></div>
     <div class="footer-right"></div>
