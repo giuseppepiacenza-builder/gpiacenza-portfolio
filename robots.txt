@@ -1,4 +1,6 @@
+# Pages stay crawlable so search engines can read their noindex tag.
 User-agent: *
-Allow: /
+Disallow: /*.pdf$
 
-Sitemap: https://gpiacenza.com/sitemap.xml
+User-agent: Googlebot-Image
+Disallow: /
