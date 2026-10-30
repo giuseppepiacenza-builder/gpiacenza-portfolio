@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>SmartStamp Mobile, portfolio case study</title>
-<meta name="description" content="Case study: the SmartStamp iOS and Android app. Fingerprint scanning, digital passports, ownership transfer, and certificate generation. Built by Giuseppe Piacenza." />
+<meta name="description" content="Case study: the SmartStamp iOS and Android app. Verification of artworks and collectibles, digital passports, ownership transfer and certificate generation. Built by Giuseppe Piacenza." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
@@ -27,12 +27,6 @@ a { color: inherit; text-decoration: none; }
 /* ── Typography ── */
 h1, h2, h3, .playfair {
   font-family: 'Playfair Display', Georgia, serif;
-}
-.eyebrow {
-  font-size: 13px;
-  font-weight: 600;
-  color: #c7755b;
-  margin-bottom: 12px;
 }
 
 /* ── Nav ── */
@@ -172,12 +166,6 @@ nav {
   letter-spacing: -0.03em;
   margin-bottom: 20px;
 }
-.hero-subtitle {
-  font-size: 19px;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.55;
-  margin-bottom: 28px;
-}
 .hero-body {
   font-size: 15px;
   color: rgba(255,255,255,0.55);
@@ -221,7 +209,7 @@ nav {
 
 /* ── Overview ── */
 .overview {
-  background: #fcfcfc;
+  background: #f4f2ef;
   padding: 96px 80px;
 }
 .overview-inner {
@@ -263,6 +251,8 @@ nav {
 }
 .feature:nth-child(odd) { background: #fcfcfc; }
 .feature:nth-child(even) { background: #f4f2ef; }
+/* Every section below the overview starts on a hairline so neighbouring bands never merge. */
+.feature, .all-screens { border-top: 1px solid rgba(0,0,0,0.09); }
 .feature-inner {
   max-width: 1100px;
   margin: 0 auto;
@@ -482,7 +472,7 @@ footer {
     <li><a href="index.html" class="nav-back">&larr; Portfolio</a></li>
     <li><a href="#overview">Overview</a></li>
     <li><a href="#features">Features</a></li>
-    <li><a href="#screens">All Screens</a></li>
+    <li><a href="#screens">Screens</a></li>
     <li><a href="#tech">Architecture</a></li>
   </ul>
 </nav>
@@ -491,8 +481,7 @@ footer {
 <section class="hero">
   <div class="hero-text">
     <h1>SmartStamp Mobile</h1>
-    <p class="hero-subtitle">Mobile fingerprinting and provenance for physical art</p>
-    <p class="hero-body">The SmartStamp mobile app gives galleries and collectors a way to register, verify, and transfer artworks with cryptographic certainty. A scan session captures up to nine micro-detail surface readings and combines them into a tamper-evident fingerprint tied to the physical piece, which a paper certificate cannot reproduce.</p>
+    <p class="hero-body">The SmartStamp app is how galleries and collectors check an artwork or collectible in front of them. A scan session captures up to nine close-up images of the surface and compares them with the fingerprint recorded at registration. The app can also register a work and transfer its ownership.</p>
   </div>
   <div class="hero-phones">
     <div class="iphone-frame hero-phone-left">
@@ -516,8 +505,8 @@ footer {
 <!-- Overview -->
 <section class="overview" id="overview">
   <div class="overview-inner">
-    <h2>What the app does</h2>
-    <p class="overview-body">The SmartStamp mobile app handles the physical side of artwork authentication. It walks the user through capturing surface scans, registers a fingerprint on the blockchain-backed backend, and produces a digital passport that travels with the work. When a piece changes hands, the transfer is confirmed by both parties in the app and the ownership record updates in real time, visible immediately in the web dashboard used by gallery staff.</p>
+    <h2>Overview</h2>
+    <p class="overview-body">The app covers the physical side of SmartStamp. Most works are registered under a microscope, and the app is then used to verify them: it guides the user through capturing the registered details again and checks them against the fingerprint on record. Each work has a digital passport in the app, with its SmartStamp ID, ownership record, surface images and documents. When a work changes hands, the current owner transfers it in the app, and the ownership record updates immediately in the web platform used by gallery staff.</p>
   </div>
 </section>
 
@@ -528,8 +517,8 @@ footer {
 <section class="feature">
   <div class="feature-inner">
     <div class="feature-text">
-      <h2>A physical artwork gets a cryptographic identity</h2>
-      <p>Registering an artwork takes the user through four steps: a full overview photo, a close-up detail shot, selection of fingerprint points on the surface, and final submission to create a permanent record. Each fingerprint is a unique hash tied to the specific physical piece, not to a document or certificate that can be copied. The same flow works in reverse for verification: scan a QR code or enter a SmartStamp ID, compare the surface images, and confirm ownership details in seconds.</p>
+      <h2>Registration and verification</h2>
+      <p>Verification starts from a QR code or a SmartStamp ID. The app guides the user to the registered details, captures them again, compares them with the fingerprint on record and then shows the ownership details. Most works are registered under a microscope, but the app can also register a work in four steps: an overview photo, a close-up detail shot, the selection of fingerprint points on the surface, and submission to create the record.</p>
     </div>
     <div class="feature-phones">
       <div class="iphone-frame">
@@ -557,8 +546,8 @@ footer {
 <section class="feature">
   <div class="feature-inner reverse">
     <div class="feature-text">
-      <h2>Every artwork carries its full history</h2>
-      <p>The artwork detail view combines everything in one place: the SmartStamp ID, ownership record, surface images, and any attached documents. The Images tab shows the overview photo, the close-up detail, and the individual fingerprint captures side by side, so any party can visually verify the work against the registered record without specialist equipment.</p>
+      <h2>Artwork record</h2>
+      <p>The artwork detail view brings together the SmartStamp ID, the ownership record, the surface images and any attached documents. The Images tab shows the overview photo, the close-up detail and each fingerprint capture side by side, so anyone holding the work can compare it with the registered record without specialist equipment.</p>
     </div>
     <div class="feature-phones">
       <div class="iphone-frame">
@@ -579,8 +568,8 @@ footer {
 <section class="feature">
   <div class="feature-inner">
     <div class="feature-text">
-      <h2>Moving artworks between collectors and galleries</h2>
-      <p>When a work changes hands, the transferring party enters the recipient's email and confirms. A final warning makes clear the action is permanent and irreversible. Once confirmed, the passport updates instantly and both parties receive a Postmark email with the transfer record. The complete prior ownership history is preserved in the chain.</p>
+      <h2>Ownership transfer</h2>
+      <p>To transfer a work, the current owner enters the recipient's email address and confirms. A final warning states that the transfer cannot be undone. Once it is confirmed, the digital passport updates immediately and both parties receive an email with the transfer record. The previous ownership history stays in the record.</p>
     </div>
     <div class="feature-phones">
       <div class="iphone-frame">
@@ -596,8 +585,8 @@ footer {
 <section class="feature">
   <div class="feature-inner reverse">
     <div class="feature-text">
-      <h2>Certificates and reports generated and stored in-app</h2>
-      <p>Eight document types are supported: Certificate of Authenticity, Condition Report, Appraisal, Insurance, Ownership, Provenance Record, Restoration Report, and Other. Documents are attached to a specific artwork and stored in Firebase Storage. The Certificate of Authenticity is generated automatically from artwork metadata and is ready to download as a PDF, with no gallery software or external service required.</p>
+      <h2>Documents and certificates</h2>
+      <p>The app supports eight document types: Certificate of Authenticity, Condition Report, Appraisal, Insurance, Ownership, Provenance Record, Restoration Report and Other. Each document is attached to a specific artwork and stored in Firebase Storage. The Certificate of Authenticity is generated from the artwork's metadata and can be downloaded as a PDF without any other software.</p>
     </div>
     <div class="feature-phones">
       <div class="iphone-frame">
@@ -625,8 +614,8 @@ footer {
 <section class="feature">
   <div class="feature-inner">
     <div class="feature-text">
-      <h2>The collection at a glance</h2>
-      <p>The home screen gives quick access to the four main actions: verify an artwork, create a new space, transfer ownership, or access more options. Spaces group artworks by collection or location, and the Transferred section tracks recent ownership changes. All data syncs from Firestore in real time, so gallery staff and collectors always see the same state.</p>
+      <h2>Home screen</h2>
+      <p>The home screen gives access to the four main actions: verify an artwork, create a space, transfer ownership and more options. Spaces group artworks by collection or location, and the Transferred section lists recent ownership changes. Data syncs from Firestore in real time, so gallery staff and collectors see the same records.</p>
     </div>
     <div class="feature-phones">
       <div class="iphone-frame">
@@ -643,7 +632,7 @@ footer {
 <!-- All Screens -->
 <section class="all-screens" id="screens">
   <div class="all-screens-inner">
-    <h2>All Screens</h2>
+    <h2>Screen reference</h2>
     <div class="screens-grid">
       <div class="screen-cell">
         <div class="iphone-frame">
@@ -771,17 +760,16 @@ footer {
 <!-- Tech Stack -->
 <section class="tech-stack" id="tech">
   <div class="tech-stack-inner">
-    <p class="eyebrow">Architecture</p>
-    <h2>How it is built</h2>
-    <p class="tech-stack-intro">A single Flutter codebase targets iOS and Android from one source. Firebase handles real-time sync, authentication, and file storage. PostHog tracks product behaviour. Postmark delivers transactional email for ownership transfers and document sharing.</p>
+    <h2>Architecture</h2>
+    <p class="tech-stack-intro">The app is a single Flutter codebase for iOS and Android. Firebase handles real-time sync, authentication and file storage, PostHog tracks product usage, and Postmark sends the transactional email for ownership transfers and document sharing.</p>
     <div class="arch-cards">
       <div class="arch-card">
         <div class="arch-card-title">Flutter, single codebase</div>
-        <div class="arch-card-body">One Dart codebase ships to both iOS and Android. The UI layer is entirely custom, with no third-party component libraries, so we control the interaction and visual design of every fingerprinting flow.</div>
+        <div class="arch-card-body">One Dart codebase ships to both iOS and Android. The UI is fully custom, without third-party component libraries, which gives full control over the interaction and visual design of every fingerprinting flow.</div>
       </div>
       <div class="arch-card">
         <div class="arch-card-title">Firebase, real-time sync</div>
-        <div class="arch-card-body">Firestore keeps the mobile app and the web dashboard in sync with no polling. Auth, storage, and functions all live under the same project, so the two platforms need no infrastructure coordination.</div>
+        <div class="arch-card-body">Firestore keeps the mobile app and the web dashboard in sync with no polling. Authentication, storage and functions sit in the same project, so the two platforms share one infrastructure.</div>
       </div>
       <div class="arch-card">
         <div class="arch-card-title">PostHog and Postmark</div>

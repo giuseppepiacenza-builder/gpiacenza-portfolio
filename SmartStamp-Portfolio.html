@@ -6,7 +6,7 @@
   <title>SmartStamp Web, portfolio case study</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
-  <meta name="description" content="Case study: the SmartStamp web platform. Gallery inventory, artwork fingerprinting, provenance records, and document generation. Built by Giuseppe Piacenza." />
+  <meta name="description" content="Case study: the SmartStamp web platform for artworks and collectibles, built for galleries and auction houses. Fingerprint registration and verification, provenance records and document signing. Built by Giuseppe Piacenza." />
   <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   img { max-width: 100%; height: auto; }
@@ -67,10 +67,6 @@
     font-family: 'Playfair Display', Georgia, serif; font-size: clamp(48px, 6vw, 76px); font-weight: 700;
     color: #fcfcfc; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 20px;
   }
-  .hero-subtitle {
-    font-size: 19px; color: rgba(255,255,255,0.55);
-    font-weight: 400; line-height: 1.55; margin-bottom: 28px;
-  }
   .hero-body {
     font-size: 15px; color: rgba(255,255,255,0.55);
     line-height: 1.7; max-width: 400px;
@@ -81,43 +77,53 @@
     border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04);
     border-radius: 9999px; letter-spacing: 0.01em;
   }
-  .browser-wrap { flex: 1; min-width: 0; width: 100%; max-width: 1120px; perspective: 2000px; }
-  .browser-frame {
-    border-radius: 10px; overflow: hidden;
-    box-shadow: 0 48px 120px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.07);
-    transform: rotateX(2.5deg);
-    transform-origin: center top;
+  .hero-reel { flex-shrink: 0; width: min(460px, calc((100vh - 200px) * 0.645), 100%); margin: 0; }
+  .hero-reel-media { position: relative; }
+  .hero-reel video {
+    width: 100%; height: auto; display: block; border-radius: 18px; background: #000;
+    box-shadow: 0 48px 120px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.08);
   }
-  .browser-chrome {
-    background: #1e1e1e; padding: 10px 16px;
-    display: flex; align-items: center; gap: 10px;
+  .hero-reel figcaption { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 14px; text-align: center; }
+  .hero-reel figcaption a { color: inherit; text-underline-offset: 3px; }
+  .hero-reel figcaption a:hover { color: rgba(255,255,255,0.75); }
+  /* The product column only fits beside the text and the reel on wide screens. */
+  .hero-shots { display: none; }
+  @media (min-width: 1400px) {
+    .hero { padding-left: 64px; padding-right: 64px; gap: 48px; }
+    .hero-text { max-width: 440px; }
+    .hero-shots { display: flex; flex-direction: column; gap: 16px; flex: 0 1 280px; min-width: 220px; }
   }
-  .browser-dots { display: flex; gap: 6px; }
-  .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
-  .browser-address {
-    flex: 1; background: rgba(255,255,255,0.07); border-radius: 4px;
-    padding: 4px 12px; font-family: var(--font-mono); font-size: 11px;
-    color: rgba(255,255,255,0.3); text-align: center; letter-spacing: 0;
+  .hero-shot { margin: 0; }
+  .hero-shot img {
+    width: 100%; height: auto; display: block; border-radius: 8px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08);
   }
-  .browser-frame img, .browser-frame video { width: 100%; display: block; vertical-align: bottom; }
-  .hero-screenshot-crop { overflow: hidden; max-height: 560px; }
-  .hero-screenshot-crop img { width: 100%; display: block; vertical-align: top; }
+  .hero-shot figcaption { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 8px; }
+  .hero-reel-sound {
+    position: absolute; left: 14px; bottom: 14px; padding: 9px 16px;
+    border: 0; border-radius: 9999px; background: rgba(0,0,0,0.6); color: #fff;
+    font: 500 13px var(--font-body); cursor: pointer;
+  }
+  .hero-reel-toggle {
+    position: absolute; right: 14px; bottom: 14px; width: 36px; height: 36px;
+    border: 0; border-radius: 50%; background: rgba(0,0,0,0.6); cursor: pointer;
+  }
+  .hero-reel-toggle::before {
+    content: ''; position: absolute; left: 13px; top: 12px; width: 3px; height: 12px;
+    background: #fff; box-shadow: 6px 0 0 #fff;
+  }
+  .hero-reel-toggle.is-paused::before {
+    left: 14px; top: 11px; width: 0; height: 0; background: none; box-shadow: none;
+    border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff;
+  }
+  .hero-reel-sound:focus-visible, .hero-reel-toggle:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
   /* ── Overview ── */
-  .overview { background: var(--bg); padding: 96px 48px; }
+  .overview { background: var(--bg-alt); padding: 80px 48px; }
   .container { max-width: 1100px; margin: 0 auto; }
-  .container-mid { max-width: 840px; margin: 0 auto; }
-  .stats-bar {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    border: 1px solid var(--border); margin-bottom: 72px;
-  }
-  .stat { padding: 36px 32px; text-align: center; border-right: 1px solid var(--border); }
-  .stat:last-child { border-right: none; }
-  .stat-value { font-family: var(--font-display); font-size: 44px; color: var(--teal); letter-spacing: -0.03em; line-height: 1; }
-  .stat-label { font-size: 13px; color: var(--gray); margin-top: 10px; letter-spacing: 0.01em; }
   .overview-text {
     font-size: 16px; line-height: 1.8; color: #3a3835;
-    margin-bottom: 56px; max-width: 720px;
+    margin-bottom: 56px; max-width: 700px;
   }
   .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
   .problem-card { background: var(--bg); padding: 30px; }
@@ -125,9 +131,6 @@
   .problem-body { font-size: 14px; line-height: 1.7; color: var(--gray); }
 
   /* ── Section headers ── */
-  .section-eyebrow {
-    font-size: 13px; color: var(--orange-ink); margin-bottom: 12px; font-weight: 600;
-  }
   .section-title {
     font-family: var(--font-display); font-size: 30px; color: var(--teal);
     letter-spacing: -0.02em; margin-bottom: 18px; line-height: 1.2;
@@ -136,6 +139,8 @@
 
   /* ── Feature blocks ── */
   .feature { padding: 80px 48px; }
+  /* Every section below the overview starts on a hairline so neighbouring bands never merge. */
+  .feature, .screens, .design-system { border-top: 1px solid var(--border); }
   .feature-alt { background: var(--bg-alt); }
   .feature-text { max-width: 700px; margin-bottom: 44px; }
   .screenshot-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -147,6 +152,30 @@
   }
   .screenshot-full { border: 1px solid var(--border); overflow: hidden; }
   .screenshot-full img { width: 100%; display: block; vertical-align: bottom; }
+
+  /* ── Carousel ── */
+  .carousel { margin-bottom: 16px; }
+  .carousel-track {
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+    scrollbar-width: none; border: 1px solid var(--border);
+  }
+  .carousel-track::-webkit-scrollbar { display: none; }
+  @media (prefers-reduced-motion: reduce) { .carousel-track { scroll-behavior: auto; } }
+  .carousel-slide { flex: 0 0 100%; scroll-snap-align: start; margin: 0; }
+  .carousel-slide img { width: 100%; height: auto; display: block; }
+  .carousel-controls { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 14px; }
+  .carousel-controls button { cursor: pointer; }
+  .carousel-prev, .carousel-next {
+    width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border);
+    background: #fff; color: var(--dark); font-size: 16px; line-height: 1;
+  }
+  .carousel-prev:hover, .carousel-next:hover { border-color: rgba(0,0,0,0.25); }
+  .carousel-dots { display: flex; gap: 10px; }
+  .carousel-dots button {
+    width: 10px; height: 10px; padding: 0; border-radius: 50%;
+    border: 1.5px solid rgba(0,0,0,0.4); background: transparent;
+  }
+  .carousel-dots button[aria-current="true"] { background: var(--dark); border-color: var(--dark); }
 
   /* ── Screen library ── */
   .screens { background: var(--bg-warm); padding: 80px 48px; }
@@ -230,6 +259,7 @@
   /* ── Phones. This page had no responsive layer at all. ── */
   @media (max-width: 1099px) {
     .hero { padding: 44px 20px 60px; gap: 48px; }
+    .hero-reel { align-self: center; }
   }
 
   @media (max-width: 900px) {
@@ -243,7 +273,6 @@
     .hero { padding-left: 20px; padding-right: 20px; }
     .overview, .feature, .screens, .architecture, .design-system, .footer { padding-left: 20px; padding-right: 20px; }
 
-    .stats-bar { grid-template-columns: 1fr; }
     .problem-grid { grid-template-columns: 1fr; }
     .screenshot-pair { grid-template-columns: 1fr; }
     .screen-grid { grid-template-columns: 1fr; }
@@ -268,8 +297,8 @@
     <a href="index.html" class="nav-back">&larr; Portfolio</a>
     <a href="#overview">Overview</a>
     <a href="#features">Features</a>
-    <a href="#screens">All Screens</a>
-    <a href="#design-system">Design System</a>
+    <a href="#screens">Screens</a>
+    <a href="#design-system">Design system</a>
   </div>
 </nav>
 
@@ -277,65 +306,62 @@
 <section class="hero" id="hero">
   <div class="hero-text">
     <h1 class="hero-title">SmartStamp Web</h1>
-    <p class="hero-subtitle">Collection management and provenance tracking for art galleries</p>
-    <p class="hero-body">SmartStamp is the integrity layer built for galleries, auction houses and other art businesses, adding provenance and verification on top of their existing processes. Most gallery tools stop at inventory.</p>
+    <p class="hero-body">SmartStamp is the integrity layer for physical artworks and collectibles, built for galleries, auction houses and other art businesses. The web platform keeps each piece's fingerprint, provenance record and documents in one place, on top of the tools a gallery already uses.</p>
   </div>
-  <div class="browser-wrap">
-    <div class="browser-frame">
-      <div class="hero-screenshot-crop">
-        <img src="portfolio-screenshots/02-dashboard.png" alt="Dashboard" width="1440" height="900" loading="lazy" decoding="async" />
-      </div>
+  <figure class="hero-reel">
+    <div class="hero-reel-media">
+      <video src="videos/smartstamp-vault-reel.mp4" poster="videos/smartstamp-vault-reel.jpg" width="1080" height="1674" autoplay muted loop playsinline preload="auto" aria-label="SmartStamp Vault product reel"></video>
+      <button class="hero-reel-sound" type="button">Sound on</button>
+      <button class="hero-reel-toggle" type="button" aria-label="Pause the reel"></button>
     </div>
+    <figcaption>Product reel by <a href="https://www.instagram.com/reel/DfHwIGrnfm1/" target="_blank" rel="noopener noreferrer">SmartStamp</a></figcaption>
+  </figure>
+  <div class="hero-shots">
+    <figure class="hero-shot">
+      <img src="portfolio-screenshots/06-artwork-fingerprinted.png" alt="Artwork record with a verified Integrity Stamp" width="1440" height="900" decoding="async" />
+      <figcaption>Artwork record</figcaption>
+    </figure>
+    <figure class="hero-shot">
+      <img src="portfolio-screenshots/10-provenance.png" alt="Provenance record with fingerprint match scores" width="1440" height="900" decoding="async" />
+      <figcaption>Provenance record</figcaption>
+    </figure>
+    <figure class="hero-shot">
+      <img src="portfolio-screenshots/13-document-signing.png" alt="Loan agreement awaiting signature" width="1440" height="900" decoding="async" />
+      <figcaption>Document signing</figcaption>
+    </figure>
   </div>
 </section>
 
 <!-- Overview -->
 <section class="overview" id="overview">
-  <div class="container-mid">
-    <div class="stats-bar">
-      <div class="stat">
-        <div class="stat-value">29</div>
-        <div class="stat-label">Pages &amp; Routes</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">40+</div>
-        <div class="stat-label">Components</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">9</div>
-        <div class="stat-label">Service Interfaces</div>
-      </div>
-    </div>
-
-    <p class="section-eyebrow">What it does</p>
+  <div class="container">
+    <h2 class="section-title">Overview</h2>
     <p class="overview-text">
-      SmartStamp is the integrity layer built for galleries, auction houses and other art businesses,
-      adding provenance and verification on top of their existing processes. Most gallery tools stop at inventory.
-      SmartStamp goes further: the mobile app scans each physical work up close, capturing its
-      surface texture as a digital fingerprint tied to the object itself. The web app handles
-      everything from there: building the ownership history, generating and signing documents,
-      and pulling in collection data from CSV files or the mobile app directly.
-      I built the full frontend from scratch: 29 routes, 40+ components, and a service layer
-      where every data dependency is injected via typed interfaces, keeping the UI completely
-      decoupled from the backend.
+      Most gallery software stops at inventory. SmartStamp also links each record to the physical object,
+      whether an artwork or a collectible. Each piece is registered with microscopes mounted on gantries,
+      which capture the surface texture of selected details as a digital fingerprint. The piece can then be verified with a mobile phone or
+      with another microscope, by matching new captures against that fingerprint. The web platform holds
+      everything around it: the ownership history, documents and signatures, and collection data imported
+      from CSV files or the mobile app. I built the full frontend from scratch, with a service layer where
+      every data dependency is injected through typed interfaces, so the UI stays independent of the backend.
     </p>
 
     <div class="problem-grid">
       <div class="problem-card">
-        <div class="problem-title">The forgery gap</div>
-        <div class="problem-body">Traditional certificates can be duplicated or forged. SmartStamp ties the trust to the physical object by scanning its surface, not to a piece of paper anyone could reprint.</div>
+        <div class="problem-title">Forged certificates</div>
+        <div class="problem-body">Paper certificates can be copied or forged. SmartStamp ties trust to the object itself, through a fingerprint of its surface.</div>
       </div>
       <div class="problem-card">
-        <div class="problem-title">Fractured provenance</div>
-        <div class="problem-body">Ownership history, exhibition records, appraisals, and condition reports end up scattered across emails and spreadsheets. SmartStamp keeps all of it in one place, per artwork.</div>
+        <div class="problem-title">Scattered provenance</div>
+        <div class="problem-body">Ownership history, exhibition records, appraisals and condition reports end up spread across emails and spreadsheets. SmartStamp keeps them in one record per artwork.</div>
       </div>
       <div class="problem-card">
-        <div class="problem-title">Document workflows</div>
-        <div class="problem-body">Contracts and certificates get built in Word and chased over email. SmartStamp generates, edits, and routes 13 document types for signing without needing any external tool.</div>
+        <div class="problem-title">Manual document workflows</div>
+        <div class="problem-body">Contracts and certificates are drafted in Word and chased over email. SmartStamp generates and edits 13 document types and sends them for signature without a separate e-signature tool.</div>
       </div>
       <div class="problem-card">
-        <div class="problem-title">Siloed collection data</div>
-        <div class="problem-body">Gallery data tends to live in separate systems or spreadsheets with no easy way to connect it all. SmartStamp pulls from CSV exports and the mobile app and adds the verification layer on top.</div>
+        <div class="problem-title">Disconnected collection data</div>
+        <div class="problem-body">Gallery data usually sits in separate systems or spreadsheets. SmartStamp imports it from CSV exports and the mobile app and adds verification on top.</div>
       </div>
     </div>
   </div>
@@ -348,14 +374,40 @@
   <div class="feature">
     <div class="container">
       <div class="feature-text">
-        <p class="section-eyebrow">Fingerprinting</p>
-        <h2 class="section-title">A fingerprint tied to the physical object</h2>
+        <h2 class="section-title">Fingerprint registration and verification</h2>
         <p class="section-body">
-          The SmartStamp mobile app captures up to 9 close-up scans of each work: brushstroke texture,
-          impasto patterns, signature areas. Each scan produces a fingerprint with a match score, usually
-          between 96 and 100%. Verified artworks get a teal Integrity Stamp badge. Unverified works show
-          a muted outline badge. The difference is visible everywhere: in grids, tables, and detail views.
+          Registration is carried out with microscopes mounted on gantries, which capture close-up images
+          of selected surface details such as brushwork, gilding and engraving. Together these captures form
+          the fingerprint of the piece. The fingerprint can then be cross-verified with another microscope
+          or with a mobile phone, and each matched detail returns a score. Verified works carry the
+          Integrity Stamp throughout the web app, in grids, tables and detail views. Unverified works
+          show a muted outline badge.
         </p>
+      </div>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Microscope registration">
+        <div class="carousel-track">
+          <figure class="carousel-slide" aria-roledescription="slide" aria-label="1 of 3">
+            <img src="portfolio-screenshots/registration-metalwork.jpg" alt="Gantry-mounted microscope over an engraved metal object, beside the captured detail of an engraved face" width="1800" height="940" loading="lazy" decoding="async" />
+            <figcaption class="screenshot-caption">Engraved metalwork. Microscope on the gantry, left; captured surface detail, right.</figcaption>
+          </figure>
+          <figure class="carousel-slide" aria-roledescription="slide" aria-label="2 of 3">
+            <img src="portfolio-screenshots/registration-gilded-panel.jpg" alt="Gantry-mounted microscope over a gilded panel painting, beside the captured detail of a punched gold halo" width="1800" height="940" loading="lazy" decoding="async" />
+            <figcaption class="screenshot-caption">Gilded panel painting. Microscope on the gantry, left; captured surface detail, right.</figcaption>
+          </figure>
+          <figure class="carousel-slide" aria-roledescription="slide" aria-label="3 of 3">
+            <img src="portfolio-screenshots/registration-portrait.jpg" alt="Microscope positioned over a painted portrait, beside the captured detail of the eye" width="1800" height="940" loading="lazy" decoding="async" />
+            <figcaption class="screenshot-caption">Painted portrait. Microscope positioned on the face, left; captured surface detail, right.</figcaption>
+          </figure>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-prev" type="button" aria-label="Previous image">&larr;</button>
+          <div class="carousel-dots">
+            <button type="button" aria-label="Show image 1"></button>
+            <button type="button" aria-label="Show image 2"></button>
+            <button type="button" aria-label="Show image 3"></button>
+          </div>
+          <button class="carousel-next" type="button" aria-label="Next image">&rarr;</button>
+        </div>
       </div>
       <div class="screenshot-full" style="margin-bottom:16px">
         <img src="portfolio-screenshots/06-artwork-fingerprinted.png" alt="Artwork detail, Integrity Stamp verified" width="1440" height="900" loading="lazy" decoding="async" />
@@ -363,7 +415,7 @@
       <div class="screenshot-pair">
         <div class="screenshot-item">
           <img src="portfolio-screenshots/08-artwork-not-fingerprinted.png" alt="Artwork not yet fingerprinted" width="1440" height="900" loading="lazy" decoding="async" />
-          <div class="screenshot-caption">Not yet stamped, fingerprinting pending via mobile</div>
+          <div class="screenshot-caption">Not yet stamped, fingerprinting pending</div>
         </div>
         <div class="screenshot-item">
           <img src="portfolio-screenshots/09-artwork-history.png" alt="Artwork hash trail" width="1440" height="900" loading="lazy" decoding="async" />
@@ -377,8 +429,7 @@
   <div class="feature feature-alt">
     <div class="container">
       <div class="feature-text">
-        <p class="section-eyebrow">Collection</p>
-        <h2 class="section-title">Grid and list views, filters and search in the URL</h2>
+        <h2 class="section-title">Collection registry</h2>
         <p class="section-body">
           The registry has two views: a masonry grid (24 items per page) and a data table (50 items).
           The active view, filters, and search query all live in the URL, so browser back and forward
@@ -406,8 +457,7 @@
   <div class="feature">
     <div class="container">
       <div class="feature-text">
-        <p class="section-eyebrow">Provenance</p>
-        <h2 class="section-title">The full ownership history in one place</h2>
+        <h2 class="section-title">Provenance record</h2>
         <p class="section-body">
           Each artwork has a provenance record built from five sections: the ownership history
           (acquisition method, price, verified status), exhibition appearances, publications, appraisals
@@ -435,8 +485,7 @@
   <div class="feature feature-alt">
     <div class="container">
       <div class="feature-text">
-        <p class="section-eyebrow">Documents and signatures</p>
-        <h2 class="section-title">Generated, editable, and signed without a third-party tool</h2>
+        <h2 class="section-title">Document generation and signing</h2>
         <p class="section-body">
           SmartStamp generates 13 artwork document types and 6 gallery-level ones from branded HTML
           templates. You can edit the content before locking it, then send it for signing via a link.
@@ -464,8 +513,7 @@
   <div class="feature">
     <div class="container">
       <div class="feature-text">
-        <p class="section-eyebrow">Dashboard</p>
-        <h2 class="section-title">The integrity of your collection</h2>
+        <h2 class="section-title">Collection integrity dashboard</h2>
         <p class="section-body">
           The dashboard shows fingerprint coverage as an animated progress bar, a breakdown of where
           artworks came from (CSV, mobile app, or manual entry), a summary of the documents
@@ -493,8 +541,7 @@
 <!-- Screen Library -->
 <section class="screens" id="screens">
   <div class="container">
-    <p class="section-eyebrow">Screen reference</p>
-    <h2 class="section-title">All 21 screens</h2>
+    <h2 class="section-title">Screen reference</h2>
     <div class="screen-grid">
       
       <div class="screen-cell">
@@ -638,23 +685,22 @@
 <!-- Design System -->
 <section class="design-system" id="design-system">
   <div class="container">
-    <p class="section-eyebrow">Design system</p>
-    <h2 class="section-title" style="color:var(--teal)">Built on a custom token system</h2>
+    <h2 class="section-title" style="color:var(--teal)">Design system</h2>
     <p class="section-body" style="margin-bottom:52px;max-width:680px">
-      The UI is built around a gallery viewing room aesthetic: warm whites, near-black text,
-      sharp edges throughout (no border radius except for pills), and a restrained use of colour.
-      Orange is reserved for the brand. Teal signals the fingerprint verification state.
-      Every colour, shadow, and spacing value is defined as a CSS custom property and consumed
-      through Tailwind utility classes.
+      The UI follows the look of a gallery viewing room: warm whites, near-black text, sharp edges
+      (no border radius except on pills) and restrained colour. Orange is reserved for the brand.
+      Verified works carry a near-black Integrity Stamp, and unverified works a muted grey outline.
+      Every colour, shadow and spacing value is a CSS custom property, consumed through Tailwind
+      utility classes.
     </p>
     <div class="ds-grid">
       <div class="ds-block">
         <div class="ds-swatches">
-          <div class="ds-swatch" style="background:#1a1917"><span class="ds-swatch-label">Primary Dark<br/>#1a1917</span></div>
+          <div class="ds-swatch" style="background:#111111"><span class="ds-swatch-label">Primary<br/>#111111</span></div>
           <div class="ds-swatch" style="background:#1e5459"><span class="ds-swatch-label">Dark Teal<br/>#1e5459</span></div>
           <div class="ds-swatch" style="background:#b8502f"><span class="ds-swatch-label">Brand Orange<br/>#b8502f</span></div>
-          <div class="ds-swatch" style="background:#4bd4e0;color:#1a1917"><span class="ds-swatch-label">Fingerprinted<br/>#4bd4e0</span></div>
-          <div class="ds-swatch" style="background:#e2c866;color:#1a1917"><span class="ds-swatch-label">Warning<br/>#e2c866</span></div>
+          <div class="ds-swatch" style="background:#a09b94;color:#1a1917"><span class="ds-swatch-label">Unverified<br/>#a09b94</span></div>
+          <div class="ds-swatch" style="background:#9a7a07"><span class="ds-swatch-label">Warning<br/>#9a7a07</span></div>
           <div class="ds-swatch" style="background:#fcfcfc;color:#1a1917;border:1px solid rgba(0,0,0,0.08)"><span class="ds-swatch-label">Background<br/>#fcfcfc</span></div>
         </div>
         <p class="ds-caption">Colour tokens</p>
@@ -662,7 +708,7 @@
       <div class="ds-block">
         <div class="ds-type-samples">
           <p class="ds-heading-sample">Heading typeface</p>
-          <p class="ds-body-sample">Body text runs in Inter or the system sans-serif stack, sized from 13px to 20px depending on context. Line height sits at 1.75 for comfortable reading.</p>
+          <p class="ds-body-sample">Body text is set in Inter, falling back to the system sans-serif stack, from 13px to 20px with a line height of 1.75.</p>
           <p class="ds-mono-sample">mono / Fragment Mono</p>
         </div>
         <p class="ds-caption">Typography</p>
@@ -674,9 +720,6 @@
         </div>
         <p class="ds-caption">Border radius</p>
       </div>
-    </div>
-    <div style="margin-top:20px;border:1px solid var(--border);overflow:hidden">
-      <img src="portfolio-screenshots/21-onboarding.png" alt="Design System" width="1440" height="900" loading="lazy" decoding="async" />
     </div>
   </div>
 </section>
@@ -710,6 +753,54 @@
     const el = document.getElementById(id);
     if (el) obs.observe(el);
   });
+
+  document.querySelectorAll('.carousel').forEach((carousel) => {
+    const track = carousel.querySelector('.carousel-track');
+    const slideCount = track.children.length;
+    const dots = [...carousel.querySelectorAll('.carousel-dots button')];
+    const currentIndex = () => Math.round(track.scrollLeft / track.clientWidth);
+    const markCurrent = (current = currentIndex()) => dots.forEach((dot, i) => dot.setAttribute('aria-current', String(i === current)));
+    const goTo = (index) => {
+      const target = (index + slideCount) % slideCount;
+      track.scrollTo({ left: target * track.clientWidth });
+      markCurrent(target);
+    };
+    carousel.querySelector('.carousel-prev').addEventListener('click', () => goTo(currentIndex() - 1));
+    carousel.querySelector('.carousel-next').addEventListener('click', () => goTo(currentIndex() + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+    track.addEventListener('scroll', () => markCurrent(), { passive: true });
+    markCurrent();
+  });
+
+  const reel = document.querySelector('.hero-reel video');
+  const reelToggle = document.querySelector('.hero-reel-toggle');
+  if (reel && reelToggle) {
+    const showPaused = (paused) => {
+      reelToggle.classList.toggle('is-paused', paused);
+      reelToggle.setAttribute('aria-label', paused ? 'Play the reel' : 'Pause the reel');
+    };
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      reel.removeAttribute('autoplay');
+      reel.pause();
+      showPaused(true);
+    }
+    reelToggle.addEventListener('click', () => {
+      if (reel.paused) { reel.play(); showPaused(false); } else { reel.pause(); showPaused(true); }
+    });
+
+    // Browsers only autoplay muted video, so the first unmute restarts the reel to be heard from the start.
+    const reelSound = document.querySelector('.hero-reel-sound');
+    let reelHeardWithSound = false;
+    reelSound.addEventListener('click', () => {
+      if (reel.muted && !reelHeardWithSound) {
+        reel.currentTime = 0;
+        reelHeardWithSound = true;
+      }
+      reel.muted = !reel.muted;
+      reelSound.textContent = reel.muted ? 'Sound on' : 'Mute';
+      if (reel.paused) { reel.play(); showPaused(false); }
+    });
+  }
 </script>
 </body>
 </html>
