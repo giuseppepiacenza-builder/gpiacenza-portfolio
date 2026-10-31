@@ -151,6 +151,7 @@
     letter-spacing: -0.025em; margin-bottom: 18px; line-height: 1.2;
   }
   .section-body { font-size: 15px; line-height: 1.8; color: var(--gray); max-width: 66ch; }
+  .section-body + .section-body { margin-top: 16px; }
 
   /* ── My role ── */
   .role { padding: 80px 48px; border-top: 1px solid var(--border); }
@@ -393,7 +394,7 @@
       </div>
       <div class="problem-card">
         <div class="problem-title">Disconnected collection data</div>
-        <div class="problem-body">Gallery data usually sits in separate systems or spreadsheets. SmartStamp imports it from CSV exports and the mobile app and adds verification on top.</div>
+        <div class="problem-body">Collection data usually sits in separate systems or spreadsheets. SmartStamp imports it from CSV exports and the mobile app and adds verification on top.</div>
       </div>
     </div>
   </div>
@@ -428,12 +429,10 @@
       <div class="feature-text">
         <h2 class="section-title">Fingerprint registration and verification</h2>
         <p class="section-body">
-          Registration is carried out with microscopes mounted on gantries, which capture close-up images
-          of selected surface details such as brushwork, gilding and engraving. Together these captures form
-          the fingerprint of the piece. The fingerprint can then be cross-verified with another microscope
-          or with a mobile phone, and each matched detail returns a score. Verified works carry the
-          Integrity Stamp throughout the web app, in grids, tables and detail views. Unverified works
-          show a muted outline badge.
+          Registration runs on microscopes mounted on gantries, and verification works with a phone or a second microscope. Registration sits on fixed hardware because a reliable fingerprint needs every capture taken the same way. Verification has the opposite constraint: it has to work wherever the piece happens to be.
+        </p>
+        <p class="section-body">
+          A registration captures close-up images of selected surface details such as brushwork, gilding and engraving, and together they form the fingerprint of the piece. At verification, each matched detail returns a score. Verified works carry the Integrity Stamp across the web app, and unverified ones show a muted outline badge. The cost is onboarding: because registration needs hardware on site, bringing in a collection takes a visit rather than a download.
         </p>
       </div>
       <div class="carousel" aria-roledescription="carousel" aria-label="Microscope registration">
@@ -483,10 +482,10 @@
       <div class="feature-text">
         <h2 class="section-title">Collection registry</h2>
         <p class="section-body">
-          The registry has two views: a masonry grid (24 items per page) and a data table (50 items).
-          The active view, filters, and search query all live in the URL, so browser back and forward
-          work as expected and you can share a filtered view as a link. Search runs across title,
-          artist, and medium as you type. One click filters down to stamped or unstamped works only.
+          Art businesses already keep their inventory in other tools, and none of them want to enter it all again. The registry sits on top of those tools instead of replacing them: works come in from a CSV export, and SmartStamp adds verification. The data then lives in two places, and a record starts out only as good as the import, but it can be corrected and completed in SmartStamp afterwards.
+        </p>
+        <p class="section-body">
+          There are two views, a masonry grid (24 items per page) and a data table (50 items). The view, filters and search query all live in the URL, so back and forward work as expected and a filtered view can be shared as a link. Search covers title, artist and medium as you type, and one click narrows the list to stamped or unstamped works.
         </p>
       </div>
       <div class="screenshot-full" style="margin-bottom:16px">
@@ -511,10 +510,10 @@
       <div class="feature-text">
         <h2 class="section-title">Provenance record</h2>
         <p class="section-body">
-          Each artwork has a provenance record built from five sections: the ownership history
-          (acquisition method, price, verified status), exhibition appearances, publications, appraisals
-          in any currency, and condition reports with photo attachments. Every time something is added,
-          it gets written into the hash trail as a timestamped SHA-256 entry.
+          Every provenance entry is written into a SHA-256 hash trail, and the hashes are anchored to a public ledger through OriginStamp. Provenance is only worth something if no one, SmartStamp included, can change it without leaving a trace, and a public ledger lets anyone check that an entry existed at a given time. Only the hash leaves SmartStamp, so prices and owners stay private. The catch is timing: OriginStamp batches hashes before writing them to the blockchain, so an entry cannot be proven publicly until its batch is confirmed.
+        </p>
+        <p class="section-body">
+          A record has five parts: ownership history (acquisition method, price, verified status), exhibition appearances, publications, appraisals in any currency, and condition reports with photo attachments. Every addition goes into the artwork's hash trail with a timestamp.
         </p>
       </div>
       <div class="screenshot-full" style="margin-bottom:16px">
@@ -539,10 +538,10 @@
       <div class="feature-text">
         <h2 class="section-title">Document generation and signing</h2>
         <p class="section-body">
-          SmartStamp generates 13 artwork document types and 6 gallery-level ones from branded HTML
-          templates. You can edit the content before locking it, then send it for signing via a link.
-          The person signing doesn't need an account. Status goes from draft to pending to signed, and
-          every signing event gets recorded in the hash trail.
+          Signing is built into SmartStamp, and the person signing just opens a link. Buyers, lenders and museums often deal with a business once, and asking them to open an account would hold up the paperwork. A link is a weaker identity check than a login, which is why every signing event is written into the hash trail.
+        </p>
+        <p class="section-body">
+          SmartStamp generates 13 document types for artworks and 6 for the business itself, all from branded HTML templates. Content stays editable until it is locked, and each document moves from draft to pending to signed.
         </p>
       </div>
       <div class="screenshot-full" style="margin-bottom:16px">
@@ -567,9 +566,10 @@
       <div class="feature-text">
         <h2 class="section-title">Collection integrity dashboard</h2>
         <p class="section-body">
-          The dashboard shows fingerprint coverage as an animated progress bar, a breakdown of where
-          artworks came from (CSV, mobile app, or manual entry), a summary of the documents
-          vault, and a recent activity feed.
+          The North Star is the number of works verified each month, with each work counted once so repeat scans don't inflate it. A verification is the moment a fingerprint does its job for the customer, which makes it an early sign of whether they will renew and register more works. A running total of registered works would only look back at onboarding that already happened. The customer dashboard leads with the input each customer controls, fingerprint coverage of their collection, since a work has to be registered before anyone can verify it.
+        </p>
+        <p class="section-body">
+          Below the coverage bar are a breakdown of where works came from (CSV, mobile app or manual entry), a summary of the documents vault and a recent activity feed.
         </p>
       </div>
       <div class="screenshot-full" style="margin-bottom:16px">

@@ -276,6 +276,7 @@ nav {
   line-height: 1.8;
   max-width: 480px;
 }
+.feature-text p + p { margin-top: 14px; }
 .feature-phones {
   display: flex;
   align-items: flex-start;
@@ -304,7 +305,7 @@ nav {
 }
 
 /* ── Architecture appendix: reference material, closed by default ── */
-.appendix-section { background: var(--bg); padding: 56px 80px; }
+.appendix-section { background: var(--bg-alt); padding: 56px 80px; }
 .appendix-inner { max-width: 1100px; margin: 0 auto; }
 .appendix summary {
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
@@ -446,7 +447,7 @@ footer { background: var(--dark); padding: 56px 80px; }
     </div>
     <div class="iphone-frame hero-phone-main">
       <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/06-passport.webp" alt="Digital passport for a fingerprinted artwork" width="1179" height="2556" loading="eager" decoding="async" /></div>
+      <div class="iphone-screen"><img src="mobile-screenshots/05-scan-complete.webp" alt="Verification screen confirming a registered SmartStamp ID" width="1179" height="2556" loading="eager" decoding="async" /></div>
       <div class="iphone-home-bar"></div>
     </div>
     <div class="iphone-frame hero-phone-right">
@@ -461,7 +462,7 @@ footer { background: var(--dark); padding: 56px 80px; }
 <section class="overview" id="overview">
   <div class="overview-inner">
     <h2>Overview</h2>
-    <p class="overview-body">The app covers the physical side of SmartStamp. Most works are registered under a microscope, and the app is then used to verify them: it guides the user through capturing the registered details again and checks them against the fingerprint on record. Each work has a digital passport in the app, with its SmartStamp ID, ownership record, surface images and documents. When a work changes hands, the current owner transfers it in the app, and the ownership record updates immediately in the web platform used by gallery staff.</p>
+    <p class="overview-body">The app came first. Usage data then showed that galleries and auction houses, not individual collectors, were driving adoption, so the focus moved to the web platform and the app's main job became verification. Most works are now registered under a microscope, and the app guides the user through capturing the registered details again and checks them against the fingerprint on record. Each work has a digital passport in the app with its SmartStamp ID, ownership record, surface images and documents. When a work changes hands, the current owner transfers it in the app, and the record updates immediately on the web platform.</p>
   </div>
 </section>
 
@@ -493,7 +494,8 @@ footer { background: var(--dark); padding: 56px 80px; }
   <div class="feature-inner">
     <div class="feature-text">
       <h2>Registration and verification</h2>
-      <p>Verification starts from a QR code or a SmartStamp ID. The app guides the user to the registered details, captures them again, compares them with the fingerprint on record and then shows the ownership details. Most works are registered under a microscope, but the app can also register a work in four steps: an overview photo, a close-up detail shot, the selection of fingerprint points on the surface, and submission to create the record.</p>
+      <p>Verification starts from a QR code or a SmartStamp ID, and the app takes the user through the capture one step at a time. Whoever is checking a work usually has no training in surface imaging, so the app says exactly which detail to photograph and where. It then compares the new images with the fingerprint on record and shows the ownership details.</p>
+      <p>Most works are registered under a microscope, but the app can also register a work in four steps: an overview photo, a close-up of a detail, the choice of fingerprint points on the surface, and submission.</p>
     </div>
     <div class="feature-phones">
       <div class="iphone-frame">
@@ -522,17 +524,12 @@ footer { background: var(--dark); padding: 56px 80px; }
   <div class="feature-inner reverse">
     <div class="feature-text">
       <h2>Artwork record</h2>
-      <p>The artwork detail view brings together the SmartStamp ID, the ownership record, the surface images and any attached documents. The Images tab shows the overview photo, the close-up detail and each fingerprint capture side by side, so anyone holding the work can compare it with the registered record without specialist equipment.</p>
+      <p>The Images tab places each fingerprint capture next to the registered one, so anyone holding the work can compare the two without specialist equipment. The same screen holds the SmartStamp ID, the ownership record, the overview and detail photos, and any attached documents.</p>
     </div>
     <div class="feature-phones">
       <div class="iphone-frame">
       <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/06-passport.webp" alt="Digital passport for a fingerprinted artwork" width="1179" height="2556" loading="lazy" decoding="async" /></div>
-      <div class="iphone-home-bar"></div>
-    </div>
-      <div class="iphone-frame secondary">
-      <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/07-passport-scans.webp" alt="Scan history for an artwork's digital passport" width="1179" height="2556" loading="lazy" decoding="async" /></div>
+      <div class="iphone-screen"><img src="mobile-screenshots/07-passport-scans.webp" alt="Fingerprint captures shown next to the registered images" width="1179" height="2556" loading="lazy" decoding="async" /></div>
       <div class="iphone-home-bar"></div>
     </div>
     </div>
@@ -544,7 +541,8 @@ footer { background: var(--dark); padding: 56px 80px; }
   <div class="feature-inner">
     <div class="feature-text">
       <h2>Ownership transfer</h2>
-      <p>To transfer a work, the current owner enters the recipient's email address and confirms. A final warning states that the transfer cannot be undone. Once it is confirmed, the digital passport updates immediately and both parties receive an email with the transfer record. The previous ownership history stays in the record.</p>
+      <p>Transfers are final, because nobody should be able to undo a change of ownership on their own. The current owner enters the recipient's email address, gets a last warning that the transfer cannot be undone, and confirms. The digital passport updates at once, both parties receive an email with the transfer record, and the earlier ownership history stays in place.</p>
+      <p>The price of that rule is that a mistaken transfer can only be fixed by the new owner sending the work back.</p>
     </div>
     <div class="feature-phones">
       <div class="iphone-frame">
@@ -561,41 +559,18 @@ footer { background: var(--dark); padding: 56px 80px; }
   <div class="feature-inner reverse">
     <div class="feature-text">
       <h2>Documents and certificates</h2>
-      <p>The app supports eight document types: Certificate of Authenticity, Condition Report, Appraisal, Insurance, Ownership, Provenance Record, Restoration Report and Other. Each document is attached to a specific artwork and stored in Firebase Storage. The Certificate of Authenticity is generated from the artwork's metadata and can be downloaded as a PDF without any other software.</p>
+      <p>Every document is stored on the artwork it belongs to, so the paperwork stays with the work when it changes hands. The app takes eight document types, among them appraisals, insurance and condition reports, and owners can upload certificates they already hold.</p>
+      <p>SmartStamp issues one document itself: an integrity certificate generated from the artwork's record, which downloads as a PDF.</p>
     </div>
     <div class="feature-phones">
       <div class="iphone-frame">
       <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/11-doc-generate.webp" alt="Generating a certificate of authenticity" width="1179" height="2556" loading="lazy" decoding="async" /></div>
+      <div class="iphone-screen"><img src="mobile-screenshots/10-doc-storage.webp" alt="Documents stored on an artwork" width="1179" height="2556" loading="lazy" decoding="async" /></div>
       <div class="iphone-home-bar"></div>
     </div>
-      <div class="phones-pair">
-        <div class="iphone-frame secondary">
+      <div class="iphone-frame secondary">
       <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/10-doc-storage.webp" alt="Document storage for an artwork" width="1179" height="2556" loading="lazy" decoding="async" /></div>
-      <div class="iphone-home-bar"></div>
-    </div>
-        <div class="iphone-frame secondary">
-      <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/12-certificate.webp" alt="Generated certificate of authenticity" width="1179" height="2556" loading="lazy" decoding="async" /></div>
-      <div class="iphone-home-bar"></div>
-    </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 5: Dashboard -->
-<section class="feature">
-  <div class="feature-inner">
-    <div class="feature-text">
-      <h2>Home screen</h2>
-      <p>The home screen gives access to the four main actions: verify an artwork, create a space, transfer ownership and more options. Spaces group artworks by collection or location, and the Transferred section lists recent ownership changes. Data syncs from Firestore in real time, so gallery staff and collectors see the same records.</p>
-    </div>
-    <div class="feature-phones">
-      <div class="iphone-frame">
-      <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/02-home.webp" alt="Mobile app home screen showing the artwork collection" width="1179" height="2556" loading="lazy" decoding="async" /></div>
+      <div class="iphone-screen"><img src="mobile-screenshots/11-doc-generate.webp" alt="Adding a document to an artwork" width="1179" height="2556" loading="lazy" decoding="async" /></div>
       <div class="iphone-home-bar"></div>
     </div>
     </div>
@@ -610,11 +585,11 @@ footer { background: var(--dark); padding: 56px 80px; }
     <details class="appendix">
       <summary><h2>Architecture</h2><span class="appendix-toggle">Details</span></summary>
       <div class="appendix-body">
-        <p class="tech-stack-intro">The app is a single Flutter codebase for iOS and Android. Firebase handles real-time sync, authentication and file storage, PostHog tracks product usage, and Postmark sends the transactional email for ownership transfers and document sharing.</p>
+        <p class="tech-stack-intro">The app is one Flutter codebase for iOS and Android, which is what let both platforms ship in under six months with one team. In exchange, the app sits further from each platform: native features come through plugins, there is less control over fine UI details, and the app relies on community packages that can be deprecated. Firebase handles real-time sync, authentication and file storage, PostHog tracks product usage, and Postmark sends the transactional email for ownership transfers and document sharing.</p>
         <div class="arch-cards">
           <div class="arch-card">
             <h3 class="arch-card-title">Flutter, single codebase</h3>
-            <p class="arch-card-body">One Dart codebase ships to both iOS and Android. The UI is fully custom, without third-party component libraries, which gives full control over the interaction and visual design of every fingerprinting flow.</p>
+            <p class="arch-card-body">One Dart codebase ships to iOS and Android. Device features such as the camera are reached through plugins, which have to be kept up to date as each platform changes.</p>
           </div>
           <div class="arch-card">
             <h3 class="arch-card-title">Firebase, real-time sync</h3>
