@@ -468,7 +468,7 @@ a { color: inherit; text-decoration: none; }
 .cad-link-2 .cad-down { right: 106px; transform: translateX(50%); }
 .cad-link-2 span { right: 132px; }
 
-/* The PI row and the update row share one column grid, so the IF gate sits straight above the unfinished-work chip. */
+/* The PI row and the update row share one column grid, so the milestone sits straight above the unfinished-work chip. */
 .cad-pi-row, .cad-update-row { grid-template-columns: 136px 28px 1fr 28px 128px 36px 170px; column-gap: 10px; }
 .cad-pi-row { display: grid; align-items: center; }
 .cad-right { width: 28px; height: 10px; }
@@ -483,12 +483,8 @@ a { color: inherit; text-decoration: none; }
 .cad-cer li::before { flex: none; }
 .cad-cer li::before { content: ''; width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--accent); background: #fff; }
 .cad-cer li:first-child::before, .cad-cer li:last-child::before { background: var(--accent); }
-.cad-gate { position: relative; width: 128px; height: 98px; display: grid; place-items: center; color: var(--accent); }
-.cad-gate-shape { position: absolute; inset: 0; width: 100%; height: 100%; }
-.cad-gate-q { position: relative; max-width: 78px; text-align: center; font-size: 11px; font-weight: 600; line-height: 1.3; color: var(--text); }
-.cad-gate-note { display: none; }
-.cad-yes { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.cad-yes-k { font-size: 11px; font-weight: 600; color: var(--accent); }
+.cad-milestone { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; font-size: 12px; line-height: 1.35; font-weight: 600; color: var(--text); }
+.cad-dod { display: block; margin-top: -4px; font-style: normal; font-size: 11px; font-weight: 400; line-height: 1.4; color: var(--text-muted); }
 .cad-diamond { flex: none; width: 13px; height: 13px; background: var(--accent); border: 1.5px solid var(--accent); transform: rotate(45deg); }
 /* PI planning opens the increment and sets the milestone (outlined); the milestone is reached at the end (filled). */
 .cad-pi-plan { padding: 12px; background: var(--bg-0); border: 1px solid var(--border-med); }
@@ -557,10 +553,7 @@ a { color: inherit; text-decoration: none; }
   .cad-pi-row { grid-template-columns: 1fr; gap: 10px 0; justify-items: stretch; }
   .cad-pi-row > .cad-right { justify-self: center; transform: rotate(90deg); }
   .cad-weeks { grid-template-columns: repeat(2, 1fr); }
-  .cad-gate { justify-self: center; }
-  .cad-gate-note { display: block; max-width: 280px; justify-self: center; text-align: center; font-size: 12px; line-height: 1.5; color: var(--text-muted); }
-  .cad-pi-row > .cad-yes { justify-self: center; }
-  .cad-yes .cad-right { transform: rotate(90deg); margin-top: 8px; }
+  .cad-milestone { justify-self: center; max-width: 240px; }
   .cad-chip-carry, .cad-chip-demo { grid-column: auto; }
   .cad-pi-plan { width: auto; }
   .cad-update-row { grid-template-columns: 1fr; gap: 8px 0; }
@@ -1067,7 +1060,7 @@ footer {
 
     <div class="cadence reveal">
       <h3 class="context-cell-lbl">How I planned the work</h3>
-      <p class="cadence-intro">One rolling roadmap covered the next four months. Each month ran as a program increment (PI) that opened with PI planning, where the whole team agreed the milestone. The work was then split into weekly sprints, each with three ceremonies: sprint planning to set the objectives, a mid-sprint check-in, and a review and retrospective at the end. A milestone only counted as reached when it met the definition of done, which set the quality bar, and anything only partly done was re-prioritised for the next PI or a later one. The month closed with a demo to the CEO, the board and the heads of department, and the demo outcomes and the development effort still needed decided how the roadmap rolled forward. The voice of the customer fed every stage the whole time, from interviews, app store reviews, sales and pilot conversations and usage data.</p>
+      <p class="cadence-intro">One rolling roadmap covered the next four months. Each month ran as a program increment (PI) that opened with PI planning, where the whole team agreed the milestone. The work was then split into weekly sprints, each with three ceremonies: sprint planning to set the objectives, a mid-sprint check-in, and a review and retrospective at the end. A milestone only counted as reached when it met the definition of done, which set the quality bar, and anything only partly done was re-prioritised for the next PI or a later one. Either way, the month closed with a demo to the CEO, the board and the heads of department, and the demo outcomes and the development effort still needed decided how the roadmap rolled forward. The voice of the customer fed every stage the whole time, from interviews, app store reviews, sales and pilot conversations and usage data.</p>
 
       <figure class="cad" aria-label="Planning cadence: a rolling four-month roadmap, monthly increments of four weekly sprints ending in a demo, and a roadmap update that feeds the next month">
         <div class="cad-loop" aria-hidden="true"><span>Feeds the next month</span></div>
@@ -1103,12 +1096,8 @@ footer {
             </li>
             </ol>
             <svg class="cad-right" viewBox="0 0 28 10" aria-hidden="true"><path d="M1 5h25M22.5 1.5 26 5l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div class="cad-gate">
-              <svg class="cad-gate-shape" viewBox="0 0 140 104" preserveAspectRatio="none" aria-hidden="true"><polygon points="70,1.5 138.5,52 70,102.5 1.5,52" fill="#fff" stroke="currentColor" stroke-width="1.5"/></svg>
-              <div class="cad-gate-q">Milestone meets the definition of done?</div>
-            </div>
-            <p class="cad-gate-note">If partly met, the remaining work goes back into the roadmap update.</p>
-            <div class="cad-yes"><div class="cad-yes-k">Yes</div><svg class="cad-right" viewBox="0 0 28 10" aria-hidden="true"><path d="M1 5h25M22.5 1.5 26 5l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="cad-milestone"><span class="cad-diamond" aria-hidden="true"></span>Milestone reached<em class="cad-dod">When it meets the definition of done</em></div>
+            <svg class="cad-right" viewBox="0 0 28 10" aria-hidden="true"><path d="M1 5h25M22.5 1.5 26 5l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <div class="cad-demo"><b>Monthly demo</b><span>CEO, board and heads of department</span></div>
           </div>
         </div>
@@ -1121,14 +1110,14 @@ footer {
             <div class="cad-out"><b>Roadmap updated</b><span>Re-planned and rolled forward one month</span></div>
             <svg class="cad-right cad-left" viewBox="0 0 28 10" aria-hidden="true"><path d="M1 5h25M22.5 1.5 26 5l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <div class="cad-chip cad-chip-effort"><b>Development effort</b><span>Engineering estimates for what comes next</span></div>
-            <div class="cad-chip cad-chip-carry"><b>Unfinished work</b><span>Re-prioritised for the next PI or a later one</span></div>
+            <div class="cad-chip cad-chip-carry"><b>Unfinished work, if any</b><span>Re-prioritised for the next PI or a later one</span></div>
             <div class="cad-chip cad-chip-demo"><b>Demo outcomes</b><span>Decisions from the monthly demo</span></div>
           </div>
           <p class="cad-return"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 13V7a3 3 0 0 0-3-3H3M6 1 3 4l3 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Feeds the next roadmap update</p>
         </div>
         <svg class="cad-tap" viewBox="0 0 36 10" aria-hidden="true"><path d="M35 5H3M6.5 1.5 3 5l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="cad-tap" viewBox="0 0 36 10" aria-hidden="true"><path d="M35 5H3M6.5 1.5 3 5l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="cad-tap" viewBox="0 0 36 10" aria-hidden="true"><path d="M35 5H3M6.5 1.5 3 5l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <svg class="cad-carry" aria-hidden="true"><path class="cad-carry-line" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/><path class="cad-carry-head" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="cad-carry-label" aria-hidden="true">Partly</span>
+        <span class="cad-carry-label" aria-hidden="true">If any</span>
         <aside class="cad-voc">
           <svg class="cad-voc-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4.5 20c1.4-3.5 4.2-5.4 7.5-5.4s6.1 1.9 7.5 5.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           <div class="cad-voc-k">Voice of the customer</div>
@@ -1459,11 +1448,11 @@ footer {
       taps[i].style.top = (tiers[i].offsetTop + tiers[i].offsetHeight / 2 - 5) + 'px';
       taps[i].classList.add('is-placed');
     }
-    var gate = cad.querySelector('.cad-gate'), chip = cad.querySelector('.cad-chip-carry'),
+    var gate = cad.querySelector('.cad-milestone'), chip = cad.querySelector('.cad-chip-carry'),
         row = cad.querySelector('.cad-link-2'), carry = cad.querySelector('.cad-carry'), label = cad.querySelector('.cad-carry-label');
     if (gate && chip && row && carry && label) {
       var c = cad.getBoundingClientRect(), g = gate.getBoundingClientRect(), k = chip.getBoundingClientRect(), r = row.getBoundingClientRect();
-      var x = g.left - c.left + g.width / 2, y0 = g.bottom - c.top, y2 = k.top - c.top - 3;
+      var x = g.left - c.left + g.width / 2, y0 = g.bottom - c.top + 8, y2 = k.top - c.top - 3;
       carry.querySelector('.cad-carry-line').setAttribute('d', 'M' + x + ' ' + y0 + 'V' + y2);
       carry.querySelector('.cad-carry-head').setAttribute('d', 'M' + (x - 3.5) + ' ' + (y2 - 3.5) + 'L' + x + ' ' + y2 + 'L' + (x + 3.5) + ' ' + (y2 - 3.5));
       label.style.left = (x - 8) + 'px';
