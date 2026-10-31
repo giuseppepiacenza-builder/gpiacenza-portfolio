@@ -694,7 +694,7 @@
         </dl>
       </div>
       <p class="section-body">
-        A running total of registered works would only record onboarding that already happened, and a raw count of scans would reward checking the same work twice. The North Star counts each verified work once per month instead. It moves slowly, so three input metrics sit under it and give the team something to act on every week. All four come from product events in PostHog and are reviewed every week. When a number moves and the events don't explain why, session replays of selected journeys show where people hesitate or give up.
+        A running total of registered works would only record onboarding that already happened, and a raw count of scans would reward checking the same work twice. The North Star counts each verified work once per month instead. It moves slowly, so three input metrics sit under it and give the team something to act on every week. Health metrics check that the trade-off behind each feature stays acceptable, and the renewal rate is the outcome the North Star should predict. The product metrics come from events in PostHog and are reviewed every week. When a number moves and the events don't explain why, session replays of selected journeys show where people hesitate or give up.
       </p>
       <figure class="metric-tree">
         <div class="mt-star"><span class="mt-k">North Star</span><strong>Works verified per month</strong><span class="mt-d">Each work counted once</span></div>
@@ -715,7 +715,7 @@
         <tr class="kpi-ns">
           <td data-label="Metric"><span class="kpi-name">Works verified per month</span><span class="kpi-role">North Star</span></td>
           <td data-label="How it is measured">Unique works with at least one completed verification in the calendar month, on the web or in the app.</td>
-          <td data-label="Why it matters">Verification is when a fingerprint does its job for the customer. It is the earliest sign of whether they will renew and register more works.</td>
+          <td data-label="Why it matters">Verification is when the customer gets value from a fingerprint. It is the earliest sign of whether they will renew and register more works.</td>
         </tr>
         <tr>
           <td data-label="Metric"><span class="kpi-name">Fingerprint coverage</span><span class="kpi-role">Input</span></td>
@@ -731,6 +731,31 @@
           <td data-label="Metric"><span class="kpi-name">Accounts verifying weekly</span><span class="kpi-role">Input</span></td>
           <td data-label="How it is measured">Customer accounts with at least one completed verification in the week.</td>
           <td data-label="Why it matters">It shows whether verification is spreading across customers or resting on a few large accounts.</td>
+        </tr>
+        <tr>
+          <td data-label="Metric"><span class="kpi-name">Verification match rate</span><span class="kpi-role">Health</span></td>
+          <td data-label="How it is measured">Share of completed verifications where the fingerprint matches with a confident score.</td>
+          <td data-label="Why it matters">A drop points at capture quality, at registration or at the check, before customers start doubting the result.</td>
+        </tr>
+        <tr>
+          <td data-label="Metric"><span class="kpi-name">Works registered per visit</span><span class="kpi-role">Health</span></td>
+          <td data-label="How it is measured">Works fingerprinted during each onboarding visit.</td>
+          <td data-label="Why it matters">Registration needs the microscope setup on site, so this is the cost side of bringing in a collection.</td>
+        </tr>
+        <tr>
+          <td data-label="Metric"><span class="kpi-name">Clean import rate</span><span class="kpi-role">Health</span></td>
+          <td data-label="How it is measured">Share of imported records that need no correction after a CSV import.</td>
+          <td data-label="Why it matters">Imported records carry over errors, so this shows how much clean-up the registry depends on.</td>
+        </tr>
+        <tr>
+          <td data-label="Metric"><span class="kpi-name">Time to signature</span><span class="kpi-role">Health</span></td>
+          <td data-label="How it is measured">Median time from sending a document to its last signature.</td>
+          <td data-label="Why it matters">Signing by link exists to keep paperwork moving, and this shows whether it does.</td>
+        </tr>
+        <tr>
+          <td data-label="Metric"><span class="kpi-name">Account renewal rate</span><span class="kpi-role">Outcome</span></td>
+          <td data-label="How it is measured">Share of customer accounts that renew when their term ends.</td>
+          <td data-label="Why it matters">This is the result the North Star should predict. It changes too slowly to steer by week to week.</td>
         </tr>
       </tbody>
     </table>
