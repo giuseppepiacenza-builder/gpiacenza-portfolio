@@ -152,6 +152,9 @@
   }
   .section-body { font-size: 15px; line-height: 1.8; color: var(--gray); max-width: 66ch; }
   .section-body + .section-body { margin-top: 16px; }
+  /* Key concepts in running text, styled like the homepage. */
+  .section-body strong, .overview-text strong, .role-list strong, .role-outcome strong { color: var(--text); font-weight: 600; }
+  .hero-body strong { color: #fff; font-weight: 600; }
   /* Product decisions: one box per decision, with what it gained and what it gave up. */
   .decision-box { background: #fff; border: 1px solid rgba(32,39,39,0.16); margin: 4px 0 28px; max-width: 66ch; }
   .db-decision { padding: 18px 22px 20px; }
@@ -386,7 +389,7 @@
 <section class="hero" id="hero">
   <div class="hero-text">
     <h1 class="hero-title">SmartStamp Web</h1>
-    <p class="hero-body">SmartStamp is the integrity layer for physical artworks and collectibles, built for the businesses that handle them. The web platform keeps each piece's fingerprint, provenance record and documents in one place, on top of the tools each business already uses.</p>
+    <p class="hero-body">SmartStamp is the <strong>integrity layer for physical artworks and collectibles</strong>, built for the businesses that handle them. The web platform keeps each piece's fingerprint, provenance record and documents in one place, on top of the tools each business already uses.</p>
   </div>
   <figure class="hero-reel">
     <div class="hero-reel-media">
@@ -417,10 +420,10 @@
   <div class="container">
     <h2 class="section-title">Overview</h2>
     <p class="overview-text">
-      Most gallery software stops at inventory. SmartStamp also links each record to the physical object,
+      Most gallery software stops at inventory. SmartStamp also <strong>links each record to the physical object</strong>,
       whether an artwork or a collectible. Each piece is registered with microscopes mounted on gantries,
-      which capture the surface texture of selected details as a digital fingerprint. The piece can then be verified with a mobile phone or
-      with another microscope, by matching new captures against that fingerprint. The web platform holds
+      which capture the surface texture of selected details as a <strong>digital fingerprint</strong>. The piece can then be <strong>verified with a mobile phone or
+      with another microscope</strong>, by matching new captures against that fingerprint. The web platform holds
       everything around it: the ownership history, documents and signatures, and collection data imported
       from CSV files or the mobile app.
     </p>
@@ -457,12 +460,12 @@
     </dl>
     <h3 class="role-subtitle">Decisions</h3>
     <ul class="role-list">
-      <li>Repositioned the product from mobile-first to web-first once usage data showed that galleries and auctioneers were the ones adopting it.</li>
-      <li>Prototyped the web platform hands-on with Claude Code and Figma, so engineering built from a working specification. The screens on this page come from that prototype.</li>
-      <li>Defined the North Star metric and its supporting KPIs, and built the PostHog dashboard the team uses to track them.</li>
+      <li>Repositioned the product from <strong>mobile-first to web-first</strong> once usage data showed that galleries and auctioneers were the ones adopting it.</li>
+      <li>Prototyped the web platform hands-on with <strong>Claude Code and Figma</strong>, so engineering built from a <strong>working specification</strong>. The screens on this page come from that prototype.</li>
+      <li>Defined the <strong>North Star metric</strong> and its supporting KPIs, and built the <strong>PostHog dashboard</strong> the team uses to track them.</li>
     </ul>
     <h3 class="role-subtitle">Outcome</h3>
-    <p class="role-outcome">Fingerprint registration went live, gallery partnerships were signed and pilot talks opened with tier-1 Swiss and global auction houses. The web platform is live as SmartStamp Vault.</p>
+    <p class="role-outcome"><strong>Fingerprint registration went live</strong>, gallery partnerships were signed and pilot talks opened with <strong>tier-1 Swiss and global auction houses</strong>. The web platform is live as <strong>SmartStamp Vault</strong>.</p>
   </div>
 </section>
 
@@ -482,7 +485,7 @@
           </dl>
         </div>
         <p class="section-body">
-          The microscopes sit on gantries and capture close-up images of selected surface details such as brushwork, gilding and engraving. Together these images form the fingerprint of the piece. At verification, each matched detail returns a score. Verified works carry the Integrity Stamp across the web app, and unverified ones show a muted outline badge.
+          The microscopes sit on gantries and capture close-up images of selected surface details such as brushwork, gilding and engraving. Together these images form the fingerprint of the piece. At verification, <strong>each matched detail returns a score</strong>. Verified works carry the <strong>Integrity Stamp</strong> across the web app, and unverified ones show a muted outline badge.
         </p>
       </div>
       <div class="carousel" aria-roledescription="carousel" aria-label="Microscope registration">
@@ -539,7 +542,7 @@
           </dl>
         </div>
         <p class="section-body">
-          The registry starts from a CSV export and adds verification. It has two views, a masonry grid (24 items per page) and a data table (50 items). The view, filters and search query live in the URL, so back and forward behave as expected and a filtered view can be shared as a link. Search covers title, artist and medium as you type, and one click narrows the list to stamped or unstamped works.
+          The registry starts from a <strong>CSV export</strong> and adds verification. It has two views, a masonry grid (24 items per page) and a data table (50 items). The view, filters and search query <strong>live in the URL</strong>, so back and forward behave as expected and a filtered view can be shared as a link. Search covers title, artist and medium as you type, and one click narrows the list to stamped or unstamped works.
         </p>
       </div>
       <div class="screenshot-full" style="margin-bottom:16px">
@@ -571,7 +574,7 @@
           </dl>
         </div>
         <p class="section-body">
-          Provenance is only worth something if no one, SmartStamp included, can change it without leaving a trace. A record has five parts: ownership history (acquisition method, price, verified status), exhibition appearances, publications, appraisals in any currency, and condition reports with photo attachments. Each addition goes into the artwork's SHA-256 hash trail with a timestamp.
+          Provenance is only worth something if no one, SmartStamp included, can change it <strong>without leaving a trace</strong>. A record has five parts: ownership history (acquisition method, price, verified status), exhibition appearances, publications, appraisals in any currency, and condition reports with photo attachments. Each addition goes into the artwork's <strong>SHA-256 hash trail</strong> with a timestamp.
         </p>
       </div>
       <div class="screenshot-full" style="margin-bottom:16px">
@@ -603,10 +606,10 @@
           </dl>
         </div>
         <p class="section-body">
-          SmartStamp generates 13 document types for artworks and 6 for the business itself, all from branded HTML templates. Content stays editable until it is locked, and each document moves from draft to pending to signed.
+          SmartStamp generates <strong>13 document types</strong> for artworks and 6 for the business itself, all from <strong>branded HTML templates</strong>. Content stays editable until it is locked, and each document moves from draft to pending to signed.
         </p>
         <p class="section-body">
-          Documents are kept in an audit-proof archive certified against the Swiss rules for keeping business records (GeBüV). Each one carries proof that it hasn't changed since it was stored, and every access is logged.
+          Documents are kept in an <strong>audit-proof archive</strong> certified against the Swiss rules for keeping business records (GeBüV). Each one carries proof that it hasn't changed since it was stored, and <strong>every access is logged</strong>.
         </p>
       </div>
       <div class="screenshot-full" style="margin-bottom:16px">
@@ -638,7 +641,7 @@
           </dl>
         </div>
         <p class="section-body">
-          Below the coverage bar sit a breakdown of where works came from (CSV, mobile app or manual entry), a summary of the documents vault and a recent activity feed. Coverage is one of the four inputs to the North Star, set out under <a class="text-link" href="#metrics">Metrics and KPIs</a>.
+          Below the coverage bar sit a breakdown of where works came from (CSV, mobile app or manual entry), a summary of the documents vault and a recent activity feed. Coverage is <strong>one of the four inputs to the North Star</strong>, set out under <a class="text-link" href="#metrics">Metrics and KPIs</a>.
         </p>
       </div>
       <div class="screenshot-full" style="margin-bottom:16px">
@@ -672,7 +675,7 @@
         </dl>
       </div>
       <p class="section-body">
-        A running total of registered works would only record onboarding that already happened, and a raw count of scans would reward checking the same work twice. The North Star counts each verified work once per month instead. It moves slowly, so four input metrics sit under it and give the team something to act on every week. Health metrics check that the trade-off behind each feature stays acceptable, and the renewal rate is the outcome the North Star should predict. The product metrics come from events in PostHog and are reviewed every week. When a number moves and the events don't explain why, session replays of selected journeys show where people hesitate or give up.
+        A running total of registered works would only record onboarding that already happened, and a raw count of scans would reward checking the same work twice. The North Star <strong>counts each verified work once per month</strong> instead. It moves slowly, so <strong>four input metrics</strong> sit under it and give the team something to act on every week. <strong>Health metrics</strong> check that the trade-off behind each feature stays acceptable, and the <strong>renewal rate</strong> is the outcome the North Star should predict. The product metrics come from events in PostHog and are reviewed every week. When a number moves and the events don't explain why, <strong>session replays</strong> of selected journeys show where people hesitate or give up.
       </p>
     </div>
     <table class="kpi-table">

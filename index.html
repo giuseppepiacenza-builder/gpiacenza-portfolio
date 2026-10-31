@@ -445,6 +445,7 @@ a { color: inherit; text-decoration: none; }
 /* ── How I planned the work: rolling roadmap, monthly PI, weekly sprints, feedback loop ── */
 .cadence { margin-bottom: 8px; }
 .cadence-intro { font-size: 14px; line-height: 1.75; color: var(--text-muted); max-width: 76ch; margin-bottom: 28px; }
+.cadence-intro strong { color: var(--text); font-weight: 600; }
 .cad { position: relative; margin: 0; padding-left: 44px; padding-right: 214px; color: var(--accent); }
 .cad-tier { position: relative; background: #fff; border: 1px solid var(--border-med); padding: 18px 20px 20px; color: var(--text); }
 .cad-k { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; font-family: var(--font-display); font-size: 15px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 14px; }
@@ -1101,7 +1102,7 @@ footer {
 
     <div class="cadence reveal">
       <h3 class="context-cell-lbl">How I planned the work</h3>
-      <p class="cadence-intro">The work ran on a rolling four-month roadmap, with each month as a program increment (PI). The whole team agreed the milestone at PI planning, then worked in weekly sprints (planning, mid-sprint check-in, retro), each ending in a release: dev and TestFlight in weeks one and three, the stores and the web in weeks two and four. A milestone only counted when it met the definition of done, and unfinished work was re-prioritised for a later PI. Whatever the result, the month closed with a product demo and metrics review for the CEO, board and heads of department, which shaped the next roadmap update. In parallel I ran discovery for later PIs, prototyping in Claude Code and Figma and validating with customers, while customer feedback from every channel fed each stage.</p>
+      <p class="cadence-intro">The work ran on a <strong>rolling four-month roadmap</strong>, with each month as a <strong>program increment (PI)</strong>. The whole team agreed the milestone at PI planning, then worked in weekly sprints (planning, mid-sprint check-in, retro), each ending in a release: dev and TestFlight in weeks one and three, the stores and the web in weeks two and four. A milestone only counted when it met the <strong>definition of done</strong>, and unfinished work was re-prioritised for a later PI. Whatever the result, the month closed with a <strong>product demo and metrics review</strong> for the CEO, board and heads of department, which shaped the next roadmap update. In parallel I ran <strong>discovery</strong> for later PIs, prototyping in Claude Code and Figma and validating with customers, while customer feedback from every channel fed each stage.</p>
 
       <button class="cad-toggle" type="button" aria-expanded="false" aria-controls="cad"><span>Show the planning diagram</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <figure class="cad" id="cad" aria-label="Planning cadence: a rolling four-month roadmap, monthly increments of four weekly sprints ending in a demo, and a roadmap update that feeds the next month">
