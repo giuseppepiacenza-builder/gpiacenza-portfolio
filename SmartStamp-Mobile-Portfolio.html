@@ -483,6 +483,11 @@ footer { background: var(--dark); padding: 56px 80px; }
   }
   .swipe-dots button[aria-current="true"]::after { background: var(--text); border-color: var(--text); }
 }
+/* The top bar only earns its place on phones; on larger screens the footer links back. */
+@media (min-width: 701px) {
+  nav { display: none; }
+  .hero { padding-top: 72px; }
+}
 </style>
 </head>
 <body>
@@ -566,7 +571,7 @@ footer { background: var(--dark); padding: 56px 80px; }
         <div class="db-decision"><div class="db-k"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15V8M8 8 3.5 3.5M8 8l4.5-4.5M3.5 3.5v3M3.5 3.5h3M12.5 3.5v3M12.5 3.5h-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Decision</div><div class="db-text">Verification starts from a QR code or a SmartStamp ID and walks the user through the capture one step at a time.</div></div>
         <dl class="db-tradeoff">
           <div class="db-gain"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gained</dt><dd>Anyone can verify a work without training in surface imaging.</dd></div>
-          <div class="db-cost"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gave up</dt><dd>A phone capture is less detailed than a microscope's, so a check made with a phone is less precise than one made with a second microscope.</dd></div>
+          <div class="db-cost"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gave up</dt><dd>A phone captures less detail than a microscope, so a phone check is less precise than a check with a second microscope.</dd></div>
         </dl>
       </div>
       <p>The flow has four steps: scan the QR code or enter the ID, review the close-ups captured when the work was secured, compare them with the work in hand, and check its details such as title, artist and year.</p>

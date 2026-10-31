@@ -381,6 +381,11 @@
     .screenshot-item { flex: 0 0 86%; scroll-snap-align: center; }
     .swipe-dots { display: flex; justify-content: center; margin-top: 10px; }
   }
+  /* The top bar only earns its place on phones; on larger screens the footer links back. */
+  @media (min-width: 701px) {
+    .nav { display: none; }
+    .hero { min-height: 100vh; }
+  }
 </style>
 </head>
 <body>
@@ -492,10 +497,10 @@
       <div class="feature-text">
         <h2 class="section-title">Fingerprint registration and verification</h2>
         <div class="decision-box">
-          <div class="db-decision"><div class="db-k"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15V8M8 8 3.5 3.5M8 8l4.5-4.5M3.5 3.5v3M3.5 3.5h3M12.5 3.5v3M12.5 3.5h-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Decision</div><div class="db-text">Works are registered on fixed microscopes and verified wherever they happen to be, with a phone or a second microscope.</div></div>
+          <div class="db-decision"><div class="db-k"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15V8M8 8 3.5 3.5M8 8l4.5-4.5M3.5 3.5v3M3.5 3.5h3M12.5 3.5v3M12.5 3.5h-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Decision</div><div class="db-text">Works are registered on fixed microscopes and verified wherever they are, with a phone or a second microscope.</div></div>
           <dl class="db-tradeoff">
-            <div class="db-gain"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gained</dt><dd>Every capture is taken the same way, which keeps the fingerprint reliable from one check to the next.</dd></div>
-            <div class="db-cost"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gave up</dt><dd>Registration needs hardware on site, so bringing in a collection takes a visit rather than a download.</dd></div>
+            <div class="db-gain"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gained</dt><dd>Every capture is taken the same way, so later checks compare against a reliable fingerprint.</dd></div>
+            <div class="db-cost"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gave up</dt><dd>Registration needs the microscope setup on site, so every new customer needs an onboarding visit.</dd></div>
           </dl>
         </div>
         <p class="section-body">
@@ -551,8 +556,8 @@
         <div class="decision-box">
           <div class="db-decision"><div class="db-k"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15V8M8 8 3.5 3.5M8 8l4.5-4.5M3.5 3.5v3M3.5 3.5h3M12.5 3.5v3M12.5 3.5h-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Decision</div><div class="db-text">SmartStamp sits on top of the tools art businesses already use instead of replacing them.</div></div>
           <dl class="db-tradeoff">
-            <div class="db-gain"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gained</dt><dd>Customers keep the system they know, and nobody types an inventory in twice.</dd></div>
-            <div class="db-cost"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gave up</dt><dd>The data lives in two places, and a record starts out only as good as the import until someone corrects it in SmartStamp.</dd></div>
+            <div class="db-gain"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gained</dt><dd>Customers keep their current system and don't have to re-enter their inventory.</dd></div>
+            <div class="db-cost"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gave up</dt><dd>The data lives in two places, and imported records carry over any errors until they are corrected in SmartStamp.</dd></div>
           </dl>
         </div>
         <p class="section-body">
@@ -583,8 +588,8 @@
         <div class="decision-box">
           <div class="db-decision"><div class="db-k"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15V8M8 8 3.5 3.5M8 8l4.5-4.5M3.5 3.5v3M3.5 3.5h3M12.5 3.5v3M12.5 3.5h-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Decision</div><div class="db-text">Every provenance entry is hashed and anchored to a public ledger.</div></div>
           <dl class="db-tradeoff">
-            <div class="db-gain"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gained</dt><dd>Anyone can check that an entry existed at a given time without having to trust SmartStamp, and only the hash ever leaves the platform.</dd></div>
-            <div class="db-cost"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gave up</dt><dd>Proof is not instant. Hashes are batched before they are written to the blockchain, and an entry counts as proven once its batch is confirmed.</dd></div>
+            <div class="db-gain"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gained</dt><dd>Anyone can check when an entry was recorded without relying on SmartStamp, and only the hash leaves the platform.</dd></div>
+            <div class="db-cost"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gave up</dt><dd>Hashes are written to the blockchain in batches, so an entry can only be proven once its batch is confirmed.</dd></div>
           </dl>
         </div>
         <p class="section-body">
@@ -613,9 +618,9 @@
       <div class="feature-text">
         <h2 class="section-title">Document generation and signing</h2>
         <div class="decision-box">
-          <div class="db-decision"><div class="db-k"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15V8M8 8 3.5 3.5M8 8l4.5-4.5M3.5 3.5v3M3.5 3.5h3M12.5 3.5v3M12.5 3.5h-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Decision</div><div class="db-text">Signing is built into SmartStamp, and the person signing just opens a link.</div></div>
+          <div class="db-decision"><div class="db-k"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15V8M8 8 3.5 3.5M8 8l4.5-4.5M3.5 3.5v3M3.5 3.5h3M12.5 3.5v3M12.5 3.5h-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Decision</div><div class="db-text">Signing is built into SmartStamp and works through a link sent to the signer.</div></div>
           <dl class="db-tradeoff">
-            <div class="db-gain"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gained</dt><dd>Buyers, lenders and museums can sign without creating an account for a business they may deal with once.</dd></div>
+            <div class="db-gain"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gained</dt><dd>Buyers, lenders and museums can sign without creating an account with a business they may only deal with once.</dd></div>
             <div class="db-cost"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gave up</dt><dd>A link proves less about the signer than a login does, which is why every signing event goes into the hash trail.</dd></div>
           </dl>
         </div>
@@ -650,7 +655,7 @@
         <div class="decision-box">
           <div class="db-decision"><div class="db-k"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15V8M8 8 3.5 3.5M8 8l4.5-4.5M3.5 3.5v3M3.5 3.5h3M12.5 3.5v3M12.5 3.5h-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Decision</div><div class="db-text">The customer dashboard opens on fingerprint coverage: how much of the collection is registered and ready to verify.</div></div>
           <dl class="db-tradeoff">
-            <div class="db-gain"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gained</dt><dd>Customers see at a glance what can already be verified and what is still missing.</dd></div>
+            <div class="db-gain"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gained</dt><dd>Customers see how much of their collection can already be verified and what is still missing.</dd></div>
             <div class="db-cost"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gave up</dt><dd>Coverage says nothing about how often works are checked. Verification activity stays in the team's PostHog dashboard.</dd></div>
           </dl>
         </div>
@@ -684,7 +689,7 @@
       <div class="decision-box">
         <div class="db-decision"><div class="db-k"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15V8M8 8 3.5 3.5M8 8l4.5-4.5M3.5 3.5v3M3.5 3.5h3M12.5 3.5v3M12.5 3.5h-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Decision</div><div class="db-text">Success is measured by works verified each month, counted once per work, rather than by works registered.</div></div>
         <dl class="db-tradeoff">
-          <div class="db-gain"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gained</dt><dd>The number moves when a fingerprint does its job for a customer, and it moves before renewals do.</dd></div>
+          <div class="db-gain"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gained</dt><dd>It rises when customers use their fingerprints, and it changes earlier than renewals.</dd></div>
           <div class="db-cost"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gave up</dt><dd>Verifications follow sales, loans and consignments, so the monthly figure is lumpy and slow to react. The input metrics give the team a weekly signal.</dd></div>
         </dl>
       </div>
