@@ -178,34 +178,10 @@
   .kpi-ns td { background: rgba(30,84,89,0.07); }
   .kpi-name { display: block; font-weight: 600; }
   .kpi-role { display: block; margin-top: 4px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--teal); }
-  /* North Star with its input metrics, drawn as a small tree. */
-  .metric-tree { margin: 4px 0 28px; }
-  .section-body + .metric-tree { margin-top: 32px; }
-  .mt-star { position: relative; max-width: 320px; margin: 0 auto 28px; padding: 16px 20px; background: var(--dark); color: #fff; text-align: center; }
-  .mt-star::after { content: ''; position: absolute; left: 50%; top: 100%; height: 14px; border-left: 1px solid rgba(32,39,39,0.35); }
-  .mt-star strong { display: block; font-family: var(--font-display); font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
-  .mt-k, .mt-d { display: block; font-size: 12px; color: rgba(255,255,255,0.62); }
-  .mt-k { margin-bottom: 4px; }
-  .mt-d { margin-top: 4px; }
-  .mt-inputs { position: relative; list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .mt-inputs::before {
-    content: ''; position: absolute; top: -14px; height: 14px;
-    left: calc((100% - 24px) / 6); right: calc((100% - 24px) / 6);
-    border: 1px solid rgba(32,39,39,0.35); border-bottom: 0;
-  }
-  .mt-inputs li { position: relative; background: #fff; border: 1px solid var(--border); padding: 14px 16px; }
-  .mt-inputs li:nth-child(2)::before { content: ''; position: absolute; left: 50%; top: -15px; height: 14px; border-left: 1px solid rgba(32,39,39,0.35); }
-  .mt-inputs strong { display: block; font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-  .mt-inputs span { display: block; font-size: 13px; line-height: 1.5; color: var(--gray); }
-  .metric-tree figcaption { margin-top: 10px; font-size: 12px; color: var(--gray); text-align: center; }
   @media (max-width: 560px) {
     .db-tradeoff { grid-template-columns: 1fr; }
     .db-tradeoff > div + div { border-left: 0; border-top: 1px solid rgba(32,39,39,0.16); }
     .db-decision, .db-tradeoff > div { padding-left: 18px; padding-right: 18px; }
-    .mt-star { max-width: none; margin-bottom: 14px; text-align: left; }
-    .mt-star::after, .mt-inputs::before, .mt-inputs li:nth-child(2)::before { display: none; }
-    .mt-inputs { grid-template-columns: 1fr; gap: 8px; padding-left: 16px; border-left: 1px solid rgba(32,39,39,0.35); }
-    .metric-tree figcaption { text-align: left; }
     .kpi-table, .kpi-table tbody, .kpi-table tr, .kpi-table td { display: block; width: auto !important; }
     .kpi-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
     .kpi-table tr { border-bottom: 1px solid rgba(32,39,39,0.16); }
@@ -696,15 +672,6 @@
       <p class="section-body">
         A running total of registered works would only record onboarding that already happened, and a raw count of scans would reward checking the same work twice. The North Star counts each verified work once per month instead. It moves slowly, so three input metrics sit under it and give the team something to act on every week. Health metrics check that the trade-off behind each feature stays acceptable, and the renewal rate is the outcome the North Star should predict. The product metrics come from events in PostHog and are reviewed every week. When a number moves and the events don't explain why, session replays of selected journeys show where people hesitate or give up.
       </p>
-      <figure class="metric-tree">
-        <div class="mt-star"><span class="mt-k">North Star</span><strong>Works verified per month</strong><span class="mt-d">Each work counted once</span></div>
-        <ul class="mt-inputs">
-          <li><strong>Fingerprint coverage</strong><span>Share of each collection registered</span></li>
-          <li><strong>Days to first verification</strong><span>From registration to the first check</span></li>
-          <li><strong>Accounts verifying weekly</strong><span>Customers running at least one check</span></li>
-        </ul>
-        <figcaption>Inputs the team tracks weekly in PostHog</figcaption>
-      </figure>
     </div>
     <table class="kpi-table">
       <caption class="visually-hidden">What the team tracks, how each metric is measured and why it matters</caption>

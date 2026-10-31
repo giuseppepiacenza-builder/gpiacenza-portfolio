@@ -328,24 +328,9 @@ nav {
 .metrics { padding: 96px 80px; background: var(--bg-alt); }
 .metrics-inner { max-width: 1100px; margin: 0 auto; }
 .metrics h2 { font-size: 38px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; margin-bottom: 20px; }
-.metrics-text { max-width: 66ch; }
+.metrics-text { max-width: 66ch; margin-bottom: 36px; }
 .metrics .decision-box { max-width: none; }
 .metrics-text p { font-size: 15px; line-height: 1.8; color: var(--text-muted); }
-.metric-tree { max-width: 920px; margin: 40px 0 36px; }
-.mt-star { position: relative; max-width: 320px; margin: 0 auto 28px; padding: 16px 20px; background: var(--dark); color: #fff; text-align: center; }
-.mt-star::after { content: ''; position: absolute; left: 50%; top: 100%; height: 14px; border-left: 1px solid rgba(32,39,39,0.35); }
-.mt-star strong { display: block; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
-.mt-k, .mt-d { display: block; font-size: 12px; color: rgba(255,255,255,0.62); }
-.mt-k { margin-bottom: 4px; }
-.mt-d { margin-top: 4px; }
-.mt-inputs { position: relative; list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-/* Horizontal bar from the first to the last input; each input hangs from it on its own stem. */
-.mt-inputs::before { content: ''; position: absolute; top: -14px; left: calc((100% - 36px) / 8); right: calc((100% - 36px) / 8); border-top: 1px solid rgba(32,39,39,0.35); }
-.mt-inputs li { position: relative; background: #fff; border: 1px solid var(--border); padding: 14px 16px; }
-.mt-inputs li::before { content: ''; position: absolute; left: 50%; top: -15px; height: 14px; border-left: 1px solid rgba(32,39,39,0.35); }
-.mt-inputs strong { display: block; font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-.mt-inputs span { display: block; font-size: 13px; line-height: 1.5; color: var(--text-muted); }
-.metric-tree figcaption { margin-top: 10px; font-size: 12px; color: var(--text-muted); text-align: center; }
 .kpi-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid rgba(32,39,39,0.16); }
 .kpi-table th { text-align: left; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--text-muted); padding: 12px 20px; background: rgba(32,39,39,0.04); border-bottom: 1px solid rgba(32,39,39,0.16); }
 .kpi-table td { vertical-align: top; padding: 18px 20px; font-size: 14px; line-height: 1.65; color: var(--text); border-bottom: 1px solid var(--border); }
@@ -355,12 +340,6 @@ nav {
 .kpi-ns td { background: rgba(30,84,89,0.07); }
 .kpi-name { display: block; font-weight: 600; }
 .kpi-role { display: block; margin-top: 4px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--teal); }
-@media (max-width: 860px) {
-  .mt-star { max-width: none; margin-bottom: 14px; text-align: left; }
-  .mt-star::after, .mt-inputs::before, .mt-inputs li::before { display: none; }
-  .mt-inputs { grid-template-columns: 1fr; gap: 8px; padding-left: 16px; border-left: 1px solid rgba(32,39,39,0.35); }
-  .metric-tree figcaption { text-align: left; }
-}
 @media (max-width: 700px) {
   .kpi-table, .kpi-table tbody, .kpi-table tr, .kpi-table td { display: block; width: auto !important; }
   .kpi-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
@@ -675,18 +654,8 @@ footer { background: var(--dark); padding: 56px 80px; }
           <div class="db-cost"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gave up</dt><dd>A single total hides who is driving it, so the team splits active accounts by type.</dd></div>
         </dl>
       </div>
-      <p>The app's inputs follow its own flow: a user gets a verified profile through a one-off identity check, verifies works and, when one changes hands, transfers it. Each step is tracked with app events in PostHog and reviewed every week, so a drop at any point shows up before it reaches the North Star. Session replays of selected journeys then show where people hesitate or give up, which the numbers alone can't.</p>
+      <p>The app's inputs follow its own flow: a user gets a verified profile through a one-off identity check, verifies works and, when one changes hands, transfers it. Each step is tracked with app events in PostHog and reviewed every week, so a drop at any point shows up before it reaches the North Star. Session replays of selected journeys then show where people hesitate or give up, which the numbers alone can't. Health metrics watch the trade-offs behind the app's decisions: how phone checks compare with the microscope, how transfers settle, and how stable the app is on each platform.</p>
     </div>
-      <figure class="metric-tree">
-        <div class="mt-star"><span class="mt-k">North Star</span><strong>Works verified per month</strong><span class="mt-d">Each work counted once</span></div>
-        <ul class="mt-inputs">
-          <li><strong>KYC completion</strong><span>Verified profiles, and where people drop out</span></li>
-          <li><strong>Verification completion</strong><span>Started verifications that reach a result</span></li>
-          <li><strong>Time to verify</strong><span>From scan to result on screen</span></li>
-          <li><strong>Transfers per month</strong><span>Transfers accepted by the recipient</span></li>
-        </ul>
-        <figcaption>Inputs the team tracks weekly in PostHog</figcaption>
-      </figure>
     <table class="kpi-table">
       <caption class="visually-hidden">What the team tracks in the app, how each metric is measured and why it matters</caption>
       <thead>
@@ -717,6 +686,26 @@ footer { background: var(--dark); padding: 56px 80px; }
           <td data-label="Metric"><span class="kpi-name">Transfers per month</span><span class="kpi-role">Input</span></td>
           <td data-label="How it is measured">Ownership transfers accepted by the recipient each month.</td>
           <td data-label="Why it matters">Works are usually checked when they change hands, so transfers and verifications rise together. A fall in transfers is an early warning.</td>
+        </tr>
+        <tr>
+          <td data-label="Metric"><span class="kpi-name">Phone match rate</span><span class="kpi-role">Health</span></td>
+          <td data-label="How it is measured">Share of phone checks that reach a confident match, compared with checks made with a second microscope.</td>
+          <td data-label="Why it matters">Phone checks are less precise, and this shows how big the gap is in practice.</td>
+        </tr>
+        <tr>
+          <td data-label="Metric"><span class="kpi-name">Transfer undo rate</span><span class="kpi-role">Health</span></td>
+          <td data-label="How it is measured">Share of transfers the sender undoes within the 14-day window.</td>
+          <td data-label="Why it matters">A rising rate means transfers are going to the wrong person or being sent before a deal is closed.</td>
+        </tr>
+        <tr>
+          <td data-label="Metric"><span class="kpi-name">Time to acceptance</span><span class="kpi-role">Health</span></td>
+          <td data-label="How it is measured">Median time from sending a transfer to the recipient accepting it.</td>
+          <td data-label="Why it matters">Ownership stays pending until the recipient accepts, so long waits leave records unsettled.</td>
+        </tr>
+        <tr>
+          <td data-label="Metric"><span class="kpi-name">Crash-free sessions</span><span class="kpi-role">Health</span></td>
+          <td data-label="How it is measured">Share of app sessions without a crash, on iOS and Android separately.</td>
+          <td data-label="Why it matters">One Flutter codebase serves both platforms, so this is where problems with plugins and packages show up first.</td>
         </tr>
         <tr>
           <td data-label="Metric"><span class="kpi-name">Account type split</span><span class="kpi-role">Segment</span></td>
