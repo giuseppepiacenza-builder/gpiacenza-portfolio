@@ -152,6 +152,49 @@
   }
   .section-body { font-size: 15px; line-height: 1.8; color: var(--gray); max-width: 66ch; }
   .section-body + .section-body { margin-top: 16px; }
+  /* Product decisions: one box per decision, with what it gained and what it gave up. */
+  .decision-box { background: #fff; border: 1px solid rgba(32,39,39,0.16); margin: 4px 0 28px; max-width: 66ch; }
+  .db-decision { padding: 18px 22px 20px; }
+  .db-k, .db-tradeoff dt { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; margin-bottom: 8px; }
+  .db-k { color: var(--teal); }
+  .decision-box svg { width: 16px; height: 16px; flex: none; }
+  .db-text { font-family: var(--font-display); font-size: 18px; font-weight: 600; line-height: 1.45; letter-spacing: -0.01em; color: var(--text); }
+  .db-tradeoff { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(32,39,39,0.16); }
+  .db-tradeoff > div { padding: 16px 22px 18px; }
+  .db-tradeoff > div + div { border-left: 1px solid rgba(32,39,39,0.16); }
+  .db-gain { background: rgba(30,84,89,0.07); }
+  .db-cost { background: rgba(32,39,39,0.04); }
+  .db-gain dt { color: var(--teal); }
+  .db-cost dt { color: var(--gray); }
+  .db-tradeoff dd { font-size: 14px; line-height: 1.65; color: var(--text); }
+  /* North Star with its input metrics, drawn as a small tree. */
+  .metric-tree { margin: 4px 0 28px; }
+  .mt-star { position: relative; max-width: 320px; margin: 0 auto 28px; padding: 16px 20px; background: var(--dark); color: #fff; text-align: center; }
+  .mt-star::after { content: ''; position: absolute; left: 50%; top: 100%; height: 14px; border-left: 1px solid rgba(32,39,39,0.35); }
+  .mt-star strong { display: block; font-family: var(--font-display); font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+  .mt-k, .mt-d { display: block; font-size: 12px; color: rgba(255,255,255,0.62); }
+  .mt-k { margin-bottom: 4px; }
+  .mt-d { margin-top: 4px; }
+  .mt-inputs { position: relative; list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .mt-inputs::before {
+    content: ''; position: absolute; top: -14px; height: 14px;
+    left: calc((100% - 24px) / 6); right: calc((100% - 24px) / 6);
+    border: 1px solid rgba(32,39,39,0.35); border-bottom: 0;
+  }
+  .mt-inputs li { position: relative; background: #fff; border: 1px solid var(--border); padding: 14px 16px; }
+  .mt-inputs li:nth-child(2)::before { content: ''; position: absolute; left: 50%; top: -15px; height: 14px; border-left: 1px solid rgba(32,39,39,0.35); }
+  .mt-inputs strong { display: block; font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .mt-inputs span { display: block; font-size: 13px; line-height: 1.5; color: var(--gray); }
+  .metric-tree figcaption { margin-top: 10px; font-size: 12px; color: var(--gray); text-align: center; }
+  @media (max-width: 560px) {
+    .db-tradeoff { grid-template-columns: 1fr; }
+    .db-tradeoff > div + div { border-left: 0; border-top: 1px solid rgba(32,39,39,0.16); }
+    .db-decision, .db-tradeoff > div { padding-left: 18px; padding-right: 18px; }
+    .mt-star { max-width: none; margin-bottom: 14px; text-align: left; }
+    .mt-star::after, .mt-inputs::before, .mt-inputs li:nth-child(2)::before { display: none; }
+    .mt-inputs { grid-template-columns: 1fr; gap: 8px; padding-left: 16px; border-left: 1px solid rgba(32,39,39,0.35); }
+    .metric-tree figcaption { text-align: left; }
+  }
 
   /* ── My role ── */
   .role { padding: 80px 48px; border-top: 1px solid var(--border); }
@@ -428,11 +471,15 @@
     <div class="container">
       <div class="feature-text">
         <h2 class="section-title">Fingerprint registration and verification</h2>
+        <div class="decision-box">
+          <div class="db-decision"><div class="db-k"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15V8M8 8 3.5 3.5M8 8l4.5-4.5M3.5 3.5v3M3.5 3.5h3M12.5 3.5v3M12.5 3.5h-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Decision</div><div class="db-text">Works are registered on fixed microscopes and verified wherever they happen to be, with a phone or a second microscope.</div></div>
+          <dl class="db-tradeoff">
+            <div class="db-gain"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gained</dt><dd>Every capture is taken the same way, which keeps the fingerprint reliable from one check to the next.</dd></div>
+            <div class="db-cost"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gave up</dt><dd>Registration needs hardware on site, so bringing in a collection takes a visit rather than a download.</dd></div>
+          </dl>
+        </div>
         <p class="section-body">
-          Registration runs on microscopes mounted on gantries, and verification works with a phone or a second microscope. Registration sits on fixed hardware because a reliable fingerprint needs every capture taken the same way. Verification has the opposite constraint: it has to work wherever the piece happens to be.
-        </p>
-        <p class="section-body">
-          A registration captures close-up images of selected surface details such as brushwork, gilding and engraving, and together they form the fingerprint of the piece. At verification, each matched detail returns a score. Verified works carry the Integrity Stamp across the web app, and unverified ones show a muted outline badge. The cost is onboarding: because registration needs hardware on site, bringing in a collection takes a visit rather than a download.
+          The microscopes sit on gantries and capture close-up images of selected surface details such as brushwork, gilding and engraving. Together these images form the fingerprint of the piece. At verification, each matched detail returns a score. Verified works carry the Integrity Stamp across the web app, and unverified ones show a muted outline badge.
         </p>
       </div>
       <div class="carousel" aria-roledescription="carousel" aria-label="Microscope registration">
@@ -481,11 +528,15 @@
     <div class="container">
       <div class="feature-text">
         <h2 class="section-title">Collection registry</h2>
+        <div class="decision-box">
+          <div class="db-decision"><div class="db-k"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15V8M8 8 3.5 3.5M8 8l4.5-4.5M3.5 3.5v3M3.5 3.5h3M12.5 3.5v3M12.5 3.5h-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Decision</div><div class="db-text">SmartStamp sits on top of the tools art businesses already use instead of replacing them.</div></div>
+          <dl class="db-tradeoff">
+            <div class="db-gain"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gained</dt><dd>Customers keep the system they know, and nobody types an inventory in twice.</dd></div>
+            <div class="db-cost"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gave up</dt><dd>The data lives in two places, and a record starts out only as good as the import until someone corrects it in SmartStamp.</dd></div>
+          </dl>
+        </div>
         <p class="section-body">
-          Art businesses already keep their inventory in other tools, and none of them want to enter it all again. The registry sits on top of those tools instead of replacing them: works come in from a CSV export, and SmartStamp adds verification. The data then lives in two places, and a record starts out only as good as the import, but it can be corrected and completed in SmartStamp afterwards.
-        </p>
-        <p class="section-body">
-          There are two views, a masonry grid (24 items per page) and a data table (50 items). The view, filters and search query all live in the URL, so back and forward work as expected and a filtered view can be shared as a link. Search covers title, artist and medium as you type, and one click narrows the list to stamped or unstamped works.
+          The registry starts from a CSV export and adds verification. It has two views, a masonry grid (24 items per page) and a data table (50 items). The view, filters and search query live in the URL, so back and forward behave as expected and a filtered view can be shared as a link. Search covers title, artist and medium as you type, and one click narrows the list to stamped or unstamped works.
         </p>
       </div>
       <div class="screenshot-full" style="margin-bottom:16px">
@@ -509,11 +560,15 @@
     <div class="container">
       <div class="feature-text">
         <h2 class="section-title">Provenance record</h2>
+        <div class="decision-box">
+          <div class="db-decision"><div class="db-k"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15V8M8 8 3.5 3.5M8 8l4.5-4.5M3.5 3.5v3M3.5 3.5h3M12.5 3.5v3M12.5 3.5h-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Decision</div><div class="db-text">Every provenance entry is hashed and anchored to a public ledger through OriginStamp.</div></div>
+          <dl class="db-tradeoff">
+            <div class="db-gain"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gained</dt><dd>Anyone can check that an entry existed at a given time without having to trust SmartStamp, and only the hash ever leaves the platform.</dd></div>
+            <div class="db-cost"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gave up</dt><dd>Proof is not instant. OriginStamp batches hashes before writing them to the blockchain, and an entry counts as proven once its batch is confirmed.</dd></div>
+          </dl>
+        </div>
         <p class="section-body">
-          Every provenance entry is written into a SHA-256 hash trail, and the hashes are anchored to a public ledger through OriginStamp. Provenance is only worth something if no one, SmartStamp included, can change it without leaving a trace, and a public ledger lets anyone check that an entry existed at a given time. Only the hash leaves SmartStamp, so prices and owners stay private. The catch is timing: OriginStamp batches hashes before writing them to the blockchain, so an entry cannot be proven publicly until its batch is confirmed.
-        </p>
-        <p class="section-body">
-          A record has five parts: ownership history (acquisition method, price, verified status), exhibition appearances, publications, appraisals in any currency, and condition reports with photo attachments. Every addition goes into the artwork's hash trail with a timestamp.
+          Provenance is only worth something if no one, SmartStamp included, can change it without leaving a trace. A record has five parts: ownership history (acquisition method, price, verified status), exhibition appearances, publications, appraisals in any currency, and condition reports with photo attachments. Each addition goes into the artwork's SHA-256 hash trail with a timestamp.
         </p>
       </div>
       <div class="screenshot-full" style="margin-bottom:16px">
@@ -537,9 +592,13 @@
     <div class="container">
       <div class="feature-text">
         <h2 class="section-title">Document generation and signing</h2>
-        <p class="section-body">
-          Signing is built into SmartStamp, and the person signing just opens a link. Buyers, lenders and museums often deal with a business once, and asking them to open an account would hold up the paperwork. A link is a weaker identity check than a login, which is why every signing event is written into the hash trail.
-        </p>
+        <div class="decision-box">
+          <div class="db-decision"><div class="db-k"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15V8M8 8 3.5 3.5M8 8l4.5-4.5M3.5 3.5v3M3.5 3.5h3M12.5 3.5v3M12.5 3.5h-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Decision</div><div class="db-text">Signing is built into SmartStamp, and the person signing just opens a link.</div></div>
+          <dl class="db-tradeoff">
+            <div class="db-gain"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gained</dt><dd>Buyers, lenders and museums can sign without creating an account for a business they may deal with once.</dd></div>
+            <div class="db-cost"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gave up</dt><dd>A link proves less about the signer than a login does, which is why every signing event goes into the hash trail.</dd></div>
+          </dl>
+        </div>
         <p class="section-body">
           SmartStamp generates 13 document types for artworks and 6 for the business itself, all from branded HTML templates. Content stays editable until it is locked, and each document moves from draft to pending to signed.
         </p>
@@ -565,11 +624,24 @@
     <div class="container">
       <div class="feature-text">
         <h2 class="section-title">Collection integrity dashboard</h2>
+        <div class="decision-box">
+          <div class="db-decision"><div class="db-k"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15V8M8 8 3.5 3.5M8 8l4.5-4.5M3.5 3.5v3M3.5 3.5h3M12.5 3.5v3M12.5 3.5h-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Decision</div><div class="db-text">The North Star is the number of works verified each month, with each work counted once.</div></div>
+          <dl class="db-tradeoff">
+            <div class="db-gain"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gained</dt><dd>The number moves when a fingerprint does its job for a customer, and it moves before renewals do.</dd></div>
+            <div class="db-cost"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gave up</dt><dd>Verifications follow sales, loans and consignments, so the monthly figure is lumpy and slow to react. The input metrics give the team a weekly signal.</dd></div>
+          </dl>
+        </div>
+        <figure class="metric-tree">
+          <div class="mt-star"><span class="mt-k">North Star</span><strong>Works verified per month</strong><span class="mt-d">Each work counted once</span></div>
+          <ul class="mt-inputs">
+            <li><strong>Fingerprint coverage</strong><span>Share of each collection registered</span></li>
+            <li><strong>Days to first verification</strong><span>From registration to the first check</span></li>
+            <li><strong>Accounts verifying weekly</strong><span>Customers running at least one check</span></li>
+          </ul>
+          <figcaption>Inputs the team tracks weekly in PostHog</figcaption>
+        </figure>
         <p class="section-body">
-          The North Star is the number of works verified each month, with each work counted once so repeat scans don't inflate it. A verification is the moment a fingerprint does its job for the customer, which makes it an early sign of whether they will renew and register more works. A running total of registered works would only look back at onboarding that already happened. The customer dashboard leads with the input each customer controls, fingerprint coverage of their collection, since a work has to be registered before anyone can verify it.
-        </p>
-        <p class="section-body">
-          Below the coverage bar are a breakdown of where works came from (CSV, mobile app or manual entry), a summary of the documents vault and a recent activity feed.
+          A running total of registered works would only look back at onboarding that already happened, and repeat scans of the same work would inflate a raw count of checks. The customer dashboard leads with one of the inputs, fingerprint coverage, because a work has to be registered before anyone can verify it. Below the coverage bar sit a breakdown of where works came from (CSV, mobile app or manual entry), a summary of the documents vault and a recent activity feed.
         </p>
       </div>
       <div class="screenshot-full" style="margin-bottom:16px">
