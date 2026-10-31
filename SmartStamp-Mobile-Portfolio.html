@@ -656,7 +656,7 @@ footer { background: var(--dark); padding: 56px 80px; }
           <div class="db-cost"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gave up</dt><dd>A single total hides who is driving it, so the team splits active accounts by type.</dd></div>
         </dl>
       </div>
-      <p>The app's inputs follow its own flow: a user gets a verified profile through a one-off identity check, verifies works and, when one changes hands, transfers it. Each step is tracked with app events in PostHog and reviewed every week, so a drop at any point shows up before it reaches the North Star. Session replays of selected journeys then show where people hesitate or give up, which the numbers alone can't. Health metrics watch the trade-offs behind the app's decisions: how phone checks compare with the microscope, how transfers settle, and how stable the app is on each platform.</p>
+      <p>The app's inputs follow its own flow: a user gets a verified profile through a one-off identity check, verifies works and, when one changes hands, transfers it. Each step is tracked with app events in PostHog and reviewed every week, so a drop at any point shows up before it reaches the North Star. Session replays of selected journeys then show where people hesitate or give up, which the numbers alone can't. Health metrics watch the trade-offs behind the app's decisions: how phone checks compare with the microscope, and how stable the app is on each platform.</p>
     </div>
     <table class="kpi-table">
       <caption class="visually-hidden">What the team tracks in the app, how each metric is measured and why it matters</caption>
@@ -693,16 +693,6 @@ footer { background: var(--dark); padding: 56px 80px; }
           <td data-label="Metric"><span class="kpi-name">Phone match rate</span><span class="kpi-role">Health</span></td>
           <td data-label="How it is measured">Share of phone checks that reach a confident match, compared with checks made with a second microscope.</td>
           <td data-label="Why it matters">Phone checks are less precise, and this shows how big the gap is in practice.</td>
-        </tr>
-        <tr>
-          <td data-label="Metric"><span class="kpi-name">Transfer undo rate</span><span class="kpi-role">Health</span></td>
-          <td data-label="How it is measured">Share of transfers the sender undoes within the 14-day window.</td>
-          <td data-label="Why it matters">A rising rate means transfers are going to the wrong person or being sent before a deal is closed.</td>
-        </tr>
-        <tr>
-          <td data-label="Metric"><span class="kpi-name">Time to acceptance</span><span class="kpi-role">Health</span></td>
-          <td data-label="How it is measured">Median time from sending a transfer to the recipient accepting it.</td>
-          <td data-label="Why it matters">Ownership stays pending until the recipient accepts, so long waits leave records unsettled.</td>
         </tr>
         <tr>
           <td data-label="Metric"><span class="kpi-name">Crash-free sessions</span><span class="kpi-role">Health</span></td>
