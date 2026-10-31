@@ -338,6 +338,8 @@ nav {
 .kpi-table td:first-child { width: 26%; }
 .kpi-table td:nth-child(2) { width: 34%; }
 .kpi-ns td { background: rgba(30,84,89,0.07); }
+.kpi-role-ns { display: flex; align-items: center; gap: 6px; }
+.kpi-role-ns svg { width: 16px; height: 16px; flex: none; }
 .kpi-name { display: block; font-weight: 600; }
 .kpi-role { display: block; margin-top: 4px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--teal); }
 @media (max-width: 700px) {
@@ -663,7 +665,7 @@ footer { background: var(--dark); padding: 56px 80px; }
       </thead>
       <tbody>
         <tr class="kpi-ns">
-          <td data-label="Metric"><span class="kpi-name">Works verified per month</span><span class="kpi-role">North Star</span></td>
+          <td data-label="Metric"><span class="kpi-name">Works verified per month</span><span class="kpi-role kpi-role-ns"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.4l1.95 4.1 4.5.55-3.3 3.1.86 4.45L8 11.4l-4.01 2.2.86-4.45-3.3-3.1 4.5-.55z" fill="currentColor"/></svg>North Star</span></td>
           <td data-label="How it is measured">Unique works with at least one completed verification in the calendar month, counted across the app and the web platform.</td>
           <td data-label="Why it matters">Verification is the app's main job, so the app moves the North Star directly.</td>
         </tr>
