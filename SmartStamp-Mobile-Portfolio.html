@@ -530,7 +530,7 @@ footer { background: var(--dark); padding: 56px 80px; }
 <section class="overview" id="overview">
   <div class="overview-inner">
     <h2>Overview</h2>
-    <p class="overview-body">The app came first. Usage data then showed that galleries and auction houses, not individual collectors, were driving adoption, so the focus moved to the web platform and the app's main job became verification. Most works are now registered under a microscope, and the app guides the user through capturing the registered details again and checks them against the fingerprint on record. Each work has a digital passport in the app with its SmartStamp ID, ownership record, surface images and documents. When a work changes hands, the current owner transfers it in the app, and the record updates immediately on the web platform.</p>
+    <p class="overview-body">The app came first. Usage data then showed that galleries and auction houses, not individual collectors, were driving adoption, so the focus moved to the web platform and the app's main job became verification. Most works are now registered under a microscope, and the app guides the user through capturing the registered details again and checks them against the fingerprint on record. Each work has a digital passport in the app with its SmartStamp ID, ownership record, surface images and documents. When a work changes hands, the current owner transfers it in the app, and once the recipient accepts, the record updates on the web platform.</p>
   </div>
 </section>
 
@@ -613,13 +613,13 @@ footer { background: var(--dark); padding: 56px 80px; }
     <div class="feature-text">
       <h2>Ownership transfer</h2>
       <div class="decision-box">
-        <div class="db-decision"><div class="db-k"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15V8M8 8 3.5 3.5M8 8l4.5-4.5M3.5 3.5v3M3.5 3.5h3M12.5 3.5v3M12.5 3.5h-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Decision</div><div class="db-text">Transfers are final, because nobody should be able to undo a change of ownership on their own.</div></div>
+        <div class="db-decision"><div class="db-k"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15V8M8 8 3.5 3.5M8 8l4.5-4.5M3.5 3.5v3M3.5 3.5h3M12.5 3.5v3M12.5 3.5h-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Decision</div><div class="db-text">A transfer becomes final only when the recipient accepts it. Until then, the sender can undo it within 14 days.</div></div>
         <dl class="db-tradeoff">
-          <div class="db-gain"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gained</dt><dd>The owner of record holds even if one side changes their mind.</dd></div>
-          <div class="db-cost"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gave up</dt><dd>There is no undo. A mistaken transfer can only be fixed by the new owner sending the work back.</dd></div>
+          <div class="db-gain"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gained</dt><dd>Once accepted, a change of ownership can't be reversed by one side alone, and a transfer sent by mistake can still be pulled back.</dd></div>
+          <div class="db-cost"><dt><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Gave up</dt><dd>Ownership stays pending until the recipient accepts. After that, a mistake can only be fixed by the new owner sending the work back.</dd></div>
         </dl>
       </div>
-      <p>The current owner enters the recipient's email address, gets a last warning that the transfer cannot be undone, and confirms. The digital passport updates at once, both parties receive an email with the transfer record, and the earlier ownership history stays in place.</p>
+      <p>The current owner enters the recipient's email address and confirms. The recipient is notified by email, and once they accept, the digital passport updates, both parties receive the transfer record, and the earlier ownership history stays in place.</p>
     </div>
     <div class="feature-phones">
       <div class="iphone-frame">
@@ -678,7 +678,7 @@ footer { background: var(--dark); padding: 56px 80px; }
           <li><strong>KYC completion</strong><span>Verified profiles, and where people drop out</span></li>
           <li><strong>Verification completion</strong><span>Started verifications that reach a result</span></li>
           <li><strong>Time to verify</strong><span>From scan to result on screen</span></li>
-          <li><strong>Transfers per month</strong><span>Ownership transfers completed in the app</span></li>
+          <li><strong>Transfers per month</strong><span>Transfers accepted by the recipient</span></li>
         </ul>
         <figcaption>Inputs the team tracks weekly in PostHog</figcaption>
       </figure>
@@ -710,7 +710,7 @@ footer { background: var(--dark); padding: 56px 80px; }
         </tr>
         <tr>
           <td data-label="Metric"><span class="kpi-name">Transfers per month</span><span class="kpi-role">Input</span></td>
-          <td data-label="How it is measured">Ownership transfers confirmed in the app each month.</td>
+          <td data-label="How it is measured">Ownership transfers accepted by the recipient each month.</td>
           <td data-label="Why it matters">Works are usually checked when they change hands, so transfers and verifications rise together. A fall in transfers is an early warning.</td>
         </tr>
         <tr>
