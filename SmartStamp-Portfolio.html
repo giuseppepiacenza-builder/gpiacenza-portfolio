@@ -389,7 +389,7 @@
 <section class="hero" id="hero">
   <div class="hero-text">
     <h1 class="hero-title">SmartStamp Web</h1>
-    <p class="hero-body">SmartStamp is the <strong>integrity layer for physical artworks and collectibles</strong>, built for the businesses that handle them. The web platform keeps each piece's fingerprint, provenance record and documents in one place, on top of the tools each business already uses.</p>
+    <p class="hero-body">The web platform is where businesses that handle <strong>artworks and collectibles</strong> register each piece, verify it and keep its <strong>provenance and documents</strong> in one place.</p>
   </div>
   <figure class="hero-reel">
     <div class="hero-reel-media">
@@ -460,12 +460,12 @@
     </dl>
     <h3 class="role-subtitle">Decisions</h3>
     <ul class="role-list">
-      <li>Repositioned the product from <strong>mobile-first to web-first</strong> once usage data showed that galleries and auctioneers were the ones adopting it.</li>
-      <li>Prototyped the web platform hands-on with <strong>Claude Code and Figma</strong>, so engineering built from a <strong>working specification</strong>. The screens on this page come from that prototype.</li>
-      <li>Defined the <strong>North Star metric</strong> and its supporting KPIs, and built the <strong>PostHog dashboard</strong> the team uses to track them.</li>
+      <li>Repositioned the product from <strong>mobile-first to web-first</strong> when it became clear that galleries and auctioneers were the ones adopting it.</li>
+      <li>Prototyped the web platform myself in <strong>Claude Code and Figma</strong> and handed it to engineering as the <strong>spec</strong>. The screens on this page come from that prototype.</li>
+      <li>Set the <strong>North Star</strong> and the metrics under it, described in <a class="text-link" href="#metrics">Metrics and KPIs</a>.</li>
     </ul>
     <h3 class="role-subtitle">Outcome</h3>
-    <p class="role-outcome"><strong>Fingerprint registration went live</strong>, gallery partnerships were signed and pilot talks opened with <strong>tier-1 Swiss and global auction houses</strong>. The web platform is live as <strong>SmartStamp Vault</strong>.</p>
+    <p class="role-outcome"><strong>Fingerprint registration went live</strong>, galleries signed on as partners, and <strong>tier-1 Swiss and global auction houses</strong> entered pilot talks. The web platform is live as <strong>SmartStamp Vault</strong>.</p>
   </div>
 </section>
 
@@ -485,22 +485,22 @@
           </dl>
         </div>
         <p class="section-body">
-          The microscopes sit on gantries and capture close-up images of selected surface details such as brushwork, gilding and engraving. Together these images form the fingerprint of the piece. At verification, <strong>each matched detail returns a score</strong>. Verified works carry the <strong>Integrity Stamp</strong> across the web app, and unverified ones show a muted outline badge.
+          Each capture is a close-up of a selected surface detail, such as brushwork, gilding or engraving, and together they form the piece's fingerprint. At verification, <strong>each matched detail returns a score</strong>. Verified works carry the <strong>Integrity Stamp</strong> across the web app, and unverified ones show a muted outline badge.
         </p>
       </div>
       <div class="carousel" aria-roledescription="carousel" aria-label="Microscope registration">
         <div class="carousel-track">
           <figure class="carousel-slide" aria-roledescription="slide">
             <img src="portfolio-screenshots/registration-metalwork.jpg" alt="Gantry-mounted microscope over an engraved metal object, beside the captured detail of an engraved face" width="1800" height="940" loading="lazy" decoding="async" />
-            <figcaption class="screenshot-caption">Engraved metalwork. Microscope on the gantry, left; captured surface detail, right.</figcaption>
+            <figcaption class="screenshot-caption">Engraved metalwork and the captured surface detail</figcaption>
           </figure>
           <figure class="carousel-slide" aria-roledescription="slide">
             <img src="portfolio-screenshots/registration-gilded-panel.jpg" alt="Gantry-mounted microscope over a gilded panel painting, beside the captured detail of a punched gold halo" width="1800" height="940" loading="lazy" decoding="async" />
-            <figcaption class="screenshot-caption">Gilded panel painting. Microscope on the gantry, left; captured surface detail, right.</figcaption>
+            <figcaption class="screenshot-caption">Gilded panel painting and its punched gold halo</figcaption>
           </figure>
           <figure class="carousel-slide" aria-roledescription="slide">
             <img src="portfolio-screenshots/registration-portrait.jpg" alt="Microscope positioned over a painted portrait, beside the captured detail of the eye" width="1800" height="940" loading="lazy" decoding="async" />
-            <figcaption class="screenshot-caption">Painted portrait. Microscope positioned on the face, left; captured surface detail, right.</figcaption>
+            <figcaption class="screenshot-caption">Painted portrait and the captured detail of the eye</figcaption>
           </figure>
         </div>
         <div class="carousel-controls">
@@ -675,7 +675,7 @@
         </dl>
       </div>
       <p class="section-body">
-        A running total of registered works would only record onboarding that already happened, and a raw count of scans would reward checking the same work twice. The North Star <strong>counts each verified work once per month</strong> instead. It moves slowly, so <strong>four input metrics</strong> sit under it and give the team something to act on every week. <strong>Health metrics</strong> check that the trade-off behind each feature stays acceptable, and the <strong>renewal rate</strong> is the outcome the North Star should predict. The product metrics come from events in PostHog and are reviewed every week. When a number moves and the events don't explain why, <strong>session replays</strong> of selected journeys show where people hesitate or give up.
+        A running total of registered works would only record onboarding that already happened, and a raw count of scans would reward checking the same work twice. The North Star <strong>counts each verified work once per month</strong> instead. <strong>Four input metrics</strong> sit under it. <strong>Health metrics</strong> check that the trade-off behind each feature stays acceptable, and the <strong>renewal rate</strong> is the outcome the North Star should predict. The product metrics come from events in PostHog and are reviewed every week. When a number moves and the events don't explain why, <strong>session replays</strong> of selected journeys show where people hesitate or give up.
       </p>
     </div>
     <table class="kpi-table">
@@ -717,7 +717,7 @@
         <tr>
           <td data-label="Metric"><span class="kpi-name">Works registered per visit</span><span class="kpi-role">Health</span></td>
           <td data-label="How it is measured">Works fingerprinted during each onboarding visit.</td>
-          <td data-label="Why it matters">Registration needs the microscope setup on site, so this is the cost side of bringing in a collection.</td>
+          <td data-label="Why it matters">This shows how much each onboarding visit brings in.</td>
         </tr>
         <tr>
           <td data-label="Metric"><span class="kpi-name">Clean import rate</span><span class="kpi-role">Health</span></td>
@@ -727,7 +727,7 @@
         <tr>
           <td data-label="Metric"><span class="kpi-name">Account renewal rate</span><span class="kpi-role">Outcome</span></td>
           <td data-label="How it is measured">Share of customer accounts that renew when their term ends.</td>
-          <td data-label="Why it matters">This is the result the North Star should predict. It changes too slowly to steer by week to week.</td>
+          <td data-label="Why it matters">It changes too slowly to steer by week to week, which is why it isn't the North Star.</td>
         </tr>
       </tbody>
     </table>
