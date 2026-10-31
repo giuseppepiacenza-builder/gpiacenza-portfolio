@@ -442,6 +442,94 @@ a { color: inherit; text-decoration: none; }
   color: var(--text-muted);
 }
 
+/* ── How I planned the work: rolling roadmap, monthly PI, weekly sprints, feedback loop ── */
+.cadence { margin-bottom: 8px; }
+.cadence-intro { font-size: 14px; line-height: 1.75; color: var(--text-muted); max-width: 76ch; margin-bottom: 28px; }
+.cad { position: relative; margin: 0; padding-left: 44px; color: var(--accent); }
+.cad-tier { position: relative; background: #fff; border: 1px solid var(--border-med); padding: 18px 20px 20px; color: var(--text); }
+.cad-k { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; font-family: var(--font-display); font-size: 15px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 14px; }
+.cad-k span { font-family: var(--font-body); font-size: 12px; font-weight: 500; letter-spacing: 0; color: var(--text-faint); }
+.cad b { display: block; font-size: 13px; font-weight: 600; }
+.cad-tier span:not(.cad-diamond):not(.cad-rail-label) { display: block; font-size: 12px; line-height: 1.45; color: var(--text-muted); margin-top: 2px; }
+.cad-k span { display: inline !important; margin-top: 0 !important; }
+
+.cad-months { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.cad-months li { padding: 10px 12px; font-size: 13px; font-weight: 600; background: var(--bg-0); border: 1px solid var(--border-med); }
+.cad-months li.is-now { background: var(--accent); border-color: var(--accent); color: #fff; }
+.cad-months li.is-now span { color: rgba(255,255,255,0.85) !important; }
+.cad-months li.is-next { background: #fff; border-style: dashed; border-color: rgba(32,39,39,0.32); }
+
+/* Vertical links between tiers: month 1 opens into the PI, the demo drops into the update. */
+.cad-link { position: relative; height: 44px; }
+.cad-down { position: absolute; top: 0; width: 10px; height: 44px; transform: translateX(-50%); }
+.cad-link span { position: absolute; top: 50%; transform: translateY(-50%); font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+.cad-link-1 .cad-down { left: calc(21px + (100% - 66px) / 8); }
+.cad-link-1 span { left: calc(35px + (100% - 66px) / 8); }
+.cad-link-2 .cad-down { right: 129px; transform: translateX(50%); }
+.cad-link-2 span { right: 145px; }
+
+.cad-pi-row { display: grid; grid-template-columns: 1fr 28px auto 28px 216px; align-items: center; gap: 0 10px; }
+.cad-right { width: 28px; height: 10px; }
+.cad-left { transform: scaleX(-1); }
+.cad-weeks { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.cad-week { padding: 10px 10px 8px; background: var(--bg-0); border: 1px solid var(--border-med); }
+.cad-week b { font-size: 12px; }
+.cad-cer { list-style: none; position: relative; display: flex; justify-content: space-between; margin-top: 10px; }
+.cad-cer::before { content: ''; position: absolute; left: 12px; right: 12px; top: 4px; border-top: 1px solid rgba(30,84,89,0.35); }
+.cad-cer li { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 11px; color: var(--text-muted); }
+.cad-cer li::before { content: ''; width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--accent); background: #fff; }
+.cad-cer li:first-child::before, .cad-cer li:last-child::before { background: var(--accent); }
+.cad-milestone { display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--text); }
+.cad-diamond { width: 13px; height: 13px; background: var(--accent); transform: rotate(45deg); }
+.cad-demo { background: var(--bg-dark); color: #fff; padding: 12px 14px; }
+.cad-demo span { color: rgba(255,255,255,0.72) !important; }
+
+.cad-update-row { display: grid; grid-template-columns: 216px 28px 1fr 1fr 216px; align-items: stretch; gap: 0 10px; }
+.cad-update-row > .cad-left { align-self: center; }
+.cad-out { background: var(--accent); color: #fff; padding: 12px 14px; }
+.cad-out span { color: rgba(255,255,255,0.85) !important; }
+.cad-chip { background: var(--bg-0); border: 1px solid var(--border-med); padding: 12px 14px; }
+.cad-chip + .cad-chip { margin-left: 0; }
+.cad-update-row { column-gap: 10px; }
+.cad-return { display: none; }
+
+/* The feedback rail: from the update, up the left side, back into the roadmap. */
+.cad-roadmap::before, .cad-link::before, .cad-pi::before, .cad-update::before {
+  content: ''; position: absolute; left: -26px; border-left: 1.5px solid currentColor; color: var(--accent);
+}
+.cad-roadmap::before { top: 50%; bottom: -1px; }
+.cad-link::before { top: 0; bottom: 0; left: -27px; } /* links have no border, tiers do: keep the rail on one x */
+.cad-pi::before { top: -1px; bottom: -1px; }
+.cad-update::before { top: -1px; height: calc(50% + 1px); }
+.cad-update::after { content: ''; position: absolute; left: -26px; width: 26px; top: 50%; border-top: 1.5px solid var(--accent); }
+.cad-in-arrow { position: absolute; left: -26px; top: calc(50% - 5px); width: 25px; height: 10px; color: var(--accent); }
+.cad-rail-label {
+  position: absolute; left: -44px; top: 50%; transform: translateY(-50%) rotate(180deg);
+  writing-mode: vertical-rl; font-size: 11px; font-weight: 600; letter-spacing: 0.02em; color: var(--accent); white-space: nowrap;
+}
+
+@media (max-width: 960px) {
+  .cad { padding-left: 0; }
+  .cad-roadmap::before, .cad-link::before, .cad-pi::before, .cad-update::before, .cad-update::after,
+  .cad-in-arrow, .cad-rail-label { display: none; }
+  .cad-link-1 .cad-down, .cad-link-2 .cad-down { left: 50%; right: auto; transform: translateX(-50%); }
+  .cad-link-1 span, .cad-link-2 span { left: calc(50% + 14px); right: auto; }
+  .cad-pi-row { grid-template-columns: 1fr; gap: 10px 0; justify-items: stretch; }
+  .cad-pi-row > .cad-right { justify-self: center; transform: rotate(90deg); }
+  .cad-weeks { grid-template-columns: repeat(2, 1fr); }
+  .cad-milestone { flex-direction: row; justify-content: center; }
+  .cad-update-row { grid-template-columns: 1fr; gap: 8px 0; }
+  .cad-update-row > .cad-left { justify-self: center; transform: rotate(90deg); }
+  .cad-chip-demo { order: 1; } .cad-chip-voc { order: 2; } .cad-chip-effort { order: 3; }
+  .cad-update-row > .cad-left { order: 4; } .cad-out { order: 5; }
+  .cad-return { display: flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 12px; font-weight: 600; color: var(--accent); }
+  .cad-return svg { width: 16px; height: 16px; flex: none; }
+}
+@media (max-width: 600px) {
+  .cad-months { grid-template-columns: repeat(2, 1fr); }
+  .cad-tier { padding: 16px 14px 16px; }
+}
+
 /* ─────────────────────────────────────────
    Education
 ───────────────────────────────────────── */
@@ -925,6 +1013,65 @@ footer {
       </div>
     </div>
 
+
+    <div class="cadence reveal">
+      <h3 class="context-cell-lbl">How I planned the work</h3>
+      <p class="cadence-intro">One rolling roadmap covered the next four months. Each month ran as a program increment (PI) with its own milestone, split into weekly sprints, and every sprint had three ceremonies: a start to set the objectives, a mid-sprint check and a finish to review the work. The month closed with a demo to the CEO, the board and the heads of department. What came out of the demo, together with the voice of the customer and the development effort still needed, decided how the roadmap rolled forward.</p>
+
+      <figure class="cad" aria-label="Planning cadence: a rolling four-month roadmap, monthly increments of four weekly sprints ending in a demo, and a roadmap update that feeds the next month">
+        <div class="cad-tier cad-roadmap">
+          <svg class="cad-in-arrow" viewBox="0 0 24 10" aria-hidden="true"><path d="M0 5h21M17.5 1.5 21 5l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="cad-k">Rolling roadmap <span>4 months</span></div>
+          <ol class="cad-months">
+            <li class="is-now">Month 1<span>In delivery</span></li>
+            <li>Month 2<span>Planned</span></li>
+            <li>Month 3<span>Planned</span></li>
+            <li class="is-next">Month 4<span>Added as month 1 closes</span></li>
+          </ol>
+        </div>
+
+        <div class="cad-link cad-link-1"><svg class="cad-down" viewBox="0 0 10 44" aria-hidden="true"><path d="M5 0v41M1.5 37.5 5 41l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Each month runs as one PI</span></div>
+
+        <div class="cad-tier cad-pi">
+          <span class="cad-rail-label" aria-hidden="true">Feeds the next month</span>
+          <div class="cad-k">Monthly PI <span>4 weekly sprints, 3 ceremonies each</span></div>
+          <div class="cad-pi-row">
+            <ol class="cad-weeks">
+            <li class="cad-week"><b>Week 1</b>
+              <ul class="cad-cer"><li>Start</li><li>Mid</li><li>Finish</li></ul>
+            </li>
+            <li class="cad-week"><b>Week 2</b>
+              <ul class="cad-cer"><li>Start</li><li>Mid</li><li>Finish</li></ul>
+            </li>
+            <li class="cad-week"><b>Week 3</b>
+              <ul class="cad-cer"><li>Start</li><li>Mid</li><li>Finish</li></ul>
+            </li>
+            <li class="cad-week"><b>Week 4</b>
+              <ul class="cad-cer"><li>Start</li><li>Mid</li><li>Finish</li></ul>
+            </li>
+            </ol>
+            <svg class="cad-right" viewBox="0 0 28 10" aria-hidden="true"><path d="M1 5h25M22.5 1.5 26 5l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="cad-milestone"><span class="cad-diamond" aria-hidden="true"></span>Milestone</div>
+            <svg class="cad-right" viewBox="0 0 28 10" aria-hidden="true"><path d="M1 5h25M22.5 1.5 26 5l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="cad-demo"><b>Monthly demo</b><span>CEO, board and heads of department</span></div>
+          </div>
+        </div>
+
+        <div class="cad-link cad-link-2"><svg class="cad-down" viewBox="0 0 10 44" aria-hidden="true"><path d="M5 0v41M1.5 37.5 5 41l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Outcomes feed the update</span></div>
+
+        <div class="cad-tier cad-update">
+          <div class="cad-k">Roadmap update</div>
+          <div class="cad-update-row">
+            <div class="cad-out"><b>Roadmap re-planned</b><span>and rolled forward one month</span></div>
+            <svg class="cad-right cad-left" viewBox="0 0 28 10" aria-hidden="true"><path d="M1 5h25M22.5 1.5 26 5l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="cad-chip cad-chip-effort"><b>Development effort</b><span>Engineering estimates for what comes next</span></div>
+            <div class="cad-chip cad-chip-voc"><b>Voice of the customer</b><span>Interviews and customer feedback</span></div>
+            <div class="cad-chip cad-chip-demo"><b>Demo outcomes</b><span>Decisions from the monthly demo</span></div>
+          </div>
+          <p class="cad-return"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 13V7a3 3 0 0 0-3-3H3M6 1 3 4l3 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Feeds the next roadmap update</p>
+        </div>
+      </figure>
+    </div>
 
   </div>
 </section>
