@@ -475,6 +475,10 @@ a { color: inherit; text-decoration: none; }
 .cad-left { transform: scaleX(-1); }
 .cad-sprint { padding: 12px 14px; background: var(--bg-0); border: 1px solid var(--border-med); }
 .cad-sprint-h { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+/* Ceremonies run left to right inside the sprint box. */
+.cad-sprint .cad-cer { flex-direction: row; justify-content: space-between; margin: 12px 0 2px; padding: 0 2px; }
+.cad-sprint .cad-cer::before { left: 22px; right: 22px; top: 4px; bottom: auto; border-left: 0; border-top: 1px solid rgba(30,84,89,0.35); }
+.cad-sprint .cad-cer li { flex-direction: column; gap: 5px; }
 .cad-x { font-style: normal; font-size: 12px; font-weight: 600; color: var(--accent); background: rgba(30,84,89,0.1); padding: 1px 8px; border-radius: 9999px; }
 /* Each week's ceremonies run top to bottom as a small timeline. */
 .cad-cer { list-style: none; position: relative; display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
