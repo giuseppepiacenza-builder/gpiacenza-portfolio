@@ -473,9 +473,9 @@ a { color: inherit; text-decoration: none; }
 .cad-pi-row { display: grid; align-items: center; }
 .cad-right { width: 28px; height: 10px; }
 .cad-left { transform: scaleX(-1); }
-.cad-weeks { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
-.cad-week { padding: 10px 10px 8px; background: var(--bg-0); border: 1px solid var(--border-med); }
-.cad-week b { font-size: 12px; }
+.cad-sprint { padding: 12px 14px; background: var(--bg-0); border: 1px solid var(--border-med); }
+.cad-sprint-h { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.cad-x { font-style: normal; font-size: 12px; font-weight: 600; color: var(--accent); background: rgba(30,84,89,0.1); padding: 1px 8px; border-radius: 9999px; }
 /* Each week's ceremonies run top to bottom as a small timeline. */
 .cad-cer { list-style: none; position: relative; display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
 .cad-cer::before { content: ''; position: absolute; left: 4px; top: 9px; bottom: 9px; border-left: 1px solid rgba(30,84,89,0.35); }
@@ -510,6 +510,17 @@ a { color: inherit; text-decoration: none; }
 .cad-chip { background: var(--bg-0); border: 1px solid var(--border-med); padding: 12px 14px; }
 .cad-chip + .cad-chip { margin-left: 0; }
 .cad-return { display: none; }
+/* Phones: the diagram starts collapsed behind a toggle so the page stays short (only when scripts run). */
+.cad-toggle { display: none; }
+@media (max-width: 700px) {
+  .js .cad-toggle {
+    display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 44px; margin-bottom: 16px;
+    background: transparent; border: 1px solid var(--accent); color: var(--accent); font: 600 14px var(--font-body); cursor: pointer;
+  }
+  .cad-toggle svg { width: 16px; height: 16px; transition: transform 0.2s; }
+  .cad-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+  .js .cad.is-collapsed { display: none; }
+}
 
 /* Discovery runs a step ahead of delivery and hands its spec to the next PI. */
 .cad-disc-row { display: grid; margin-top: 16px; }
@@ -569,7 +580,6 @@ a { color: inherit; text-decoration: none; }
   .cad-link-1 span, .cad-link-2 span { left: calc(50% + 14px); right: auto; }
   .cad-pi-row { grid-template-columns: 1fr; gap: 10px 0; justify-items: stretch; }
   .cad-pi-row > .cad-right { justify-self: center; transform: rotate(90deg); }
-  .cad-weeks { grid-template-columns: repeat(2, 1fr); }
   .cad-milestone { justify-self: center; max-width: 240px; }
   .cad-chip-carry, .cad-chip-demo { grid-column: auto; }
   .cad-pi-plan { width: auto; }
@@ -1085,7 +1095,8 @@ footer {
       <h3 class="context-cell-lbl">How I planned the work</h3>
       <p class="cadence-intro">One rolling roadmap covered the next four months. Each month ran as a program increment (PI) that opened with PI planning, where the whole team agreed the milestone. The work was then split into weekly sprints, each with three ceremonies: sprint planning to set the objectives, a mid-sprint check-in, and a review and retrospective at the end. Every week ended in a release. In the first and third weeks it went to the dev environment and TestFlight for testing; in the second and fourth it went to the stores and the web, with the new app version submitted for store review on Thursday and published on Friday. A milestone only counted as reached when it met the definition of done, which set the quality bar, and anything only partly done was re-prioritised for the next PI or a later one. Either way, the month closed with a product demo and a metrics review with the CEO, the board and the heads of department, and the demo outcomes and the development effort still needed decided how the roadmap rolled forward. Alongside delivery, I ran discovery for the next or later PIs: I prototyped upcoming features in Claude Code and Figma, validated them with customers and handed the specs to engineering to estimate. The voice of the customer fed every stage the whole time, from interviews, app store reviews, sales and pilot conversations and usage data.</p>
 
-      <figure class="cad" aria-label="Planning cadence: a rolling four-month roadmap, monthly increments of four weekly sprints ending in a demo, and a roadmap update that feeds the next month">
+      <button class="cad-toggle" type="button" aria-expanded="false" aria-controls="cad"><span>Show the planning diagram</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <figure class="cad" id="cad" aria-label="Planning cadence: a rolling four-month roadmap, monthly increments of four weekly sprints ending in a demo, and a roadmap update that feeds the next month">
         <div class="cad-loop" aria-hidden="true"><span>Feeds the next month</span></div>
         <div class="cad-tier cad-roadmap">
           <div class="cad-k">Rolling roadmap</div>
@@ -1104,24 +1115,12 @@ footer {
           <div class="cad-pi-row">
             <div class="cad-pi-plan"><span class="cad-diamond is-open" aria-hidden="true"></span><b>PI planning</b><span>The whole team agrees the milestone</span></div>
             <svg class="cad-right" viewBox="0 0 28 10" aria-hidden="true"><path d="M1 5h25M22.5 1.5 26 5l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <ol class="cad-weeks">
-            <li class="cad-week"><b>Week 1</b>
+            <div class="cad-sprint">
+              <div class="cad-sprint-h"><b>Weekly sprint</b><em class="cad-x">×4</em></div>
               <ul class="cad-cer"><li class="is-plan">Planning</li><li>Check-in</li><li class="is-retro">Retro</li></ul>
-              <div class="cad-release"><b>Test release</b><span>Dev environment and TestFlight</span></div>
-            </li>
-            <li class="cad-week"><b>Week 2</b>
-              <ul class="cad-cer"><li class="is-plan">Planning</li><li>Check-in</li><li class="is-retro">Retro</li></ul>
-              <div class="cad-release"><b>Store release</b><span>Store review Thu, live Fri</span></div>
-            </li>
-            <li class="cad-week"><b>Week 3</b>
-              <ul class="cad-cer"><li class="is-plan">Planning</li><li>Check-in</li><li class="is-retro">Retro</li></ul>
-              <div class="cad-release"><b>Test release</b><span>Dev environment and TestFlight</span></div>
-            </li>
-            <li class="cad-week"><b>Week 4</b>
-              <ul class="cad-cer"><li class="is-plan">Planning</li><li>Check-in</li><li class="is-retro">Retro</li></ul>
-              <div class="cad-release"><b>Store release</b><span>Store review Thu, live Fri</span></div>
-            </li>
-            </ol>
+              <div class="cad-release"><b>Weeks 1 and 3: test release</b><span>Dev environment and TestFlight</span></div>
+              <div class="cad-release"><b>Weeks 2 and 4: store release</b><span>Store review Thu, live Fri</span></div>
+            </div>
             <svg class="cad-right" viewBox="0 0 28 10" aria-hidden="true"><path d="M1 5h25M22.5 1.5 26 5l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <div class="cad-milestone"><span class="cad-diamond" aria-hidden="true"></span>Milestone reached<em class="cad-dod">When it meets the definition of done</em></div>
             <svg class="cad-right" viewBox="0 0 28 10" aria-hidden="true"><path d="M1 5h25M22.5 1.5 26 5l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1516,6 +1515,16 @@ footer {
   addEventListener('resize', place, { passive: true });
   addEventListener('load', place);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+  var toggle = document.querySelector('.cad-toggle');
+  if (toggle) {
+    cad.classList.add('is-collapsed');
+    toggle.addEventListener('click', function () {
+      var open = cad.classList.toggle('is-collapsed') === false;
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.querySelector('span').textContent = open ? 'Hide the planning diagram' : 'Show the planning diagram';
+      if (open) place();
+    });
+  }
 })();
 </script>
 </body>
