@@ -450,7 +450,7 @@ a { color: inherit; text-decoration: none; }
 .cad-k { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; font-family: var(--font-display); font-size: 15px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 14px; }
 .cad-k span { font-family: var(--font-body); font-size: 12px; font-weight: 500; letter-spacing: 0; color: var(--text-faint); }
 .cad b { display: block; font-size: 13px; font-weight: 600; }
-.cad-tier span:not(.cad-diamond):not(.cad-rail-label) { display: block; font-size: 12px; line-height: 1.45; color: var(--text-muted); margin-top: 2px; }
+.cad-tier span:not(.cad-diamond) { display: block; font-size: 12px; line-height: 1.45; color: var(--text-muted); margin-top: 2px; }
 .cad-k span { display: inline !important; margin-top: 0 !important; }
 
 .cad-months { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
@@ -468,19 +468,23 @@ a { color: inherit; text-decoration: none; }
 .cad-link-2 .cad-down { right: 129px; transform: translateX(50%); }
 .cad-link-2 span { right: 145px; }
 
-.cad-pi-row { display: grid; grid-template-columns: 1fr 28px auto 28px 216px; align-items: center; gap: 0 10px; }
+.cad-pi-row { display: grid; grid-template-columns: auto 28px 1fr 28px auto 28px 216px; align-items: center; gap: 0 10px; }
 .cad-right { width: 28px; height: 10px; }
 .cad-left { transform: scaleX(-1); }
 .cad-weeks { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
 .cad-week { padding: 10px 10px 8px; background: var(--bg-0); border: 1px solid var(--border-med); }
 .cad-week b { font-size: 12px; }
-.cad-cer { list-style: none; position: relative; display: flex; justify-content: space-between; margin-top: 10px; }
-.cad-cer::before { content: ''; position: absolute; left: 12px; right: 12px; top: 4px; border-top: 1px solid rgba(30,84,89,0.35); }
-.cad-cer li { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 11px; color: var(--text-muted); }
+/* Each week's ceremonies run top to bottom as a small timeline. */
+.cad-cer { list-style: none; position: relative; display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+.cad-cer::before { content: ''; position: absolute; left: 4px; top: 9px; bottom: 9px; border-left: 1px solid rgba(30,84,89,0.35); }
+.cad-cer li { position: relative; display: flex; align-items: center; gap: 8px; font-size: 12px; line-height: 1.5; color: var(--text-muted); }
+.cad-cer li::before { flex: none; }
 .cad-cer li::before { content: ''; width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--accent); background: #fff; }
 .cad-cer li:first-child::before, .cad-cer li:last-child::before { background: var(--accent); }
-.cad-milestone { display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--text); }
-.cad-diamond { width: 13px; height: 13px; background: var(--accent); transform: rotate(45deg); }
+.cad-milestone { display: flex; flex-direction: column; align-items: center; gap: 8px; max-width: 72px; text-align: center; font-size: 12px; line-height: 1.35; font-weight: 600; color: var(--text); }
+.cad-diamond { flex: none; width: 13px; height: 13px; background: var(--accent); border: 1.5px solid var(--accent); transform: rotate(45deg); }
+/* Set at the start of the PI (outlined), reached at the end (filled). */
+.cad-diamond.is-open { background: #fff; }
 .cad-demo { background: var(--bg-dark); color: #fff; padding: 12px 14px; }
 .cad-demo span { color: rgba(255,255,255,0.72) !important; }
 
@@ -493,31 +497,28 @@ a { color: inherit; text-decoration: none; }
 .cad-update-row { column-gap: 10px; }
 .cad-return { display: none; }
 
-/* The feedback rail: from the update, up the left side, back into the roadmap. */
-.cad-roadmap::before, .cad-link::before, .cad-pi::before, .cad-update::before {
-  content: ''; position: absolute; left: -26px; border-left: 1.5px solid currentColor; color: var(--accent);
+/* The feedback loop: one bracket from the roadmap update, up the left side and back into the roadmap.
+   A script sets its top and height from the two tiers it joins, so it lines up at any width. */
+.cad-loop { display: none; position: absolute; left: 14px; width: 30px; border: 1.5px solid var(--accent); border-right: 0; pointer-events: none; }
+.cad-loop.is-placed { display: block; }
+.cad-loop::after {
+  content: ''; position: absolute; right: 1px; top: -5.25px; width: 8px; height: 8px;
+  border-top: 1.5px solid var(--accent); border-right: 1.5px solid var(--accent); transform: rotate(45deg);
 }
-.cad-roadmap::before { top: 50%; bottom: -1px; }
-.cad-link::before { top: 0; bottom: 0; left: -27px; } /* links have no border, tiers do: keep the rail on one x */
-.cad-pi::before { top: -1px; bottom: -1px; }
-.cad-update::before { top: -1px; height: calc(50% + 1px); }
-.cad-update::after { content: ''; position: absolute; left: -26px; width: 26px; top: 50%; border-top: 1.5px solid var(--accent); }
-.cad-in-arrow { position: absolute; left: -26px; top: calc(50% - 5px); width: 25px; height: 10px; color: var(--accent); }
-.cad-rail-label {
-  position: absolute; left: -44px; top: 50%; transform: translateY(-50%) rotate(180deg);
-  writing-mode: vertical-rl; font-size: 11px; font-weight: 600; letter-spacing: 0.02em; color: var(--accent); white-space: nowrap;
+.cad-loop span {
+  position: absolute; left: -0.75px; top: 50%; transform: translate(-50%, -50%) rotate(180deg);
+  writing-mode: vertical-rl; padding: 10px 0; background: var(--bg-0);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.02em; color: var(--accent); white-space: nowrap;
 }
-
 @media (max-width: 960px) {
   .cad { padding-left: 0; }
-  .cad-roadmap::before, .cad-link::before, .cad-pi::before, .cad-update::before, .cad-update::after,
-  .cad-in-arrow, .cad-rail-label { display: none; }
+  .cad-loop.is-placed { display: none; }
   .cad-link-1 .cad-down, .cad-link-2 .cad-down { left: 50%; right: auto; transform: translateX(-50%); }
   .cad-link-1 span, .cad-link-2 span { left: calc(50% + 14px); right: auto; }
   .cad-pi-row { grid-template-columns: 1fr; gap: 10px 0; justify-items: stretch; }
   .cad-pi-row > .cad-right { justify-self: center; transform: rotate(90deg); }
   .cad-weeks { grid-template-columns: repeat(2, 1fr); }
-  .cad-milestone { flex-direction: row; justify-content: center; }
+  .cad-milestone { flex-direction: row; justify-content: center; max-width: none; justify-self: center; }
   .cad-update-row { grid-template-columns: 1fr; gap: 8px 0; }
   .cad-update-row > .cad-left { justify-self: center; transform: rotate(90deg); }
   .cad-chip-demo { order: 1; } .cad-chip-voc { order: 2; } .cad-chip-effort { order: 3; }
@@ -1016,11 +1017,11 @@ footer {
 
     <div class="cadence reveal">
       <h3 class="context-cell-lbl">How I planned the work</h3>
-      <p class="cadence-intro">One rolling roadmap covered the next four months. Each month ran as a program increment (PI) with its own milestone, split into weekly sprints, and every sprint had three ceremonies: a start to set the objectives, a mid-sprint check and a finish to review the work. The month closed with a demo to the CEO, the board and the heads of department. What came out of the demo, together with the voice of the customer and the development effort still needed, decided how the roadmap rolled forward.</p>
+      <p class="cadence-intro">One rolling roadmap covered the next four months. Each month ran as a program increment (PI): its milestone was set at the start and had to be reached by the end, with the work split into weekly sprints. Every sprint had three ceremonies: sprint planning to set the objectives, a mid-sprint check-in, and a review and retrospective at the end. The month closed with a demo to the CEO, the board and the heads of department. What came out of the demo, together with the voice of the customer and the development effort still needed, decided how the roadmap rolled forward.</p>
 
       <figure class="cad" aria-label="Planning cadence: a rolling four-month roadmap, monthly increments of four weekly sprints ending in a demo, and a roadmap update that feeds the next month">
+        <div class="cad-loop" aria-hidden="true"><span>Feeds the next month</span></div>
         <div class="cad-tier cad-roadmap">
-          <svg class="cad-in-arrow" viewBox="0 0 24 10" aria-hidden="true"><path d="M0 5h21M17.5 1.5 21 5l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div class="cad-k">Rolling roadmap <span>4 months</span></div>
           <ol class="cad-months">
             <li class="is-now">Month 1<span>In delivery</span></li>
@@ -1033,25 +1034,26 @@ footer {
         <div class="cad-link cad-link-1"><svg class="cad-down" viewBox="0 0 10 44" aria-hidden="true"><path d="M5 0v41M1.5 37.5 5 41l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Each month runs as one PI</span></div>
 
         <div class="cad-tier cad-pi">
-          <span class="cad-rail-label" aria-hidden="true">Feeds the next month</span>
           <div class="cad-k">Monthly PI <span>4 weekly sprints, 3 ceremonies each</span></div>
           <div class="cad-pi-row">
+            <div class="cad-milestone cad-milestone-set"><span class="cad-diamond is-open" aria-hidden="true"></span>Milestone set</div>
+            <svg class="cad-right" viewBox="0 0 28 10" aria-hidden="true"><path d="M1 5h25M22.5 1.5 26 5l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <ol class="cad-weeks">
             <li class="cad-week"><b>Week 1</b>
-              <ul class="cad-cer"><li>Start</li><li>Mid</li><li>Finish</li></ul>
+              <ul class="cad-cer"><li>Planning</li><li>Check-in</li><li>Retro</li></ul>
             </li>
             <li class="cad-week"><b>Week 2</b>
-              <ul class="cad-cer"><li>Start</li><li>Mid</li><li>Finish</li></ul>
+              <ul class="cad-cer"><li>Planning</li><li>Check-in</li><li>Retro</li></ul>
             </li>
             <li class="cad-week"><b>Week 3</b>
-              <ul class="cad-cer"><li>Start</li><li>Mid</li><li>Finish</li></ul>
+              <ul class="cad-cer"><li>Planning</li><li>Check-in</li><li>Retro</li></ul>
             </li>
             <li class="cad-week"><b>Week 4</b>
-              <ul class="cad-cer"><li>Start</li><li>Mid</li><li>Finish</li></ul>
+              <ul class="cad-cer"><li>Planning</li><li>Check-in</li><li>Retro</li></ul>
             </li>
             </ol>
             <svg class="cad-right" viewBox="0 0 28 10" aria-hidden="true"><path d="M1 5h25M22.5 1.5 26 5l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div class="cad-milestone"><span class="cad-diamond" aria-hidden="true"></span>Milestone</div>
+            <div class="cad-milestone"><span class="cad-diamond" aria-hidden="true"></span>Milestone reached</div>
             <svg class="cad-right" viewBox="0 0 28 10" aria-hidden="true"><path d="M1 5h25M22.5 1.5 26 5l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <div class="cad-demo"><b>Monthly demo</b><span>CEO, board and heads of department</span></div>
           </div>
@@ -1373,5 +1375,23 @@ footer {
 })();
 </script>
 
+<script>
+/* Places the planning loop bracket between the roadmap and update tiers. */
+(function () {
+  var cad = document.querySelector('.cad');
+  if (!cad) return;
+  var loop = cad.querySelector('.cad-loop'), from = cad.querySelector('.cad-update'), to = cad.querySelector('.cad-roadmap');
+  function place() {
+    var top = to.offsetTop + to.offsetHeight / 2, bottom = from.offsetTop + from.offsetHeight / 2;
+    loop.style.top = top + 'px';
+    loop.style.height = (bottom - top) + 'px';
+    loop.classList.add('is-placed');
+  }
+  place();
+  addEventListener('resize', place, { passive: true });
+  addEventListener('load', place);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+})();
+</script>
 </body>
 </html>
