@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <meta name="description" content="How the SmartStamp web platform registers and verifies artworks and collectibles for galleries and auction houses. Product case study by Giuseppe Piacenza." />
   <link rel="canonical" href="https://gpiacenza.com/SmartStamp-Portfolio.html" />
   <meta property="og:title" content="SmartStamp Web case study, Giuseppe Piacenza" />
@@ -22,26 +22,34 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   img { max-width: 100%; height: auto; }
 
+  /* Same tokens as the homepage, so the case study reads as part of one portfolio. */
   :root {
-    --bg: #fcfcfc;
-    --bg-alt: #f4f2ef;
-    --bg-warm: #f0ede8;
-    --dark: #1a1917;
-    --darker: #111111;
-    --teal: #1e5459;
-    --orange: #b8502f;
-    --orange-light: #c7755b;   /* the brand orange, legible on dark surfaces */
-    --orange-ink: #af4c2d;     /* the brand orange, legible as small text on every light surface */
-    --gray: #696969;
-    --border: rgba(0,0,0,0.09);
-    --font-display: Georgia, 'Times New Roman', serif;
-    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, system-ui, sans-serif;
+    --bg: #F5F9F9;
+    --bg-alt: #E8EEEF;
+    --dark: #0C0C0B;
+    --text: #202727;
+    --teal: #1E5459;
+    --teal-light: #77B0B6;
+    --gray: #4D5454;
+    --border: rgba(32,39,39,0.1);
+    --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
     --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
   }
 
   html { scroll-behavior: smooth; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-  body { font-family: var(--font-body); background: var(--bg); color: var(--dark); -webkit-font-smoothing: antialiased; }
+  body { font-family: var(--font-body); background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+  ::selection { background: rgba(119,176,182,0.35); }
+  :focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 4px; }
+  /* The teal accent is too dark to see on near-black; dark surfaces use the light teal. */
+  .nav :focus-visible, .hero :focus-visible, .footer :focus-visible { outline-color: var(--teal-light); }
+  .skip-link {
+    position: absolute; left: 50%; top: 0; z-index: 300; transform: translate(-50%, -120%);
+    background: var(--dark); color: #fff; font-size: 13px; font-weight: 600;
+    padding: 12px 20px; border-radius: 0 0 8px 8px; text-decoration: none;
+  }
+  .skip-link:focus-visible { transform: translate(-50%, 0); }
 
   /* ── Navigation ── */
   .nav {
@@ -50,9 +58,12 @@
     border-bottom: 1px solid rgba(255,255,255,0.07);
     display: flex; align-items: center; padding: 0 48px;
   }
-  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-right: auto; }
-  .nav-logo img { height: 28px; width: 28px; border-radius: 5px; object-fit: cover; }
-  .nav-logo-text { font-family: var(--font-display); font-size: 16px; color: #fcfcfc; letter-spacing: -0.01em; font-weight: normal; }
+  .nav-home {
+    display: inline-flex; align-items: center; min-height: 44px; margin-right: auto;
+    font-family: var(--font-display); font-size: 15px; font-weight: 600; color: #fff;
+    letter-spacing: -0.01em; text-decoration: none;
+  }
+  .nav-home span { color: rgba(255,255,255,0.5); margin-right: 8px; font-weight: 500; }
   .nav-links { display: flex; gap: 0; }
   .nav-links a {
     color: rgba(255,255,255,0.5); font-size: 13px; letter-spacing: 0.01em;
@@ -60,8 +71,7 @@
     transition: color 0.15s; border-bottom: 2px solid transparent;
   }
   @media (hover: hover) { .nav-links a:hover { color: rgba(255,255,255,0.85); } }
-  .nav-links a.active { color: #fff; border-bottom-color: var(--orange); }
-  .nav-cta { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 0.04em; }
+  .nav-links a.active { color: #fff; border-bottom-color: var(--teal-light); }
 
   /* ── Hero ── */
   /* Same hero format as the mobile case study: text left, product shot right, stacked below 1100px. */
@@ -75,18 +85,12 @@
   }
   .hero-text { max-width: 480px; flex-shrink: 0; }
   .hero-title {
-    font-family: 'Playfair Display', Georgia, serif; font-size: clamp(48px, 6vw, 76px); font-weight: 700;
-    color: #fcfcfc; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 20px;
+    font-family: var(--font-display); font-size: clamp(48px, 6vw, 76px); font-weight: 700;
+    color: #fff; letter-spacing: -0.035em; line-height: 1; margin-bottom: 22px;
   }
   .hero-body {
     font-size: 15px; color: rgba(255,255,255,0.55);
     line-height: 1.7; max-width: 400px;
-  }
-  .hero-pills { display: flex; gap: 10px; justify-content: center; margin-bottom: 72px; flex-wrap: wrap; }
-  .pill {
-    font-size: 12px; color: rgba(255,255,255,0.6); padding: 7px 16px;
-    border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04);
-    border-radius: 9999px; letter-spacing: 0.01em;
   }
   .hero-reel { flex-shrink: 0; width: min(460px, calc((100vh - 200px) * 0.645), 100%); margin: 0; }
   .hero-reel-media { position: relative; }
@@ -94,9 +98,9 @@
     width: 100%; height: auto; display: block; border-radius: 18px; background: #000;
     box-shadow: 0 48px 120px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.08);
   }
-  .hero-reel figcaption { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 14px; text-align: center; }
+  .hero-reel figcaption { font-size: 12px; color: rgba(255,255,255,0.62); margin-top: 14px; text-align: center; }
   .hero-reel figcaption a { color: inherit; text-underline-offset: 3px; }
-  .hero-reel figcaption a:hover { color: rgba(255,255,255,0.75); }
+  .hero-reel figcaption a:hover { color: #fff; }
   /* The product column only fits beside the text and the reel on wide screens. */
   .hero-shots { display: none; }
   @media (min-width: 1400px) {
@@ -109,22 +113,22 @@
     width: 100%; height: auto; display: block; border-radius: 8px;
     box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08);
   }
-  .hero-shot figcaption { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 8px; }
+  .hero-shot figcaption { font-size: 12px; color: rgba(255,255,255,0.62); margin-top: 8px; }
   .hero-reel-sound {
-    position: absolute; left: 14px; bottom: 14px; padding: 9px 16px;
+    position: absolute; left: 14px; bottom: 14px; min-height: 44px; padding: 0 18px;
     border: 0; border-radius: 9999px; background: rgba(0,0,0,0.6); color: #fff;
     font: 500 13px var(--font-body); cursor: pointer;
   }
   .hero-reel-toggle {
-    position: absolute; right: 14px; bottom: 14px; width: 36px; height: 36px;
+    position: absolute; right: 14px; bottom: 14px; width: 44px; height: 44px;
     border: 0; border-radius: 50%; background: rgba(0,0,0,0.6); cursor: pointer;
   }
   .hero-reel-toggle::before {
-    content: ''; position: absolute; left: 13px; top: 12px; width: 3px; height: 12px;
+    content: ''; position: absolute; left: 17px; top: 16px; width: 3px; height: 12px;
     background: #fff; box-shadow: 6px 0 0 #fff;
   }
   .hero-reel-toggle.is-paused::before {
-    left: 14px; top: 11px; width: 0; height: 0; background: none; box-shadow: none;
+    left: 18px; top: 15px; width: 0; height: 0; background: none; box-shadow: none;
     border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff;
   }
   .hero-reel-sound:focus-visible, .hero-reel-toggle:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
@@ -133,27 +137,48 @@
   .overview { background: var(--bg-alt); padding: 80px 48px; }
   .container { max-width: 1100px; margin: 0 auto; }
   .overview-text {
-    font-size: 16px; line-height: 1.8; color: #3a3835;
-    margin-bottom: 56px; max-width: 700px;
+    font-size: 16px; line-height: 1.8; color: var(--gray);
+    margin-bottom: 56px; max-width: 66ch;
   }
   .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
   .problem-card { background: var(--bg); padding: 30px; }
-  .problem-title { font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 10px; letter-spacing: -0.01em; }
+  .problem-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 10px; letter-spacing: -0.01em; }
   .problem-body { font-size: 14px; line-height: 1.7; color: var(--gray); }
 
   /* ── Section headers ── */
   .section-title {
-    font-family: var(--font-display); font-size: 30px; color: var(--teal);
-    letter-spacing: -0.02em; margin-bottom: 18px; line-height: 1.2;
+    font-family: var(--font-display); font-size: 30px; font-weight: 700; color: var(--text);
+    letter-spacing: -0.025em; margin-bottom: 18px; line-height: 1.2;
   }
-  .section-body { font-size: 15px; line-height: 1.8; color: #4a4845; }
+  .section-body { font-size: 15px; line-height: 1.8; color: var(--gray); max-width: 66ch; }
+
+  /* ── My role ── */
+  .role { padding: 80px 48px; border-top: 1px solid var(--border); }
+  .role-facts {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--border); border: 1px solid var(--border); margin: 8px 0 44px;
+  }
+  .role-facts div { background: var(--bg); padding: 20px 24px; }
+  .role-facts dt { font-size: 13px; color: var(--gray); margin-bottom: 6px; }
+  .role-facts dd { font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.5; }
+  .role-subtitle {
+    font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text);
+    letter-spacing: -0.015em; margin-bottom: 14px;
+  }
+  .role-list { list-style: none; max-width: 66ch; margin-bottom: 40px; }
+  .role-list li {
+    font-size: 15px; line-height: 1.8; color: var(--gray);
+    padding: 14px 0; border-top: 1px solid var(--border);
+  }
+  .role-list li:last-child { border-bottom: 1px solid var(--border); }
+  .role-outcome { font-size: 15px; line-height: 1.8; color: var(--gray); max-width: 66ch; }
 
   /* ── Feature blocks ── */
   .feature { padding: 80px 48px; }
   /* Every section below the overview starts on a hairline so neighbouring bands never merge. */
-  .feature, .screens, .design-system { border-top: 1px solid var(--border); }
+  .feature, .design-system { border-top: 1px solid var(--border); }
   .feature-alt { background: var(--bg-alt); }
-  .feature-text { max-width: 700px; margin-bottom: 44px; }
+  .feature-text { max-width: 66ch; margin-bottom: 44px; }
   .screenshot-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .screenshot-item { border: 1px solid var(--border); overflow: hidden; }
   .screenshot-item img { width: 100%; display: block; vertical-align: bottom; }
@@ -174,98 +199,89 @@
   @media (prefers-reduced-motion: reduce) { .carousel-track { scroll-behavior: auto; } }
   .carousel-slide { flex: 0 0 100%; scroll-snap-align: start; margin: 0; }
   .carousel-slide img { width: 100%; height: auto; display: block; }
-  .carousel-controls { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 14px; }
+  .carousel-controls { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 14px; }
   .carousel-controls button { cursor: pointer; }
   .carousel-prev, .carousel-next {
-    width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border);
-    background: #fff; color: var(--dark); font-size: 16px; line-height: 1;
+    width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border);
+    background: #fff; color: var(--text); font-size: 16px; line-height: 1;
   }
   .carousel-prev:hover, .carousel-next:hover { border-color: rgba(0,0,0,0.25); }
-  .carousel-dots { display: flex; gap: 10px; }
-  .carousel-dots button {
-    width: 10px; height: 10px; padding: 0; border-radius: 50%;
-    border: 1.5px solid rgba(0,0,0,0.4); background: transparent;
+  .carousel-dots { display: flex; gap: 0; }
+  .carousel-dots button { position: relative; width: 24px; height: 24px; padding: 0; border: 0; background: transparent; }
+  .carousel-dots button::after {
+    content: ''; position: absolute; inset: 7px; border-radius: 50%;
+    border: 1.5px solid rgba(32,39,39,0.45);
   }
-  .carousel-dots button[aria-current="true"] { background: var(--dark); border-color: var(--dark); }
-
-  /* ── Screen library ── */
-  .screens { background: var(--bg-warm); padding: 80px 48px; }
-  .screen-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 18px; margin-top: 48px;
-  }
-  .screen-cell { border: 1px solid rgba(0,0,0,0.08); background: #fff; overflow: hidden; }
-  .screen-cell img { width: 100%; display: block; vertical-align: bottom; }
-  .screen-caption { padding: 10px 14px; display: flex; align-items: center; gap: 8px; }
-  /* A quiet category prefix, not a chip. */
-  .screen-cat {
-    font-size: 13px; color: var(--gray); white-space: nowrap; flex-shrink: 0;
-  }
-  .screen-cat::after { content: ' \00b7'; margin-left: 6px; }
-  .screen-name { font-size: 11px; color: var(--gray); }
-
-  /* ── Architecture ── */
-  .architecture { background: var(--dark); padding: 96px 48px; }
-  .arch-eyebrow {
-    font-size: 13px; color: var(--orange-light); margin-bottom: 12px; font-weight: 600;
-  }
-  .arch-title {
-    font-family: var(--font-display); font-size: 30px; color: #fcfcfc;
-    letter-spacing: -0.02em; margin-bottom: 48px; line-height: 1.2;
-  }
-  .arch-cards {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 1px; background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.08); margin-bottom: 60px;
-  }
-  .arch-card { background: var(--dark); padding: 30px; }
-  .arch-card-title { font-size: 13px; font-weight: 600; color: #fcfcfc; margin-bottom: 10px; letter-spacing: -0.01em; }
-  .arch-card-body { font-size: 13px; line-height: 1.75; color: rgba(255,255,255,0.55); }
-  .arch-card-body code { font-family: var(--font-mono); font-size: 12px; color: rgba(255,255,255,0.65); }
-  .tech-table { width: 100%; border-collapse: collapse; }
-  .tech-table thead tr { background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.08); }
-  .tech-table th {
-    text-align: left; font-size: 12px;
-    color: rgba(255,255,255,0.55); padding: 10px 18px; font-weight: 600;
-  }
-  .tech-table td { padding: 12px 18px; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .tech-table td:first-child { color: rgba(255,255,255,0.49); width: 180px; font-size: 12px; letter-spacing: 0.01em; }
-  .tech-table td:last-child { color: rgba(255,255,255,0.6); }
-  .tech-table tbody tr:last-child td { border-bottom: none; }
+  .carousel-dots button[aria-current="true"]::after { background: var(--text); border-color: var(--text); }
 
   /* ── Footer ── */
-  .footer { background: var(--darker); padding: 52px 48px; }
-  .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; }
-  .footer-brand { font-family: var(--font-display); font-size: 17px; color: rgba(255,255,255,0.65); }
-  .footer-brand-sub { font-size: 12px; color: rgba(255,255,255,0.49); margin-top: 5px; }
-  .footer-center { text-align: center; font-size: 11px; color: rgba(255,255,255,0.25); line-height: 1.7; }
-  .footer-right { text-align: right; font-size: 11px; color: rgba(255,255,255,0.25); }
+  .footer { background: var(--dark); padding: 56px 48px; }
+  .footer-inner {
+    max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto;
+    gap: 32px 48px; align-items: center;
+  }
+  .footer-name { font-family: var(--font-display); font-size: 28px; font-weight: 300; color: #fff; letter-spacing: -0.02em; }
+  .footer-sub { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 4px; }
+  .footer-email {
+    display: inline-block; margin-top: 18px; font-size: 17px; font-weight: 500; color: #fff;
+    text-decoration: underline; text-decoration-color: rgba(255,255,255,0.3); text-underline-offset: 4px;
+  }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+  .footer-link {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px;
+    font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.62); text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.14); border-radius: 9999px;
+  }
+  .footer-link.accent-link { background: var(--teal); border-color: var(--teal); color: #fff; }
+  @media (hover: hover) {
+    .footer-email:hover { text-decoration-color: #fff; }
+    .footer-link:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
+    .footer-link.accent-link:hover { background: #163e42; border-color: #163e42; }
+  }
+
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0;
+  }
 
   /* ── Design system ── */
-  .design-system { background: var(--bg); padding: 80px 48px; }
+  .design-system { background: var(--bg); padding: 56px 48px; }
+  /* Reference material for the curious, closed by default. */
+  .appendix summary {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    min-height: 44px; cursor: pointer; list-style: none;
+  }
+  .appendix summary::-webkit-details-marker { display: none; }
+  .appendix summary .section-title { margin-bottom: 0; }
+  .appendix-toggle { font-size: 13px; font-weight: 500; color: var(--gray); display: inline-flex; align-items: center; gap: 10px; }
+  .appendix-toggle::after {
+    content: ''; width: 8px; height: 8px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+    transform: translateY(-2px) rotate(45deg); transition: transform 0.2s;
+  }
+  .appendix[open] .appendix-toggle::after { transform: translateY(2px) rotate(-135deg); }
+  .appendix-body { padding-top: 28px; }
+  .appendix-body .section-body { margin-bottom: 36px; }
   .ds-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .ds-block { border: 1px solid var(--border); padding: 24px; background: #fff; }
-  .ds-swatches { display: flex; gap: 0; margin-bottom: 16px; }
+  .ds-swatches { display: grid; grid-template-columns: repeat(3, 1fr); margin-bottom: 16px; }
   .ds-swatch {
-    flex: 1; height: 64px; display: flex; align-items: flex-end;
+    height: 64px; display: flex; align-items: flex-end;
     padding: 6px 8px; position: relative;
     color: #fcfcfc;
   }
-  .ds-swatch-label { font-size: 9px; color: inherit; line-height: 1.4; font-family: var(--font-mono); }
+  .ds-swatch-label { font-size: 11px; color: inherit; line-height: 1.35; font-family: var(--font-mono); }
   .ds-caption { font-size: 12px; color: var(--gray); margin-top: 12px; }
   .ds-type-samples { margin-bottom: 4px; }
-  .ds-heading-sample { font-family: var(--font-display); font-size: 22px; color: var(--dark); letter-spacing: -0.02em; margin-bottom: 10px; }
-  .ds-body-sample { font-size: 13px; line-height: 1.7; color: #555; margin-bottom: 10px; }
-  .ds-mono-sample { font-family: var(--font-mono); font-size: 12px; color: var(--gray); }
+  .ds-type-list { list-style: none; }
+  .ds-type-list li { font-size: 14px; line-height: 1.6; color: var(--gray); padding: 8px 0; border-top: 1px solid var(--border); }
+  .ds-type-list li:first-child { border-top: 0; padding-top: 0; }
+  .ds-type-list strong { color: var(--text); font-weight: 600; }
   .ds-radius-demo { display: flex; flex-direction: column; gap: 12px; padding: 8px 0; }
   .ds-radius-item {
     border: 1px solid var(--border); padding: 10px 14px;
     font-size: 12px; color: var(--gray); background: var(--bg-alt);
   }
   .ds-radius-pill { border-radius: 9999px; }
-
-  /* ── Missing asset fallback ── */
-  .missing { display: flex; align-items: center; justify-content: center; background: #f0ede8; min-height: 200px; font-size: 13px; color: var(--gray); font-style: italic; }
 
   /* ── Phones. This page had no responsive layer at all. ── */
   @media (max-width: 1099px) {
@@ -275,58 +291,49 @@
 
   @media (max-width: 900px) {
     .nav { padding: 0 16px; gap: 12px; }
-    .nav-logo { flex-shrink: 0; margin-right: 0; }
-    .nav-logo-text { display: none; }
-    .nav-links { overflow-x: auto; scrollbar-width: none; min-width: 0; }
-    .nav-links::-webkit-scrollbar { display: none; }
     .nav-links a { white-space: nowrap; display: inline-flex; align-items: center; min-height: 44px; }
 
     .hero { padding-left: 20px; padding-right: 20px; }
-    .overview, .feature, .screens, .architecture, .design-system, .footer { padding-left: 20px; padding-right: 20px; }
+    .overview, .role, .feature, .design-system, .footer { padding-left: 20px; padding-right: 20px; }
+    .role-facts { grid-template-columns: 1fr; }
 
     .problem-grid { grid-template-columns: 1fr; }
     .screenshot-pair { grid-template-columns: 1fr; }
-    .screen-grid { grid-template-columns: 1fr; }
-    .arch-cards { grid-template-columns: 1fr; }
     .ds-grid { grid-template-columns: 1fr; }
-    .footer-inner { grid-template-columns: 1fr; gap: 16px; }
-
-    .tech-table { display: block; overflow-x: auto; }
-    .ds-swatches { flex-wrap: wrap; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-links { justify-content: flex-start; }
   }
 
-  /* ── Phones. Screenshot pairs and the screen gallery swipe sideways instead of stacking into a very long page. ── */
+  /* ── Phones. Screenshot pairs swipe sideways instead of stacking into a very long page. ── */
   .swipe-dots { display: none; }
   @media (max-width: 700px) {
-    .screenshot-pair, .screen-grid {
+    .nav-links { display: none; }
+    .screenshot-pair {
       position: relative; display: flex; gap: 12px; overflow-x: auto;
       scroll-snap-type: x mandatory; scrollbar-width: none; padding: 0 7%;
       margin-left: -20px; margin-right: -20px;
     }
-    @media (prefers-reduced-motion: no-preference) { .screenshot-pair, .screen-grid { scroll-behavior: smooth; } }
-    .screenshot-pair::-webkit-scrollbar, .screen-grid::-webkit-scrollbar { display: none; }
-    .screenshot-item, .screen-cell { flex: 0 0 86%; scroll-snap-align: center; }
-    .swipe-dots { display: flex; justify-content: center; gap: 6px; margin-top: 14px; }
-    .swipe-dots button { width: 8px; height: 8px; }
+    @media (prefers-reduced-motion: no-preference) { .screenshot-pair { scroll-behavior: smooth; } }
+    .screenshot-pair::-webkit-scrollbar { display: none; }
+    .screenshot-item { flex: 0 0 86%; scroll-snap-align: center; }
+    .swipe-dots { display: flex; justify-content: center; margin-top: 10px; }
   }
 </style>
 </head>
 <body>
 
 <!-- Navigation -->
-<nav class="nav" id="top">
-  <a href="#top" class="nav-logo">
-    <img src="logo_sst.png" alt="SmartStamp" width="384" height="418" loading="eager" fetchpriority="high" decoding="async" />
-    <span class="nav-logo-text">SmartStamp</span>
-  </a>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="nav" id="top" aria-label="Case study">
+  <a href="index.html" class="nav-home"><span aria-hidden="true">&larr;</span>Giuseppe Piacenza</a>
   <div class="nav-links">
-    <a href="index.html" class="nav-back">&larr; Portfolio</a>
     <a href="#overview">Overview</a>
+    <a href="#role">My role</a>
     <a href="#features">Features</a>
-    <a href="#screens">Screens</a>
-    <a href="#design-system">Design system</a>
   </div>
 </nav>
+
+<main id="main">
 
 <!-- Hero -->
 <section class="hero" id="hero">
@@ -344,15 +351,15 @@
   </figure>
   <div class="hero-shots">
     <figure class="hero-shot">
-      <img src="portfolio-screenshots/06-artwork-fingerprinted.png" alt="Artwork record with a verified Integrity Stamp" width="1440" height="900" decoding="async" />
+      <img src="portfolio-screenshots/06-artwork-fingerprinted.webp" alt="Artwork record with a verified Integrity Stamp" width="1440" height="900" decoding="async" />
       <figcaption>Artwork record</figcaption>
     </figure>
     <figure class="hero-shot">
-      <img src="portfolio-screenshots/10-provenance.png" alt="Provenance record with fingerprint match scores" width="1440" height="900" decoding="async" />
+      <img src="portfolio-screenshots/10-provenance.webp" alt="Provenance record with fingerprint match scores" width="1440" height="900" decoding="async" />
       <figcaption>Provenance record</figcaption>
     </figure>
     <figure class="hero-shot">
-      <img src="portfolio-screenshots/13-document-signing.png" alt="Loan agreement awaiting signature" width="1440" height="900" decoding="async" />
+      <img src="portfolio-screenshots/13-document-signing.webp" alt="Loan agreement awaiting signature" width="1440" height="900" decoding="async" />
       <figcaption>Document signing</figcaption>
     </figure>
   </div>
@@ -368,9 +375,7 @@
       which capture the surface texture of selected details as a digital fingerprint. The piece can then be verified with a mobile phone or
       with another microscope, by matching new captures against that fingerprint. The web platform holds
       everything around it: the ownership history, documents and signatures, and collection data imported
-      from CSV files or the mobile app. My role was product lead: I ran discovery, set the roadmap and
-      priorities, and prototyped the web platform hands-on in code and Figma so the engineering team had a
-      working specification to build from. The screens on this page come from that prototype.
+      from CSV files or the mobile app.
     </p>
 
     <div class="problem-grid">
@@ -394,11 +399,31 @@
   </div>
 </section>
 
+<!-- My role -->
+<section class="role" id="role">
+  <div class="container">
+    <h2 class="section-title">My role</h2>
+    <dl class="role-facts">
+      <div><dt>Role</dt><dd>Head of Product, previously Founding PM</dd></div>
+      <div><dt>Team</dt><dd>Engineering and UX, reporting to the CEO</dd></div>
+      <div><dt>Scope</dt><dd>Web platform, mobile app and fingerprint registration</dd></div>
+    </dl>
+    <h3 class="role-subtitle">Decisions</h3>
+    <ul class="role-list">
+      <li>Repositioned the product from mobile-first to web-first after usage data showed that galleries and auctioneers, not individual collectors, were driving adoption.</li>
+      <li>Prototyped the web platform hands-on in code and Figma, so engineering built from a working specification. The screens on this page come from that prototype.</li>
+      <li>Defined the North Star metric and its supporting KPIs, and built the PostHog dashboard the team uses to track them.</li>
+    </ul>
+    <h3 class="role-subtitle">Outcome</h3>
+    <p class="role-outcome">Fingerprint registration went live, gallery partnerships were signed and pilot talks opened with tier-1 Swiss auction houses. The web platform is live as SmartStamp Vault.</p>
+  </div>
+</section>
+
 <!-- Features -->
 <div id="features">
 
   <!-- 1: Fingerprinting -->
-  <div class="feature">
+  <div class="feature feature-alt">
     <div class="container">
       <div class="feature-text">
         <h2 class="section-title">Fingerprint registration and verification</h2>
@@ -413,15 +438,15 @@
       </div>
       <div class="carousel" aria-roledescription="carousel" aria-label="Microscope registration">
         <div class="carousel-track">
-          <figure class="carousel-slide" aria-roledescription="slide" aria-label="1 of 3">
+          <figure class="carousel-slide" aria-roledescription="slide">
             <img src="portfolio-screenshots/registration-metalwork.jpg" alt="Gantry-mounted microscope over an engraved metal object, beside the captured detail of an engraved face" width="1800" height="940" loading="lazy" decoding="async" />
             <figcaption class="screenshot-caption">Engraved metalwork. Microscope on the gantry, left; captured surface detail, right.</figcaption>
           </figure>
-          <figure class="carousel-slide" aria-roledescription="slide" aria-label="2 of 3">
+          <figure class="carousel-slide" aria-roledescription="slide">
             <img src="portfolio-screenshots/registration-gilded-panel.jpg" alt="Gantry-mounted microscope over a gilded panel painting, beside the captured detail of a punched gold halo" width="1800" height="940" loading="lazy" decoding="async" />
             <figcaption class="screenshot-caption">Gilded panel painting. Microscope on the gantry, left; captured surface detail, right.</figcaption>
           </figure>
-          <figure class="carousel-slide" aria-roledescription="slide" aria-label="3 of 3">
+          <figure class="carousel-slide" aria-roledescription="slide">
             <img src="portfolio-screenshots/registration-portrait.jpg" alt="Microscope positioned over a painted portrait, beside the captured detail of the eye" width="1800" height="940" loading="lazy" decoding="async" />
             <figcaption class="screenshot-caption">Painted portrait. Microscope positioned on the face, left; captured surface detail, right.</figcaption>
           </figure>
@@ -437,15 +462,15 @@
         </div>
       </div>
       <div class="screenshot-full" style="margin-bottom:16px">
-        <img src="portfolio-screenshots/06-artwork-fingerprinted.png" alt="Artwork detail, Integrity Stamp verified" width="1440" height="900" loading="lazy" decoding="async" />
+        <img src="portfolio-screenshots/06-artwork-fingerprinted.webp" alt="Artwork detail, Integrity Stamp verified" width="1440" height="900" loading="lazy" decoding="async" />
       </div>
       <div class="screenshot-pair">
         <div class="screenshot-item">
-          <img src="portfolio-screenshots/08-artwork-not-fingerprinted.png" alt="Artwork not yet fingerprinted" width="1440" height="900" loading="lazy" decoding="async" />
+          <img src="portfolio-screenshots/08-artwork-not-fingerprinted.webp" alt="Artwork not yet fingerprinted" width="1440" height="900" loading="lazy" decoding="async" />
           <div class="screenshot-caption">Not yet stamped, fingerprinting pending</div>
         </div>
         <div class="screenshot-item">
-          <img src="portfolio-screenshots/09-artwork-history.png" alt="Artwork hash trail" width="1440" height="900" loading="lazy" decoding="async" />
+          <img src="portfolio-screenshots/09-artwork-history.webp" alt="Artwork hash trail" width="1440" height="900" loading="lazy" decoding="async" />
           <div class="screenshot-caption">Hash trail, every event recorded</div>
         </div>
       </div>
@@ -453,7 +478,7 @@
   </div>
 
   <!-- 2: Collection -->
-  <div class="feature feature-alt">
+  <div class="feature">
     <div class="container">
       <div class="feature-text">
         <h2 class="section-title">Collection registry</h2>
@@ -465,15 +490,15 @@
         </p>
       </div>
       <div class="screenshot-full" style="margin-bottom:16px">
-        <img src="portfolio-screenshots/03-collection-grid.png" alt="Collection grid view" width="1440" height="900" loading="lazy" decoding="async" />
+        <img src="portfolio-screenshots/03-collection-grid.webp" alt="Collection grid view" width="1440" height="900" loading="lazy" decoding="async" />
       </div>
       <div class="screenshot-pair">
         <div class="screenshot-item">
-          <img src="portfolio-screenshots/04-collection-list.png" alt="Collection list view" width="1440" height="900" loading="lazy" decoding="async" />
+          <img src="portfolio-screenshots/04-collection-list.webp" alt="Collection list view" width="1440" height="900" loading="lazy" decoding="async" />
           <div class="screenshot-caption">List view, 50 per page</div>
         </div>
         <div class="screenshot-item">
-          <img src="portfolio-screenshots/05-artwork-create.png" alt="Add artwork form" width="1440" height="900" loading="lazy" decoding="async" />
+          <img src="portfolio-screenshots/05-artwork-create.webp" alt="Add artwork form" width="1440" height="900" loading="lazy" decoding="async" />
           <div class="screenshot-caption">Add artwork, full form</div>
         </div>
       </div>
@@ -481,7 +506,7 @@
   </div>
 
   <!-- 3: Provenance -->
-  <div class="feature">
+  <div class="feature feature-alt">
     <div class="container">
       <div class="feature-text">
         <h2 class="section-title">Provenance record</h2>
@@ -493,15 +518,15 @@
         </p>
       </div>
       <div class="screenshot-full" style="margin-bottom:16px">
-        <img src="portfolio-screenshots/10-provenance.png" alt="Provenance record" width="1440" height="900" loading="lazy" decoding="async" />
+        <img src="portfolio-screenshots/10-provenance.webp" alt="Provenance record" width="1440" height="900" loading="lazy" decoding="async" />
       </div>
       <div class="screenshot-pair">
         <div class="screenshot-item">
-          <img src="portfolio-screenshots/07-artwork-documents.png" alt="Artwork documents tab" width="1440" height="900" loading="lazy" decoding="async" />
+          <img src="portfolio-screenshots/07-artwork-documents.webp" alt="Artwork documents tab" width="1440" height="900" loading="lazy" decoding="async" />
           <div class="screenshot-caption">Documents tab on the artwork detail</div>
         </div>
         <div class="screenshot-item">
-          <img src="portfolio-screenshots/20-artwork-edit.png" alt="Edit artwork form" width="1440" height="900" loading="lazy" decoding="async" />
+          <img src="portfolio-screenshots/20-artwork-edit.webp" alt="Edit artwork form" width="1440" height="900" loading="lazy" decoding="async" />
           <div class="screenshot-caption">Edit form, all fields</div>
         </div>
       </div>
@@ -509,7 +534,7 @@
   </div>
 
   <!-- 4: Documents & Signing -->
-  <div class="feature feature-alt">
+  <div class="feature">
     <div class="container">
       <div class="feature-text">
         <h2 class="section-title">Document generation and signing</h2>
@@ -521,15 +546,15 @@
         </p>
       </div>
       <div class="screenshot-full" style="margin-bottom:16px">
-        <img src="portfolio-screenshots/13-document-signing.png" alt="Document signing page" width="1440" height="900" loading="lazy" decoding="async" />
+        <img src="portfolio-screenshots/13-document-signing.webp" alt="Document signing page" width="1440" height="900" loading="lazy" decoding="async" />
       </div>
       <div class="screenshot-pair">
         <div class="screenshot-item">
-          <img src="portfolio-screenshots/11-documents-artworks.png" alt="Artwork documents vault" width="1440" height="900" loading="lazy" decoding="async" />
+          <img src="portfolio-screenshots/11-documents-artworks.webp" alt="Artwork documents vault" width="1440" height="900" loading="lazy" decoding="async" />
           <div class="screenshot-caption">Artwork documents, 13 types</div>
         </div>
         <div class="screenshot-item">
-          <img src="portfolio-screenshots/12-documents-gallery.png" alt="Gallery documents" width="1440" height="900" loading="lazy" decoding="async" />
+          <img src="portfolio-screenshots/12-documents-gallery.webp" alt="Gallery documents" width="1440" height="900" loading="lazy" decoding="async" />
           <div class="screenshot-caption">Gallery documents, contracts and legal</div>
         </div>
       </div>
@@ -537,7 +562,7 @@
   </div>
 
   <!-- 6: Dashboard -->
-  <div class="feature">
+  <div class="feature feature-alt">
     <div class="container">
       <div class="feature-text">
         <h2 class="section-title">Collection integrity dashboard</h2>
@@ -548,15 +573,15 @@
         </p>
       </div>
       <div class="screenshot-full" style="margin-bottom:16px">
-        <img src="portfolio-screenshots/02-dashboard.png" alt="Dashboard" width="1440" height="900" loading="lazy" decoding="async" />
+        <img src="portfolio-screenshots/02-dashboard.webp" alt="Dashboard" width="1440" height="900" loading="lazy" decoding="async" />
       </div>
       <div class="screenshot-pair">
         <div class="screenshot-item">
-          <img src="portfolio-screenshots/17-activity.png" alt="Activity log" width="1440" height="900" loading="lazy" decoding="async" />
+          <img src="portfolio-screenshots/17-activity.webp" alt="Activity log" width="1440" height="900" loading="lazy" decoding="async" />
           <div class="screenshot-caption">Audit log, grouped by date</div>
         </div>
         <div class="screenshot-item">
-          <img src="portfolio-screenshots/18-archive.png" alt="Archived works" width="1440" height="900" loading="lazy" decoding="async" />
+          <img src="portfolio-screenshots/18-archive.webp" alt="Archived works" width="1440" height="900" loading="lazy" decoding="async" />
           <div class="screenshot-caption">Archive with one-click restore</div>
         </div>
       </div>
@@ -565,206 +590,72 @@
 
 </div><!-- /features -->
 
-<!-- Screen Library -->
-<section class="screens" id="screens">
-  <div class="container">
-    <h2 class="section-title">Screen reference</h2>
-    <div class="screen-grid">
-      
-      <div class="screen-cell">
-        <img src="portfolio-screenshots/01-login.png" alt="Login" width="1440" height="900" loading="lazy" decoding="async" />
-        <div class="screen-caption">
-          <span class="screen-cat">Authentication</span>
-          <span class="screen-name">Login</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <img src="portfolio-screenshots/02-dashboard.png" alt="Dashboard" width="1440" height="900" loading="lazy" decoding="async" />
-        <div class="screen-caption">
-          <span class="screen-name">Dashboard</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <img src="portfolio-screenshots/03-collection-grid.png" alt="Collection, Grid View" width="1440" height="900" loading="lazy" decoding="async" />
-        <div class="screen-caption">
-          <span class="screen-cat">Collection</span>
-          <span class="screen-name">Grid view</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <img src="portfolio-screenshots/04-collection-list.png" alt="Collection, List View" width="1440" height="900" loading="lazy" decoding="async" />
-        <div class="screen-caption">
-          <span class="screen-cat">Collection</span>
-          <span class="screen-name">List view</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <img src="portfolio-screenshots/05-artwork-create.png" alt="Add Artwork" width="1440" height="900" loading="lazy" decoding="async" />
-        <div class="screen-caption">
-          <span class="screen-cat">Collection</span>
-          <span class="screen-name">Add artwork</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <img src="portfolio-screenshots/06-artwork-fingerprinted.png" alt="Artwork Detail, Fingerprinted" width="1440" height="900" loading="lazy" decoding="async" />
-        <div class="screen-caption">
-          <span class="screen-cat">Artwork detail</span>
-          <span class="screen-name">Fingerprinted</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <img src="portfolio-screenshots/07-artwork-documents.png" alt="Artwork Detail, Documents" width="1440" height="900" loading="lazy" decoding="async" />
-        <div class="screen-caption">
-          <span class="screen-cat">Artwork detail</span>
-          <span class="screen-name">Documents</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <img src="portfolio-screenshots/08-artwork-not-fingerprinted.png" alt="Artwork Detail, Not Fingerprinted" width="1440" height="900" loading="lazy" decoding="async" />
-        <div class="screen-caption">
-          <span class="screen-cat">Artwork detail</span>
-          <span class="screen-name">Not fingerprinted</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <img src="portfolio-screenshots/09-artwork-history.png" alt="Artwork Detail, History" width="1440" height="900" loading="lazy" decoding="async" />
-        <div class="screen-caption">
-          <span class="screen-cat">Artwork detail</span>
-          <span class="screen-name">History</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <img src="portfolio-screenshots/10-provenance.png" alt="Provenance Record" width="1440" height="900" loading="lazy" decoding="async" />
-        <div class="screen-caption">
-          <span class="screen-name">Provenance record</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <img src="portfolio-screenshots/11-documents-artworks.png" alt="Documents Vault, Artwork Documents" width="1440" height="900" loading="lazy" decoding="async" />
-        <div class="screen-caption">
-          <span class="screen-cat">Documents vault</span>
-          <span class="screen-name">Artwork documents</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <img src="portfolio-screenshots/12-documents-gallery.png" alt="Documents Vault, Gallery Documents" width="1440" height="900" loading="lazy" decoding="async" />
-        <div class="screen-caption">
-          <span class="screen-cat">Documents vault</span>
-          <span class="screen-name">Gallery documents</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <img src="portfolio-screenshots/13-document-signing.png" alt="Document Signing" width="1440" height="900" loading="lazy" decoding="async" />
-        <div class="screen-caption">
-          <span class="screen-name">Document signing</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <img src="portfolio-screenshots/15-artists.png" alt="Artists & Collaborators" width="1440" height="900" loading="lazy" decoding="async" />
-        <div class="screen-caption">
-          <span class="screen-cat">Team</span>
-          <span class="screen-name">Artists and collaborators</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <img src="portfolio-screenshots/16-artist-detail.png" alt="Artist Detail" width="1440" height="900" loading="lazy" decoding="async" />
-        <div class="screen-caption">
-          <span class="screen-cat">Team</span>
-          <span class="screen-name">Artist detail</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <img src="portfolio-screenshots/17-activity.png" alt="Activity Log" width="1440" height="900" loading="lazy" decoding="async" />
-        <div class="screen-caption">
-          <span class="screen-name">Activity log</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <img src="portfolio-screenshots/18-archive.png" alt="Archived Works" width="1440" height="900" loading="lazy" decoding="async" />
-        <div class="screen-caption">
-          <span class="screen-name">Archived works</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <img src="portfolio-screenshots/19-settings.png" alt="Gallery Settings" width="1440" height="900" loading="lazy" decoding="async" />
-        <div class="screen-caption">
-          <span class="screen-name">Gallery settings</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <img src="portfolio-screenshots/20-artwork-edit.png" alt="Edit Artwork" width="1440" height="900" loading="lazy" decoding="async" />
-        <div class="screen-caption">
-          <span class="screen-cat">Collection</span>
-          <span class="screen-name">Edit artwork</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <img src="portfolio-screenshots/21-onboarding.png" alt="Onboarding, Gallery Setup" width="1440" height="900" loading="lazy" decoding="async" />
-        <div class="screen-caption">
-          <span class="screen-cat">Onboarding</span>
-          <span class="screen-name">Gallery setup</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Design System -->
 <section class="design-system" id="design-system">
   <div class="container">
-    <h2 class="section-title" style="color:var(--teal)">Design system</h2>
-    <p class="section-body" style="margin-bottom:52px;max-width:680px">
-      The UI follows the look of a gallery viewing room: warm whites, near-black text, sharp edges
-      (no border radius except on pills) and restrained colour. Orange is reserved for the brand.
-      Verified works carry a near-black Integrity Stamp, and unverified works a muted grey outline.
-      Colours, shadows and spacing are defined once as design tokens and reused on every screen.
-    </p>
-    <div class="ds-grid">
-      <div class="ds-block">
-        <div class="ds-swatches">
-          <div class="ds-swatch" style="background:#111111"><span class="ds-swatch-label">Primary<br/>#111111</span></div>
-          <div class="ds-swatch" style="background:#1e5459"><span class="ds-swatch-label">Dark Teal<br/>#1e5459</span></div>
-          <div class="ds-swatch" style="background:#b8502f"><span class="ds-swatch-label">Brand Orange<br/>#b8502f</span></div>
-          <div class="ds-swatch" style="background:#a09b94;color:#1a1917"><span class="ds-swatch-label">Unverified<br/>#a09b94</span></div>
-          <div class="ds-swatch" style="background:#9a7a07"><span class="ds-swatch-label">Warning<br/>#9a7a07</span></div>
-          <div class="ds-swatch" style="background:#fcfcfc;color:#1a1917;border:1px solid rgba(0,0,0,0.08)"><span class="ds-swatch-label">Background<br/>#fcfcfc</span></div>
+    <details class="appendix">
+      <summary><h2 class="section-title">Design system</h2><span class="appendix-toggle">Details</span></summary>
+      <div class="appendix-body">
+        <p class="section-body">
+          The UI follows the look of a gallery viewing room: warm whites, near-black text, sharp edges
+          (no border radius except on pills) and restrained colour. Orange is reserved for the brand.
+          Verified works carry a near-black Integrity Stamp, and unverified works a muted grey outline.
+          Colours, shadows and spacing are defined once as design tokens and reused on every screen.
+        </p>
+        <div class="ds-grid">
+          <div class="ds-block">
+            <div class="ds-swatches">
+              <div class="ds-swatch" style="background:#111111"><span class="ds-swatch-label">Primary<br/>#111111</span></div>
+              <div class="ds-swatch" style="background:#1e5459"><span class="ds-swatch-label">Dark Teal<br/>#1e5459</span></div>
+              <div class="ds-swatch" style="background:#b8502f"><span class="ds-swatch-label">Brand Orange<br/>#b8502f</span></div>
+              <div class="ds-swatch" style="background:#a09b94;color:#0c0c0b"><span class="ds-swatch-label">Unverified<br/>#a09b94</span></div>
+              <div class="ds-swatch" style="background:#9a7a07;color:#0c0c0b"><span class="ds-swatch-label">Warning<br/>#9a7a07</span></div>
+              <div class="ds-swatch" style="background:#fcfcfc;color:#0c0c0b;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.08)"><span class="ds-swatch-label">Background<br/>#fcfcfc</span></div>
+            </div>
+            <p class="ds-caption">Colour tokens</p>
+          </div>
+          <div class="ds-block">
+            <ul class="ds-type-list">
+              <li><strong>Display:</strong> Playfair Display, for page titles</li>
+              <li><strong>Body:</strong> Inter, 13px to 20px, line height 1.75</li>
+              <li><strong>Data and IDs:</strong> Fragment Mono</li>
+            </ul>
+            <p class="ds-caption">Typography</p>
+          </div>
+          <div class="ds-block">
+            <div class="ds-radius-demo">
+              <div class="ds-radius-item" style="border-radius:0">0px, default</div>
+              <div class="ds-radius-item ds-radius-pill">9999px, pills only</div>
+            </div>
+            <p class="ds-caption">Border radius</p>
+          </div>
         </div>
-        <p class="ds-caption">Colour tokens</p>
       </div>
-      <div class="ds-block">
-        <div class="ds-type-samples">
-          <p class="ds-heading-sample">Heading typeface</p>
-          <p class="ds-body-sample">Body text is set in Inter, falling back to the system sans-serif stack, from 13px to 20px with a line height of 1.75.</p>
-          <p class="ds-mono-sample">mono / Fragment Mono</p>
-        </div>
-        <p class="ds-caption">Typography</p>
-      </div>
-      <div class="ds-block">
-        <div class="ds-radius-demo">
-          <div class="ds-radius-item" style="border-radius:0">0px, default</div>
-          <div class="ds-radius-item ds-radius-pill">9999px, pills only</div>
-        </div>
-        <p class="ds-caption">Border radius</p>
-      </div>
-    </div>
+    </details>
   </div>
 </section>
+
+</main>
 
 <!-- Footer -->
 <footer class="footer">
   <div class="footer-inner">
     <div>
-      <div class="footer-brand">SmartStamp</div>
-      <div class="footer-brand-sub">Case study by Giuseppe Piacenza</div>
+      <div class="footer-name">Giuseppe Piacenza</div>
+      <div class="footer-sub">Senior Product Manager, Zürich</div>
+      <a class="footer-email" href="mailto:giuseppe.piacenza@outlook.com">giuseppe.piacenza@outlook.com</a>
     </div>
-    <div class="footer-center"></div>
-    <div class="footer-right"></div>
+    <div class="footer-links">
+      <a class="footer-link accent-link" href="SmartStamp-Mobile-Portfolio.html">Next: iOS and Android app case study</a>
+      <a class="footer-link" href="index.html">Portfolio</a>
+      <a class="footer-link" href="https://linkedin.com/in/gpiacenza" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
+    </div>
   </div>
 </footer>
 
 <script>
-  // Scroll-spy for nav
-  const sections = ['overview', 'features', 'screens', 'design-system'];
+  // Scroll-spy for nav. The hero and the design-system appendix have no nav link, so reaching them clears the highlight.
+  const sections = ['hero', 'overview', 'role', 'features', 'design-system'];
   const navLinks = document.querySelectorAll('.nav-links a');
   const obs = new IntersectionObserver((entries) => {
     for (const e of entries) {
@@ -798,11 +689,21 @@
     markCurrent();
   });
 
-  // On phones, screenshot pairs and the screen gallery scroll sideways; the dots show which image is centred.
-  document.querySelectorAll('.screenshot-pair, .screen-grid').forEach((row) => {
+  // On phones, screenshot pairs scroll sideways; the dots show which image is centred.
+  // Keyboard users scroll the focused row with the arrow keys, so the dots stay out of the tab order.
+  document.querySelectorAll('.screenshot-pair').forEach((row) => {
     const items = [...row.children];
     const dots = document.createElement('div');
     dots.className = 'carousel-dots swipe-dots';
+    dots.setAttribute('aria-hidden', 'true');
+    row.setAttribute('aria-label', 'Screenshots');
+    const syncFocusability = () => {
+      const scrolls = row.scrollWidth > row.clientWidth + 1;
+      if (scrolls) { row.tabIndex = 0; row.setAttribute('role', 'region'); }
+      else { row.removeAttribute('tabindex'); row.removeAttribute('role'); }
+    };
+    syncFocusability();
+    addEventListener('resize', syncFocusability, { passive: true });
     const centredIndex = () => {
       const middle = row.scrollLeft + row.clientWidth / 2;
       const distances = items.map((item) => Math.abs(item.offsetLeft + item.offsetWidth / 2 - middle));
@@ -811,7 +712,7 @@
     const buttons = items.map((item, i) => {
       const button = document.createElement('button');
       button.type = 'button';
-      button.setAttribute('aria-label', `Show image ${i + 1} of ${items.length}`);
+      button.tabIndex = -1;
       button.addEventListener('click', () => {
         row.scrollTo({ left: item.offsetLeft - (row.clientWidth - item.offsetWidth) / 2 });
         markCentred(i);

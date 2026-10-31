@@ -17,27 +17,52 @@
 <meta property="og:type" content="article" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
 
 /* ── Reset & base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+/* Same tokens as the homepage, so the case study reads as part of one portfolio. */
+:root {
+  --bg: #F5F9F9;
+  --bg-alt: #E8EEEF;
+  --dark: #0C0C0B;
+  --text: #202727;
+  --text-muted: #4D5454;
+  --teal: #1E5459;
+  --teal-light: #77B0B6;
+  --border: rgba(32,39,39,0.1);
+}
 body {
   font-family: Inter, system-ui, -apple-system, sans-serif;
   font-size: 16px;
   line-height: 1.6;
-  color: #1a1917;
-  background: #fcfcfc;
+  color: var(--text);
+  background: var(--bg);
   -webkit-font-smoothing: antialiased;
+}
+::selection { background: rgba(119,176,182,0.35); }
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 4px; }
+/* The teal accent is too dark to see on near-black; dark surfaces use the light teal. */
+nav :focus-visible, .hero :focus-visible, footer :focus-visible { outline-color: var(--teal-light); }
+.skip-link {
+  position: absolute; left: 50%; top: 0; z-index: 300; transform: translate(-50%, -120%);
+  background: var(--dark); color: #fff; font-size: 13px; font-weight: 600;
+  padding: 12px 20px; border-radius: 0 0 8px 8px;
+}
+.skip-link:focus-visible { transform: translate(-50%, 0); }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0;
 }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; }
 
 /* ── Typography ── */
-h1, h2, h3, .playfair {
-  font-family: 'Playfair Display', Georgia, serif;
+h1, h2, h3 {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
 /* ── Nav ── */
@@ -47,7 +72,7 @@ nav {
   left: 0;
   right: 0;
   height: 56px;
-  background: #1a1917;
+  background: var(--dark);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -55,40 +80,29 @@ nav {
   z-index: 100;
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-.nav-brand {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: #fcfcfc;
-  letter-spacing: -0.01em;
+.nav-home {
+  display: inline-flex; align-items: center; min-height: 44px;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 15px; font-weight: 600; color: #fff; letter-spacing: -0.01em;
 }
-.nav-brand span {
-  color: #c7755b;
-  margin-left: 6px;
-  font-size: 12px;
-  font-family: Inter, system-ui, sans-serif;
-  font-weight: 500;
-  vertical-align: middle;
-}
+.nav-home span { color: rgba(255,255,255,0.5); margin-right: 8px; font-weight: 500; }
 .nav-links {
   display: flex;
-  gap: 32px;
   list-style: none;
 }
 .nav-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 56px;
+  padding: 0 14px;
   font-size: 13px;
   font-weight: 500;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.62);
+  border-bottom: 2px solid transparent;
   transition: color 0.15s;
 }
-@media (hover: hover) { .nav-links a:hover { color: #fcfcfc; } }
-.nav-back {
-  font-size: 12px;
-  color: rgba(255,255,255,0.4);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-}
-.nav-back:hover { color: rgba(255,255,255,0.75); }
+@media (hover: hover) { .nav-links a:hover { color: #fff; } }
+.nav-links a.active { color: #fff; border-bottom-color: var(--teal-light); }
 
 /* ── iPhone frame ── */
 .iphone-frame {
@@ -129,17 +143,6 @@ nav {
   object-fit: cover;
   object-position: top center;
 }
-.iphone-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #1a1a2e;
-  color: #444;
-  font-size: 11px;
-  font-family: Inter, system-ui, sans-serif;
-}
 .iphone-home-bar {
   position: absolute;
   bottom: 8px;
@@ -154,7 +157,7 @@ nav {
 /* ── Hero ── */
 .hero {
   min-height: 100vh;
-  background: #1a1917;
+  background: var(--dark);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -172,31 +175,16 @@ nav {
 .hero h1 {
   font-size: clamp(48px, 6vw, 76px);
   font-weight: 700;
-  color: #fcfcfc;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  margin-bottom: 20px;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  margin-bottom: 22px;
 }
 .hero-body {
   font-size: 15px;
   color: rgba(255,255,255,0.55);
   line-height: 1.7;
   max-width: 400px;
-}
-.hero-tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 28px;
-}
-.tech-tag {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: rgba(255,255,255,0.45);
-  border: 1px solid rgba(255,255,255,0.12);
-  padding: 4px 10px;
-  border-radius: 3px;
 }
 .hero-phones {
   display: flex;
@@ -220,7 +208,7 @@ nav {
 
 /* ── Overview ── */
 .overview {
-  background: #f4f2ef;
+  background: var(--bg-alt);
   padding: 96px 80px;
 }
 .overview-inner {
@@ -229,41 +217,42 @@ nav {
 }
 .overview h2 {
   font-size: 38px;
-  color: #1e5459;
-  font-weight: 600;
+  color: var(--text);
+  font-weight: 700;
   margin-bottom: 20px;
   letter-spacing: -0.02em;
 }
 .overview-body {
   font-size: 16px;
-  color: #444;
+  color: var(--text-muted);
   line-height: 1.75;
-  max-width: 680px;
-  margin-bottom: 64px;
+  max-width: 66ch;
 }
-.stat-bar {
-  display: flex;
-  gap: 64px;
-  margin-bottom: 64px;
-  padding-bottom: 48px;
-  border-bottom: 1px solid #e8e4de;
+
+/* ── My role ── */
+.role { padding: 96px 80px; }
+.role-inner { max-width: 1100px; margin: 0 auto; }
+.role h2 { font-size: 38px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; margin-bottom: 20px; }
+.role-facts {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--border); border: 1px solid var(--border); margin-bottom: 44px;
 }
-.stat-item .stat-value {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 42px;
-  font-weight: 600;
-  color: #1e5459;
-  line-height: 1;
-  margin-bottom: 6px;
-}
+.role-facts div { background: var(--bg); padding: 20px 24px; }
+.role-facts dt { font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+.role-facts dd { font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.5; }
+.role h3 { font-size: 20px; font-weight: 700; color: var(--text); letter-spacing: -0.015em; margin-bottom: 14px; }
+.role-list { list-style: none; max-width: 66ch; margin-bottom: 40px; }
+.role-list li { font-size: 15px; line-height: 1.8; color: var(--text-muted); padding: 14px 0; border-top: 1px solid var(--border); }
+.role-list li:last-child { border-bottom: 1px solid var(--border); }
+.role-outcome { font-size: 15px; line-height: 1.8; color: var(--text-muted); max-width: 66ch; }
 /* ── Feature sections ── */
 .feature {
   padding: 96px 80px;
 }
-.feature:nth-child(odd) { background: #fcfcfc; }
-.feature:nth-child(even) { background: #f4f2ef; }
+.feature:nth-child(odd) { background: var(--bg-alt); }
+.feature:nth-child(even) { background: var(--bg); }
 /* Every section below the overview starts on a hairline so neighbouring bands never merge. */
-.feature, .all-screens { border-top: 1px solid rgba(0,0,0,0.09); }
+.feature, .role, .appendix-section { border-top: 1px solid var(--border); }
 .feature-inner {
   max-width: 1100px;
   margin: 0 auto;
@@ -275,15 +264,15 @@ nav {
 .feature-text { flex: 1; min-width: 0; }
 .feature-text h2 {
   font-size: clamp(26px, 3vw, 36px);
-  font-weight: 600;
-  color: #1e5459;
+  font-weight: 700;
+  color: var(--text);
   line-height: 1.2;
   letter-spacing: -0.02em;
   margin-bottom: 16px;
 }
 .feature-text p {
   font-size: 15px;
-  color: #555;
+  color: var(--text-muted);
   line-height: 1.8;
   max-width: 480px;
 }
@@ -314,214 +303,137 @@ nav {
   padding-top: 30px;
 }
 
-/* ── All Screens ── */
-.all-screens {
-  background: #f0ede8;
-  padding: 96px 80px;
+/* ── Architecture appendix: reference material, closed by default ── */
+.appendix-section { background: var(--bg); padding: 56px 80px; }
+.appendix-inner { max-width: 1100px; margin: 0 auto; }
+.appendix summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  min-height: 44px; cursor: pointer; list-style: none;
 }
-.all-screens-inner { max-width: 1100px; margin: 0 auto; }
-.all-screens h2 {
-  font-size: 24px;
-  color: #1e5459;
-  font-weight: 600;
-  margin-bottom: 48px;
-  font-family: 'Playfair Display', Georgia, serif;
+.appendix summary::-webkit-details-marker { display: none; }
+.appendix summary h2 { font-size: 30px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+.appendix-toggle { font-size: 13px; font-weight: 500; color: var(--text-muted); display: inline-flex; align-items: center; gap: 10px; }
+.appendix-toggle::after {
+  content: ''; width: 8px; height: 8px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg); transition: transform 0.2s;
 }
-.screens-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
-  gap: 32px;
-}
-.screen-cell { display: flex; flex-direction: column; align-items: center; gap: 16px; }
-.screen-cell .iphone-frame {
-  width: 160px;
-  height: 346px;
-  border-radius: 32px;
-  border-width: 5px;
-}
-.screen-cell .iphone-frame .iphone-screen { border-radius: 28px; }
-.screen-cell .iphone-frame .iphone-dynamic-island {
-  width: 64px;
-  height: 18px;
-  border-radius: 9px;
-  top: 7px;
-}
-.screen-cell .iphone-frame .iphone-home-bar { width: 64px; height: 3px; }
-.screen-caption { text-align: center; }
-/* A quiet caption, not a chip. */
-.screen-cat {
-  display: block;
-  font-size: 12px;
-  font-weight: 400;
-  color: #696969;
-  margin-bottom: 3px;
-}
-.screen-title {
-  display: block;
-  font-size: 12px;
-  color: #4a4a4a;
-  font-weight: 500;
-}
-
-/* ── Tech Stack ── */
-.tech-stack {
-  background: #1a1917;
-  padding: 96px 80px;
-  color: #fcfcfc;
-}
-.tech-stack-inner { max-width: 1100px; margin: 0 auto; }
-.tech-stack h2 {
-  font-size: 38px;
-  font-weight: 600;
-  color: #fcfcfc;
-  letter-spacing: -0.02em;
-  margin-bottom: 16px;
-}
+.appendix[open] .appendix-toggle::after { transform: translateY(2px) rotate(-135deg); }
+.appendix-body { padding-top: 24px; }
 .tech-stack-intro {
   font-size: 15px;
-  color: rgba(255,255,255,0.55);
-  max-width: 560px;
-  line-height: 1.7;
-  margin-bottom: 64px;
+  color: var(--text-muted);
+  max-width: 66ch;
+  line-height: 1.75;
+  margin-bottom: 36px;
 }
 .arch-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-bottom: 64px;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
 }
-.arch-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  padding: 28px;
-  border-radius: 0;
-}
-.arch-card-title {
-  font-size: 13px;
-  font-weight: 600;
-  color: #fcfcfc;
-  margin-bottom: 10px;
-  letter-spacing: 0.01em;
-}
-.arch-card-body {
-  font-size: 13px;
-  color: rgba(255,255,255,0.57);
-  line-height: 1.65;
-}
-.stack-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
-}
-.stack-table th {
-  text-align: left;
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.55);
-  padding: 8px 16px 8px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-.stack-table td {
-  padding: 12px 16px 12px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  color: rgba(255,255,255,0.7);
-  vertical-align: top;
-}
-.stack-table td:first-child { color: rgba(255,255,255,0.49); width: 140px; }
+.arch-card { background: #fff; padding: 28px; }
+.arch-card-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+.arch-card-body { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
 
 /* ── Footer ── */
-footer {
-  background: #111;
-  padding: 40px 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+footer { background: var(--dark); padding: 56px 80px; }
+.footer-inner {
+  max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto;
+  gap: 32px 48px; align-items: center;
 }
-.footer-brand {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 16px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.6);
+.footer-name { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 28px; font-weight: 300; color: #fff; letter-spacing: -0.02em; }
+.footer-sub { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 4px; }
+.footer-email {
+  display: inline-block; margin-top: 18px; font-size: 17px; font-weight: 500; color: #fff;
+  text-decoration: underline; text-decoration-color: rgba(255,255,255,0.3); text-underline-offset: 4px;
 }
-.footer-credit {
-  font-size: 12px;
-  color: rgba(255,255,255,0.49);
+.footer-links { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+.footer-link {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px;
+  font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.62);
+  border: 1px solid rgba(255,255,255,0.14); border-radius: 9999px;
+}
+.footer-link.accent-link { background: var(--teal); border-color: var(--teal); color: #fff; }
+@media (hover: hover) {
+  .footer-email:hover { text-decoration-color: #fff; }
+  .footer-link:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
+  .footer-link.accent-link:hover { background: #163e42; border-color: #163e42; }
 }
 
 
 /* ── Phones. The phone mockups sat in fixed-width rows. ── */
 @media (max-width: 1099px) {
   nav { padding: 0 16px; gap: 12px; }
-  .nav-brand { flex-shrink: 0; white-space: nowrap; font-size: 16px; }
-  .nav-brand span { display: none; }
-  .nav-links { gap: 18px; overflow-x: auto; scrollbar-width: none; min-width: 0; }
-  .nav-links::-webkit-scrollbar { display: none; }
-  .nav-links a { white-space: nowrap; display: inline-flex; align-items: center; min-height: 44px; }
-  .nav-links li { display: flex; align-items: center; }
+  .nav-links a { white-space: nowrap; }
 
   .hero { padding: 100px 20px 60px; gap: 48px; }
   .hero-phones { flex-direction: column; align-items: center; }
   .feature-phones { flex-wrap: wrap; justify-content: center; flex-shrink: 1; }
   .phones-pair { flex-direction: column; padding-top: 0; }
 
-  .stack-table { display: block; overflow-x: auto; }
   .arch-cards { grid-template-columns: 1fr; }
+  .role-facts { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .footer-links { justify-content: flex-start; }
   /* .feature-inner.reverse is (0,2,0) and lives outside this query, so it must
      be named here or it keeps row-reverse and collapses its text column to 0px. */
   .feature-inner,
   .feature-inner.reverse { flex-direction: column; gap: 40px; }
-  .feature, .overview, .all-screens, .tech-stack { padding: 72px 20px; }
-  footer { padding: 40px 20px; }
+  .feature, .overview, .role { padding: 72px 20px; }
+  .appendix-section { padding: 48px 20px; }
+  footer { padding: 48px 20px; }
 }
 
 /* ── Phones. Rows of phone mockups become swipeable instead of stacking into a very long page. ── */
 .swipe-dots { display: none; }
 @media (max-width: 700px) {
   .hero-phone-left { display: none; }
+  .nav-links { display: none; }
 
-  .feature-phones, .screens-grid {
+  .feature-phones {
     position: relative; display: flex; flex-wrap: nowrap; justify-content: flex-start; gap: 16px;
     width: 100%; overflow-x: auto; scroll-snap-type: x mandatory;
     scrollbar-width: none; -webkit-overflow-scrolling: touch;
     padding: 8px calc(50% - 110px) 40px; margin-bottom: -24px;
   }
-  .feature-phones::-webkit-scrollbar, .screens-grid::-webkit-scrollbar { display: none; }
+  .feature-phones::-webkit-scrollbar { display: none; }
   .phones-pair { display: contents; }
   .feature-phones .iphone-frame,
-  .feature-phones .iphone-frame.secondary,
-  .screen-cell .iphone-frame {
+  .feature-phones .iphone-frame.secondary {
     width: 220px; height: 475px; border-radius: 42px; border-width: 6px;
     flex-shrink: 0; scroll-snap-align: center;
   }
-  .feature-phones .iphone-frame .iphone-screen,
-  .screen-cell .iphone-frame .iphone-screen { border-radius: 36px; }
-  .screen-cell { flex: 0 0 auto; scroll-snap-align: center; }
+  .feature-phones .iphone-frame .iphone-screen { border-radius: 36px; }
 
-  .swipe-dots { display: flex; justify-content: center; gap: 8px; margin-top: 4px; }
-  .swipe-dots button {
-    width: 8px; height: 8px; padding: 0; border-radius: 50%; cursor: pointer;
-    border: 1.5px solid rgba(0,0,0,0.35); background: transparent;
+  .swipe-dots { display: flex; justify-content: center; margin-top: 4px; }
+  .swipe-dots button { position: relative; width: 24px; height: 24px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+  .swipe-dots button::after {
+    content: ''; position: absolute; inset: 8px; border-radius: 50%;
+    border: 1.5px solid rgba(32,39,39,0.45);
   }
-  .swipe-dots button[aria-current="true"] { background: #1a1917; border-color: #1a1917; }
+  .swipe-dots button[aria-current="true"]::after { background: var(--text); border-color: var(--text); }
 }
 </style>
 </head>
 <body>
 
 <!-- Nav -->
-<nav>
-  <div class="nav-brand"><img src="logo_sst.png" alt="SmartStamp" width="384" height="418" loading="eager" fetchpriority="high" decoding="async" style="height:28px;width:28px;display:inline-block;vertical-align:middle;margin-right:10px;border-radius:5px;object-fit:cover;" />SmartStamp <span>Mobile</span></div>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav aria-label="Case study">
+  <a href="index.html" class="nav-home"><span aria-hidden="true">&larr;</span>Giuseppe Piacenza</a>
   <ul class="nav-links">
-    <li><a href="index.html" class="nav-back">&larr; Portfolio</a></li>
     <li><a href="#overview">Overview</a></li>
+    <li><a href="#role">My role</a></li>
     <li><a href="#features">Features</a></li>
-    <li><a href="#screens">Screens</a></li>
-    <li><a href="#tech">Architecture</a></li>
   </ul>
 </nav>
 
+<main id="main">
+
 <!-- Hero -->
-<section class="hero">
+<section class="hero" id="hero">
   <div class="hero-text">
     <h1>SmartStamp Mobile</h1>
     <p class="hero-body">The SmartStamp app is how galleries and collectors check an artwork or collectible in front of them. A scan session captures up to nine close-up images of the surface and compares them with the fingerprint recorded at registration. The app can also register a work and transfer its ownership.</p>
@@ -529,17 +441,17 @@ footer {
   <div class="hero-phones">
     <div class="iphone-frame hero-phone-left">
       <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/01-login.png" alt="SmartStamp mobile app login screen" width="1179" height="2556" loading="lazy" decoding="async" /></div>
+      <div class="iphone-screen"><img src="mobile-screenshots/01-login.webp" alt="SmartStamp mobile app login screen" width="1179" height="2556" loading="eager" decoding="async" /></div>
       <div class="iphone-home-bar"></div>
     </div>
     <div class="iphone-frame hero-phone-main">
       <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/06-passport.png" alt="Digital passport for a fingerprinted artwork" width="1179" height="2556" loading="lazy" decoding="async" /></div>
+      <div class="iphone-screen"><img src="mobile-screenshots/06-passport.webp" alt="Digital passport for a fingerprinted artwork" width="1179" height="2556" loading="eager" decoding="async" /></div>
       <div class="iphone-home-bar"></div>
     </div>
     <div class="iphone-frame hero-phone-right">
       <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/02-home.png" alt="Mobile app home screen showing the artwork collection" width="1179" height="2556" loading="lazy" decoding="async" /></div>
+      <div class="iphone-screen"><img src="mobile-screenshots/02-home.webp" alt="Mobile app home screen showing the artwork collection" width="1179" height="2556" loading="eager" decoding="async" /></div>
       <div class="iphone-home-bar"></div>
     </div>
   </div>
@@ -549,7 +461,27 @@ footer {
 <section class="overview" id="overview">
   <div class="overview-inner">
     <h2>Overview</h2>
-    <p class="overview-body">The app covers the physical side of SmartStamp. Most works are registered under a microscope, and the app is then used to verify them: it guides the user through capturing the registered details again and checks them against the fingerprint on record. Each work has a digital passport in the app, with its SmartStamp ID, ownership record, surface images and documents. When a work changes hands, the current owner transfers it in the app, and the ownership record updates immediately in the web platform used by gallery staff. As Founding PM I defined the app from customer discovery onwards and led its delivery with the engineering team; the iOS and Android MVP shipped in under six months.</p>
+    <p class="overview-body">The app covers the physical side of SmartStamp. Most works are registered under a microscope, and the app is then used to verify them: it guides the user through capturing the registered details again and checks them against the fingerprint on record. Each work has a digital passport in the app, with its SmartStamp ID, ownership record, surface images and documents. When a work changes hands, the current owner transfers it in the app, and the ownership record updates immediately in the web platform used by gallery staff.</p>
+  </div>
+</section>
+
+<!-- My role -->
+<section class="role" id="role">
+  <div class="role-inner">
+    <h2>My role</h2>
+    <dl class="role-facts">
+      <div><dt>Role</dt><dd>Founding Product Manager</dd></div>
+      <div><dt>Context</dt><dd>ETH Zurich MAS capstone, under Prof. Fredrik Hacklin</dd></div>
+      <div><dt>Scope</dt><dd>iOS and Android app, from discovery to launch</dd></div>
+    </dl>
+    <h3>Decisions</h3>
+    <ul class="role-list">
+      <li>Ran discovery interviews with collectors, galleries and appraisers, and built the roadmap, backlog and go-to-market plan from them.</li>
+      <li>Defined the North Star metric and its supporting KPIs, and built the PostHog dashboard the team uses to track them.</li>
+      <li>Opened commercial talks with a leading Swiss art appraiser by prototyping a logistics workflow to their specification, used live as the working demo in the sales pitch.</li>
+    </ul>
+    <h3>Outcome</h3>
+    <p class="role-outcome">The iOS and Android MVP shipped in under six months, ahead of schedule and under budget.</p>
   </div>
 </section>
 
@@ -566,18 +498,18 @@ footer {
     <div class="feature-phones">
       <div class="iphone-frame">
       <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/03-scan-start.png" alt="Starting a fingerprint scan of a physical artwork" width="1179" height="2556" loading="lazy" decoding="async" /></div>
+      <div class="iphone-screen"><img src="mobile-screenshots/03-scan-start.webp" alt="Starting a fingerprint scan of a physical artwork" width="1179" height="2556" loading="lazy" decoding="async" /></div>
       <div class="iphone-home-bar"></div>
     </div>
       <div class="phones-pair">
         <div class="iphone-frame secondary">
       <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/04-scan-progress.png" alt="Fingerprint scan in progress" width="1179" height="2556" loading="lazy" decoding="async" /></div>
+      <div class="iphone-screen"><img src="mobile-screenshots/04-scan-progress.webp" alt="Fingerprint scan in progress" width="1179" height="2556" loading="lazy" decoding="async" /></div>
       <div class="iphone-home-bar"></div>
     </div>
         <div class="iphone-frame secondary">
       <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/05-scan-complete.png" alt="Fingerprint scan complete" width="1179" height="2556" loading="lazy" decoding="async" /></div>
+      <div class="iphone-screen"><img src="mobile-screenshots/05-scan-complete.webp" alt="Fingerprint scan complete" width="1179" height="2556" loading="lazy" decoding="async" /></div>
       <div class="iphone-home-bar"></div>
     </div>
       </div>
@@ -595,12 +527,12 @@ footer {
     <div class="feature-phones">
       <div class="iphone-frame">
       <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/06-passport.png" alt="Digital passport for a fingerprinted artwork" width="1179" height="2556" loading="lazy" decoding="async" /></div>
+      <div class="iphone-screen"><img src="mobile-screenshots/06-passport.webp" alt="Digital passport for a fingerprinted artwork" width="1179" height="2556" loading="lazy" decoding="async" /></div>
       <div class="iphone-home-bar"></div>
     </div>
       <div class="iphone-frame secondary">
       <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/07-passport-scans.png" alt="Scan history for an artwork's digital passport" width="1179" height="2556" loading="lazy" decoding="async" /></div>
+      <div class="iphone-screen"><img src="mobile-screenshots/07-passport-scans.webp" alt="Scan history for an artwork's digital passport" width="1179" height="2556" loading="lazy" decoding="async" /></div>
       <div class="iphone-home-bar"></div>
     </div>
     </div>
@@ -617,7 +549,7 @@ footer {
     <div class="feature-phones">
       <div class="iphone-frame">
       <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/08-transfer.png" alt="Transferring ownership of an artwork" width="1179" height="2556" loading="lazy" decoding="async" /></div>
+      <div class="iphone-screen"><img src="mobile-screenshots/08-transfer.webp" alt="Transferring ownership of an artwork" width="1179" height="2556" loading="lazy" decoding="async" /></div>
       <div class="iphone-home-bar"></div>
     </div>
     </div>
@@ -634,18 +566,18 @@ footer {
     <div class="feature-phones">
       <div class="iphone-frame">
       <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/11-doc-generate.png" alt="Generating a certificate of authenticity" width="1179" height="2556" loading="lazy" decoding="async" /></div>
+      <div class="iphone-screen"><img src="mobile-screenshots/11-doc-generate.webp" alt="Generating a certificate of authenticity" width="1179" height="2556" loading="lazy" decoding="async" /></div>
       <div class="iphone-home-bar"></div>
     </div>
       <div class="phones-pair">
         <div class="iphone-frame secondary">
       <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/10-doc-storage.png" alt="Document storage for an artwork" width="1179" height="2556" loading="lazy" decoding="async" /></div>
+      <div class="iphone-screen"><img src="mobile-screenshots/10-doc-storage.webp" alt="Document storage for an artwork" width="1179" height="2556" loading="lazy" decoding="async" /></div>
       <div class="iphone-home-bar"></div>
     </div>
         <div class="iphone-frame secondary">
       <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/12-certificate.png" alt="Generated certificate of authenticity" width="1179" height="2556" loading="lazy" decoding="async" /></div>
+      <div class="iphone-screen"><img src="mobile-screenshots/12-certificate.webp" alt="Generated certificate of authenticity" width="1179" height="2556" loading="lazy" decoding="async" /></div>
       <div class="iphone-home-bar"></div>
     </div>
       </div>
@@ -663,7 +595,7 @@ footer {
     <div class="feature-phones">
       <div class="iphone-frame">
       <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/02-home.png" alt="Mobile app home screen showing the artwork collection" width="1179" height="2556" loading="lazy" decoding="async" /></div>
+      <div class="iphone-screen"><img src="mobile-screenshots/02-home.webp" alt="Mobile app home screen showing the artwork collection" width="1179" height="2556" loading="lazy" decoding="async" /></div>
       <div class="iphone-home-bar"></div>
     </div>
     </div>
@@ -672,173 +604,85 @@ footer {
 
 </div><!-- /features -->
 
-<!-- All Screens -->
-<section class="all-screens" id="screens">
-  <div class="all-screens-inner">
-    <h2>Screen reference</h2>
-    <div class="screens-grid">
-      <div class="screen-cell">
-        <div class="iphone-frame">
-      <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/01-login.png" alt="SmartStamp mobile app login screen" width="1179" height="2556" loading="lazy" decoding="async" /></div>
-      <div class="iphone-home-bar"></div>
-    </div>
-        <div class="screen-caption">
-          <span class="screen-cat">Onboarding</span>
-          <span class="screen-title">Sign in</span>
+<!-- Architecture -->
+<section class="appendix-section" id="architecture">
+  <div class="appendix-inner">
+    <details class="appendix">
+      <summary><h2>Architecture</h2><span class="appendix-toggle">Details</span></summary>
+      <div class="appendix-body">
+        <p class="tech-stack-intro">The app is a single Flutter codebase for iOS and Android. Firebase handles real-time sync, authentication and file storage, PostHog tracks product usage, and Postmark sends the transactional email for ownership transfers and document sharing.</p>
+        <div class="arch-cards">
+          <div class="arch-card">
+            <h3 class="arch-card-title">Flutter, single codebase</h3>
+            <p class="arch-card-body">One Dart codebase ships to both iOS and Android. The UI is fully custom, without third-party component libraries, which gives full control over the interaction and visual design of every fingerprinting flow.</p>
+          </div>
+          <div class="arch-card">
+            <h3 class="arch-card-title">Firebase, real-time sync</h3>
+            <p class="arch-card-body">Firestore keeps the mobile app and the web dashboard in sync with no polling. Authentication, storage and functions sit in the same project, so the two platforms share one infrastructure.</p>
+          </div>
+          <div class="arch-card">
+            <h3 class="arch-card-title">PostHog and Postmark</h3>
+            <p class="arch-card-body">PostHog captures funnel data and feature usage without sending data to third-party ad networks. Postmark handles time-sensitive transactional email: transfer confirmations, document delivery, and status updates.</p>
+          </div>
         </div>
       </div>
-      <div class="screen-cell">
-        <div class="iphone-frame">
-      <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/02-home.png" alt="Mobile app home screen showing the artwork collection" width="1179" height="2556" loading="lazy" decoding="async" /></div>
-      <div class="iphone-home-bar"></div>
-    </div>
-        <div class="screen-caption">
-          <span class="screen-title">Dashboard</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <div class="iphone-frame">
-      <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/03-scan-start.png" alt="Starting a fingerprint scan of a physical artwork" width="1179" height="2556" loading="lazy" decoding="async" /></div>
-      <div class="iphone-home-bar"></div>
-    </div>
-        <div class="screen-caption">
-          <span class="screen-cat">Fingerprinting</span>
-          <span class="screen-title">Register artwork</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <div class="iphone-frame">
-      <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/04-scan-progress.png" alt="Fingerprint scan in progress" width="1179" height="2556" loading="lazy" decoding="async" /></div>
-      <div class="iphone-home-bar"></div>
-    </div>
-        <div class="screen-caption">
-          <span class="screen-cat">Fingerprinting</span>
-          <span class="screen-title">Artwork verification</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <div class="iphone-frame">
-      <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/05-scan-complete.png" alt="Fingerprint scan complete" width="1179" height="2556" loading="lazy" decoding="async" /></div>
-      <div class="iphone-home-bar"></div>
-    </div>
-        <div class="screen-caption">
-          <span class="screen-cat">Fingerprinting</span>
-          <span class="screen-title">ID confirmed</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <div class="iphone-frame">
-      <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/06-passport.png" alt="Digital passport for a fingerprinted artwork" width="1179" height="2556" loading="lazy" decoding="async" /></div>
-      <div class="iphone-home-bar"></div>
-    </div>
-        <div class="screen-caption">
-          <span class="screen-cat">Digital passport</span>
-          <span class="screen-title">Artwork detail</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <div class="iphone-frame">
-      <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/07-passport-scans.png" alt="Scan history for an artwork's digital passport" width="1179" height="2556" loading="lazy" decoding="async" /></div>
-      <div class="iphone-home-bar"></div>
-    </div>
-        <div class="screen-caption">
-          <span class="screen-cat">Digital passport</span>
-          <span class="screen-title">Surface images</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <div class="iphone-frame">
-      <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/08-transfer.png" alt="Transferring ownership of an artwork" width="1179" height="2556" loading="lazy" decoding="async" /></div>
-      <div class="iphone-home-bar"></div>
-    </div>
-        <div class="screen-caption">
-          <span class="screen-title">Transfer ownership</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <div class="iphone-frame">
-      <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/10-doc-storage.png" alt="Document storage for an artwork" width="1179" height="2556" loading="lazy" decoding="async" /></div>
-      <div class="iphone-home-bar"></div>
-    </div>
-        <div class="screen-caption">
-          <span class="screen-cat">Documents</span>
-          <span class="screen-title">Document library</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <div class="iphone-frame">
-      <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/11-doc-generate.png" alt="Generating a certificate of authenticity" width="1179" height="2556" loading="lazy" decoding="async" /></div>
-      <div class="iphone-home-bar"></div>
-    </div>
-        <div class="screen-caption">
-          <span class="screen-cat">Documents</span>
-          <span class="screen-title">Add document</span>
-        </div>
-      </div>
-      <div class="screen-cell">
-        <div class="iphone-frame">
-      <div class="iphone-dynamic-island"></div>
-      <div class="iphone-screen"><img src="mobile-screenshots/12-certificate.png" alt="Generated certificate of authenticity" width="1179" height="2556" loading="lazy" decoding="async" /></div>
-      <div class="iphone-home-bar"></div>
-    </div>
-        <div class="screen-caption">
-          <span class="screen-cat">Documents</span>
-          <span class="screen-title">Certificate ready</span>
-        </div>
-      </div>
-    </div>
+    </details>
   </div>
 </section>
 
-<!-- Tech Stack -->
-<section class="tech-stack" id="tech">
-  <div class="tech-stack-inner">
-    <h2>Architecture</h2>
-    <p class="tech-stack-intro">The app is a single Flutter codebase for iOS and Android. Firebase handles real-time sync, authentication and file storage, PostHog tracks product usage, and Postmark sends the transactional email for ownership transfers and document sharing.</p>
-    <div class="arch-cards">
-      <div class="arch-card">
-        <div class="arch-card-title">Flutter, single codebase</div>
-        <div class="arch-card-body">One Dart codebase ships to both iOS and Android. The UI is fully custom, without third-party component libraries, which gives full control over the interaction and visual design of every fingerprinting flow.</div>
-      </div>
-      <div class="arch-card">
-        <div class="arch-card-title">Firebase, real-time sync</div>
-        <div class="arch-card-body">Firestore keeps the mobile app and the web dashboard in sync with no polling. Authentication, storage and functions sit in the same project, so the two platforms share one infrastructure.</div>
-      </div>
-      <div class="arch-card">
-        <div class="arch-card-title">PostHog and Postmark</div>
-        <div class="arch-card-body">PostHog captures funnel data and feature usage without sending data to third-party ad networks. Postmark handles time-sensitive transactional email: transfer confirmations, document delivery, and status updates.</div>
-      </div>
-    </div>
-  </div>
-</section>
+</main>
 
 <!-- Footer -->
 <footer>
-  <div class="footer-brand">SmartStamp Mobile</div>
-  <div class="footer-credit">Case study by Giuseppe Piacenza</div>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-name">Giuseppe Piacenza</div>
+      <div class="footer-sub">Senior Product Manager, Zürich</div>
+      <a class="footer-email" href="mailto:giuseppe.piacenza@outlook.com">giuseppe.piacenza@outlook.com</a>
+    </div>
+    <div class="footer-links">
+      <a class="footer-link accent-link" href="SmartStamp-Portfolio.html">Next: web platform case study</a>
+      <a class="footer-link" href="index.html">Portfolio</a>
+      <a class="footer-link" href="https://linkedin.com/in/gpiacenza" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
+    </div>
+  </div>
 </footer>
 
 <script>
+  // Scroll-spy for nav. The hero and the architecture appendix have no nav link, so reaching them clears the highlight.
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const spy = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        navLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+      }
+    }
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  ['hero', 'overview', 'role', 'features', 'architecture'].forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) spy.observe(el);
+  });
+
   // On phones, rows of phone mockups scroll sideways; the dots show which phone is centred.
-  document.querySelectorAll('.feature-phones, .screens-grid').forEach((row) => {
-    const items = [...row.querySelectorAll(':scope > .iphone-frame, :scope > .phones-pair > .iphone-frame, :scope > .screen-cell')];
+  // Keyboard users scroll the focused row with the arrow keys, so the dots stay out of the tab order.
+  document.querySelectorAll('.feature-phones').forEach((row) => {
+    const items = [...row.querySelectorAll(':scope > .iphone-frame, :scope > .phones-pair > .iphone-frame')];
     if (items.length < 2) return;
     const dots = document.createElement('div');
     dots.className = 'swipe-dots';
+    dots.setAttribute('aria-hidden', 'true');
+    row.setAttribute('aria-label', 'App screens');
+    const syncFocusability = () => {
+      const scrolls = row.scrollWidth > row.clientWidth + 1;
+      if (scrolls) { row.tabIndex = 0; row.setAttribute('role', 'region'); }
+      else { row.removeAttribute('tabindex'); row.removeAttribute('role'); }
+    };
+    syncFocusability();
+    addEventListener('resize', syncFocusability, { passive: true });
     const buttons = items.map((item, i) => {
       const button = document.createElement('button');
       button.type = 'button';
-      button.setAttribute('aria-label', `Show screen ${i + 1} of ${items.length}`);
+      button.tabIndex = -1;
       button.addEventListener('click', () => {
         row.scrollTo({ left: item.offsetLeft - (row.clientWidth - item.offsetWidth) / 2, behavior: 'smooth' });
         markCentred(i);

@@ -10,11 +10,13 @@
 <link rel="canonical" href="https://gpiacenza.com/" />
 <meta property="og:title" content="Giuseppe Piacenza, Senior Product Manager" />
 <meta property="og:description" content="Senior Product Manager in Zürich. Founding PM and Head of Product at SmartStamp, P&amp;L owner of a €14.6M ARR line at Open Systems, and led 4G/5G rollouts at Huawei." />
-<meta property="og:image" content="https://gpiacenza.com/gp-photo.png" />
+<meta property="og:image" content="https://gpiacenza.com/og-card.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://gpiacenza.com/" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://gpiacenza.com/gp-photo.png" />
+<meta name="twitter:image" content="https://gpiacenza.com/og-card.jpg" />
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -136,11 +138,11 @@ a { color: inherit; text-decoration: none; }
    Hero
 ───────────────────────────────────────── */
 .hero {
-  min-height: 100vh;
+  min-height: min(100vh, 760px);
   background: var(--bg-dark);
   display: grid;
   place-items: center;
-  padding: 100px 48px 0;
+  padding: 100px 48px 64px;
   position: relative;
   overflow: hidden;
 }
@@ -160,12 +162,6 @@ a { color: inherit; text-decoration: none; }
   max-width: 1100px;
   width: 100%;
 }
-.hero-kicker {
-  font-size: 14px;
-  font-weight: 400;
-  color: rgba(255,255,255,0.61);
-  margin-bottom: 32px;
-}
 .hero-name {
   font-family: var(--font-display);
   font-size: clamp(52px, 8vw, 104px);
@@ -173,7 +169,7 @@ a { color: inherit; text-decoration: none; }
   color: rgba(255,255,255,0.45);
   letter-spacing: -0.04em;
   line-height: 0.92;
-  margin-bottom: 32px;
+  margin-bottom: 18px;
 }
 .hero-name em {
   font-style: normal;
@@ -191,17 +187,10 @@ a { color: inherit; text-decoration: none; }
   margin: 0 auto 28px;
   display: block;
 }
-.hero-bio {
-  max-width: 680px;
-  margin: 0 auto 56px;
-}
-.hero-bio-lead {
+.hero-role {
   font-size: 15px;
-  font-weight: 400;
-  color: rgba(255,255,255,0.72);
-  margin-bottom: 0;
-  line-height: 1.75;
-  text-align: center;
+  color: rgba(255,255,255,0.61);
+  margin-bottom: 40px;
 }
 .hero-links {
   display: flex;
@@ -376,11 +365,6 @@ a { color: inherit; text-decoration: none; }
 .ach-body.light { color: rgba(255,255,255,0.61); }
 
 /* ─────────────────────────────────────────
-   Tags
-───────────────────────────────────────── */
-/* The stack, read as a sentence rather than a row of chips. */
-
-/* ─────────────────────────────────────────
    SmartStamp: Project Cards
 ───────────────────────────────────────── */
 .project-cards {
@@ -459,237 +443,71 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ─────────────────────────────────────────
-   Award Certificate Showcase
-───────────────────────────────────────── */
-.cert-showcase {
-  margin-top: 56px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-}
-.cert-showcase-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--accent);
-}
-.cert-showcase-img {
-  max-width: 560px;
-  width: 100%;
-  border: 1px solid var(--border-med);
-  box-shadow: 0 12px 48px rgba(12,12,11,0.1);
-}
-
-/* ─────────────────────────────────────────
-   Edu projects (details/summary)
-───────────────────────────────────────── */
-.edu-projects {
-  margin-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding-top: 14px;
-}
-.edu-projects-toggle {
-  min-height: 44px;
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.49);
-  cursor: pointer;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: color 0.15s;
-  user-select: none;
-}
-.edu-projects-toggle::-webkit-details-marker { display: none; }
-.edu-projects-toggle:hover { color: rgba(255,255,255,0.65); }
-.edu-projects[open] .edu-projects-toggle span { transform: rotate(45deg); display: inline-block; }
-.edu-projects-list {
-  margin-top: 12px;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.edu-projects-list li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-.edu-projects-list li span {
-  font-size: 12px;
-  color: rgba(255,255,255,0.61);
-  line-height: 1.4;
-}
-.edu-projects-list li a {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--accent-light);
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
-  margin: -11px 0;
-  transition: color 0.15s;
-}
-.edu-projects-list li a:hover { color: #fff; }
-
-/* ─────────────────────────────────────────
-   Certifications
-───────────────────────────────────────── */
-.cert-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-.cert-card {
-  display: flex;
-  flex-direction: column;
-  background: rgba(255,255,255,0.03);
-  transition: background 0.15s;
-  cursor: pointer;
-  text-decoration: none;
-  overflow: hidden;
-}
-.cert-card:hover { background: rgba(255,255,255,0.07); }
-.cert-featured { background: rgba(30,84,89,0.15); }
-.cert-featured:hover { background: rgba(30,84,89,0.24); }
-.cert-img-wrap {
-  width: 100%;
-  height: 140px;
-  background: rgba(255,255,255,0.06);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-}
-.cert-img-wrap img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  padding: 12px;
-  display: block;
-}
-.cert-img-wrap.cert-img-cover img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  padding: 0;
-}
-.cert-body {
-  padding: 16px 16px 14px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  justify-content: space-between;
-}
-.cert-issuer {
-  font-size: 11px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.48);
-  margin-bottom: 6px;
-}
-.cert-featured .cert-issuer { color: rgba(255,255,255,0.55); }
-.cert-name {
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.75);
-  line-height: 1.4;
-  flex: 1;
-}
-.cert-featured .cert-name { color: #fff; }
-.cert-arrow {
-  font-size: 13px;
-  color: rgba(255,255,255,0.48);
-  margin-top: 10px;
-  transition: color 0.15s;
-}
-.cert-card:hover .cert-arrow { color: rgba(255,255,255,0.5); }
-.cert-featured .cert-arrow { color: var(--accent-light); }
-@media (max-width: 960px) {
-  .cert-grid { grid-template-columns: repeat(3, 1fr); }
-}
-@media (max-width: 640px) {
-  .cert-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-/* ─────────────────────────────────────────
    Education
 ───────────────────────────────────────── */
-.edu-grid {
+.edu-list {
+  list-style: none;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.edu-row {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-.edu-card {
-  background: #000;
-  padding: 40px 36px;
-  transition: background 0.2s;
-}
-.edu-card:hover { background: #0a0a09; }
-.edu-inst-line {
-  display: flex;
+  grid-template-columns: 120px 1fr 140px;
+  gap: 6px 32px;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 .edu-years {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--accent-light);
+  font-variant-numeric: tabular-nums;
 }
-.edu-inst {
-  font-family: var(--font-display);
-  font-size: 30px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  margin-bottom: 10px;
-}
-.edu-degree {
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.61);
-  line-height: 1.5;
-  margin-bottom: 10px;
-}
-.edu-note {
-  font-size: 13px;
-  color: rgba(255,255,255,0.61);
+.edu-what {
+  font-size: 15px;
   line-height: 1.6;
-  font-weight: 400;
+  color: rgba(255,255,255,0.61);
 }
-.edu-note strong { color: rgba(255,255,255,0.7); font-style: normal; }
+.edu-what strong { color: #fff; font-weight: 600; }
+.edu-logo {
+  height: 32px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  justify-self: end;
+  opacity: 0.8;
+}
+.edu-logo-invert { filter: brightness(0) invert(1); }
+.edu-logo-dim { opacity: 0.7; }
+/* A round seal reads smaller than a wordmark at the same height. */
+.edu-logo-seal { height: 40px; }
+.edu-cert {
+  margin-top: 28px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.61);
+}
+.edu-cert a {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: rgba(255,255,255,0.3);
+  text-underline-offset: 3px;
+}
+@media (hover: hover) { .edu-cert a:hover { text-decoration-color: #fff; } }
 .context-cell-txt strong { color: var(--text); font-weight: 600; }
 
 /* ─────────────────────────────────────────
-   Standalone section + subsection titles
+   Secondary section titles (Education, Skills)
 ───────────────────────────────────────── */
-.section-title {
+.minor-title {
   font-family: var(--font-display);
-  font-size: clamp(44px, 6vw, 76px);
+  font-size: clamp(30px, 3.6vw, 44px);
   font-weight: 700;
   color: var(--text);
   letter-spacing: -0.03em;
-  line-height: 1;
+  line-height: 1.05;
+  margin-bottom: 36px;
 }
-.section-title-wrap { margin-bottom: 52px; }
-.subsection-label {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--accent-light);
-  margin-bottom: 20px;
-}
-.subsection-wrap { margin-top: 52px; }
+.minor-title.light { color: #fff; }
 
 /* ─────────────────────────────────────────
    Skills
@@ -742,6 +560,17 @@ footer {
   color: rgba(255,255,255,0.48);
   letter-spacing: 0.02em;
 }
+.footer-email {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: rgba(255,255,255,0.3);
+  text-underline-offset: 4px;
+}
+@media (hover: hover) { .footer-email:hover { text-decoration-color: #fff; } }
 .footer-links {
   display: flex;
   gap: 8px;
@@ -817,31 +646,18 @@ footer {
   height: 100%;
   object-fit: contain;
 }
-.co-logo-edu {
-  height: 56px;
-  width: auto;
-  max-width: 160px;
-  object-fit: contain;
-  object-position: right center;
-  opacity: 0.8;
-  flex-shrink: 0;
-}
-.co-logo-edu-invert {
-  filter: brightness(0) invert(1);
-}
 .co-logo-huawei { height: 26px; padding-bottom: 0; margin-bottom: 14px; }
-.co-logo-edu-dim { opacity: 0.7; }
 .edu-logo-wordmark {
   font-family: var(--font-display);
   font-size: 22px;
   font-weight: 900;
   color: #e8000d;
   letter-spacing: -0.02em;
-  flex-shrink: 0;
+  justify-self: end;
 }
-.work-header-tight { margin-bottom: 52px; }
 @media (max-width: 960px) {
-  .co-logo { justify-self: start; object-position: left center; }
+  .co-logo, .co-logo-pill { justify-self: start; }
+  .co-logo { object-position: left center; }
 }
 
 /* ─────────────────────────────────────────
@@ -880,7 +696,7 @@ footer {
   html { scroll-behavior: auto; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
   .js .stagger > * { opacity: 1; transform: none; transition: none; }
-  .project-card, .cert-card, .footer-link, .hero-link, .nav a { transition: none !important; }
+  .project-card, .footer-link, .hero-link, .nav a { transition: none !important; }
   .project-card:hover { transform: none; }
   .skip-link { transition: none; }
 }
@@ -930,11 +746,16 @@ footer {
   outline-offset: 2px;
   border-radius: 9999px;
 }
+/* The teal accent is too dark to see on near-black; dark surfaces use the light teal. */
+.nav :focus-visible, .hero :focus-visible, .bg-dark :focus-visible, footer :focus-visible {
+  outline-color: var(--accent-light);
+}
+::selection { background: rgba(119,176,182,0.35); }
 
 /* ─────────────────────────────────────────
    Scroll offset for fixed nav
 ───────────────────────────────────────── */
-#smartstamp, #opensystems, #huawei, #education {
+#smartstamp, #opensystems, #huawei, #education, #skills {
   scroll-margin-top: 72px;
 }
 
@@ -953,7 +774,7 @@ footer {
   .nav a.nav-item { padding: 0 12px; font-size: 11px; }
   .nav a.nav-cta { padding: 0 14px; }
   .section { padding: 72px 24px; }
-  .hero { padding: 80px 24px 0; }
+  .hero { padding: 80px 24px 56px; }
   .work-header { grid-template-columns: 1fr; }
   .metrics { grid-template-columns: repeat(2, 1fr); }
   .metric:nth-child(2) { border-right: none; }
@@ -961,9 +782,7 @@ footer {
   .metrics.dark .metric:nth-child(3) { border-top-color: rgba(255,255,255,0.1); }
   .achievement { grid-template-columns: 1fr; gap: 8px 0; }
   .project-cards { grid-template-columns: 1fr; }
-  .context-row { grid-template-columns: 1fr; }
-  .edu-grid { grid-template-columns: 1fr; }
-  .co-logo-edu { height: 40px; max-width: 140px; }
+  .context-row { grid-template-columns: 1fr; gap: 28px 0; }
   .skills-grid { grid-template-columns: 1fr; gap: 36px; }
   .footer-inner { grid-template-columns: 1fr; }
   .footer-links { justify-content: flex-start; }
@@ -974,13 +793,11 @@ footer {
 
   /* Layout spacing */
   .section { padding: 56px 20px; }
-  .hero { padding: 64px 20px 0; }
+  .hero { padding: 64px 20px 48px; }
   footer { padding: 0 20px; }
 
   /* Nav */
   .nav { top: 12px; }
-
-  .hero-bio-lead { font-size: 15px; }
 
   /* Metric cells */
   .metric { padding: 20px 14px; }
@@ -988,8 +805,11 @@ footer {
   /* Project screenshots */
   .project-card-screenshot { height: 180px; }
 
-  /* Cert image wrappers */
-  .cert-img-wrap { height: 110px; }
+  /* Education rows: years above the degree */
+  .edu-row { grid-template-columns: 1fr auto; }
+  .edu-years { grid-column: 1 / -1; }
+  .edu-logo { height: 28px; max-width: 110px; }
+  .edu-logo-seal { height: 36px; }
 
   /* Hero links — full-width touch targets */
   .hero-link { width: 100%; justify-content: center; }
@@ -997,16 +817,12 @@ footer {
 }
 
 @media (max-width: 480px) {
-  /* The four section links fit exactly once the Contact pill steps aside.
-     Contact is already the hero's Email link and the footer's first action. */
-  .nav a.nav-cta { display: none; }
+  /* Email stays reachable on small phones; Education is the last section and is reached by scrolling. */
+  .nav a.nav-item[href="#education"] { display: none; }
   .nav a.nav-item { padding: 0 9px; letter-spacing: 0; }
 
   /* Hero name: further reduction for very small phones */
   .hero-name { font-size: 36px; }
-
-  /* Hero kicker */
-  .hero-kicker { font-size: 11px; letter-spacing: 0.1em; margin-bottom: 24px; }
 
   /* Metrics: 1-column on very small phones */
   .metrics { grid-template-columns: 1fr; }
@@ -1031,7 +847,7 @@ footer {
   <a href="#opensystems" class="nav-item">Open Systems</a>
   <a href="#huawei" class="nav-item">Huawei</a>
   <a href="#education" class="nav-item">Education</a>
-  <a href="mailto:giuseppe.piacenza@outlook.com" class="nav-item nav-cta">Contact</a>
+  <a href="mailto:giuseppe.piacenza@outlook.com" class="nav-item nav-cta">Email</a>
 </nav>
 
 <main id="main">
@@ -1039,11 +855,11 @@ footer {
 <!-- ════════════════════════════════════════
      HERO
 ════════════════════════════════════════ -->
-<section class="hero">
+<section class="hero" data-nav-none>
   <div class="hero-inner">
-    <img class="hero-photo" src="gp-photo.png" alt="Giuseppe Piacenza" width="502" height="508" loading="eager" fetchpriority="high" decoding="async" />
-    <div class="hero-kicker">Senior Product Manager · Zürich</div>
+    <img class="hero-photo" src="gp-photo-hero.webp" alt="Giuseppe Piacenza" width="176" height="178" loading="eager" fetchpriority="high" decoding="async" />
     <h1 class="hero-name">Giuseppe <em>Piacenza</em></h1>
+    <p class="hero-role">Senior Product Manager, Zürich</p>
 
     <div class="hero-links">
       <a href="mailto:giuseppe.piacenza@outlook.com" class="hero-link solid">Email</a>
@@ -1073,7 +889,7 @@ footer {
 
     <div class="project-cards reveal reveal-cards">
       <a class="project-card" href="SmartStamp-Portfolio.html">
-        <img class="project-card-screenshot" src="portfolio-screenshots/cover-web-registration.jpg" alt="Microscope registering a gilded panel painting, beside the SmartStamp web registry of verified works" width="1600" height="762" loading="lazy" decoding="async" />
+        <img class="project-card-screenshot" src="portfolio-screenshots/cover-web-registration.jpg" alt="" width="1600" height="762" loading="lazy" decoding="async" />
         <div class="project-card-foot">
           <div>
             <div class="project-card-lbl">Web platform case study</div>
@@ -1083,7 +899,7 @@ footer {
         </div>
       </a>
       <a class="project-card" href="SmartStamp-Mobile-Portfolio.html">
-        <img class="project-card-screenshot" src="portfolio-screenshots/cover-mobile-app.jpg" alt="SmartStamp app screens: home, registration, ID confirmed, artwork record and surface images" width="1600" height="760" loading="lazy" decoding="async" />
+        <img class="project-card-screenshot" src="portfolio-screenshots/cover-mobile-app.jpg" alt="" width="1600" height="760" loading="lazy" decoding="async" />
         <div class="project-card-foot">
           <div>
             <div class="project-card-lbl">iOS and Android app case study</div>
@@ -1096,15 +912,15 @@ footer {
 
     <div class="context-row reveal stagger">
       <div class="context-cell">
-        <div class="context-cell-lbl">The problem</div>
+        <h3 class="context-cell-lbl">The problem</h3>
         <div class="context-cell-txt">The art and collectibles market <strong>cannot reliably verify that a physical object is what it claims to be</strong>. Forgery is hard to catch, provenance breaks between owners, and the documents that prove authenticity rarely survive a sale.</div>
       </div>
       <div class="context-cell">
-        <div class="context-cell-lbl">What I did</div>
+        <h3 class="context-cell-lbl">What I did</h3>
         <div class="context-cell-txt">Ran <strong>discovery interviews</strong> with collectors, galleries, and appraisers. Built the backlog and GTM from zero. <strong>Repositioned from mobile-first to web-first</strong> after usage data showed that galleries and auctioneers, not individual collectors, were driving adoption. Led the delivery of the <strong>fingerprint verification system</strong> and co-pitched <strong>tier-1 auction houses</strong> directly.</div>
       </div>
       <div class="context-cell">
-        <div class="context-cell-lbl">Outcomes</div>
+        <h3 class="context-cell-lbl">Outcomes</h3>
         <div class="context-cell-txt">The iOS and Android MVP shipped in under six months, and fingerprint registration went live. <strong>Gallery partnerships</strong> were signed and pilot talks opened with <strong>tier-1 Swiss auction houses</strong>. I defined the core KPIs and built the <strong>PostHog dashboard</strong> the team uses to track them.</div>
       </div>
     </div>
@@ -1137,8 +953,8 @@ footer {
         <div class="metric-lbl">ARR at peak (from €7.5M)</div>
       </div>
       <div class="metric">
-        <div class="metric-val">2×</div>
-        <div class="metric-lbl">ARR growth over 4 years</div>
+        <div class="metric-val">56%</div>
+        <div class="metric-lbl">of company product-line revenue at peak</div>
       </div>
       <div class="metric">
         <div class="metric-val">180+</div>
@@ -1215,11 +1031,6 @@ footer {
     </div>
 
 
-    <div class="cert-showcase reveal">
-      <div class="cert-showcase-label">Award certificate</div>
-      <img class="cert-showcase-img" src="future-star-cert-1.png" alt="2020 Huawei Future Star Certificate of Commendation, Giuseppe Piacenza" width="1754" height="1241" loading="lazy" decoding="async" />
-    </div>
-
   </div>
 </section>
 
@@ -1229,123 +1040,32 @@ footer {
 <section id="education" class="section bg-dark">
   <div class="container">
 
-    <div class="work-header light work-header-tight">
-      <div class="work-info">
-        <h2 class="work-company light">Education</h2>
-      </div>
-    </div>
+    <h2 class="minor-title light">Education</h2>
 
-    <div class="edu-grid reveal">
-      <div class="edu-card">
-        <div class="edu-inst-line">
-          <div class="edu-years">2023 – 2025</div>
-          <img class="co-logo-edu co-logo-edu-invert" src="logo_eth.svg" alt="ETH Zurich" width="192" height="32" loading="lazy" decoding="async" />
-        </div>
-        <h3 class="edu-inst">ETH Zurich</h3>
-        <div class="edu-degree">Master of Advanced Studies in Management, Technology &amp; Economics</div>
-        <div class="edu-note">Capstone: <strong>SmartStamp AG</strong>. Full product delivery under Prof. Fredrik Hacklin, <strong>Chair of Entrepreneurship</strong>.</div>
-      </div>
-      <div class="edu-card">
-        <div class="edu-inst-line">
-          <div class="edu-years">2017 – 2019</div>
-          <img class="co-logo-edu co-logo-edu-dim" src="logo_poliba.svg" alt="Politecnico di Bari" width="369" height="369" loading="lazy" decoding="async" />
-        </div>
-        <h3 class="edu-inst">Politecnico di Bari</h3>
-        <div class="edu-degree">MSc in Telecommunications Engineering</div>
-        <div class="edu-note">Graduated <strong>with honours</strong>. Specialisation in <strong>wireless communications</strong> and signal processing.</div>
-        <details class="edu-projects">
-          <summary class="edu-projects-toggle">Projects <span aria-hidden="true">+</span></summary>
-          <ul class="edu-projects-list">
-            <li><span>Ka-Band Radar Target Characterisation</span><a href="GB-SAR-Data-Analysis.pdf" download aria-label="Download Ka-Band Radar Target Characterisation (PDF)"><span aria-hidden="true">↓</span></a></li>
-            <li><span>Data Analysis: Twitter, 2016 US Election</span><a href="Big-Data-Project.pdf" download aria-label="Download Data Analysis: Twitter, 2016 US Election (PDF)"><span aria-hidden="true">↓</span></a></li>
-            <li><span>End-to-End Encryption in Telegram</span><a href="telegram_encryption.pdf" download aria-label="Download End-to-End Encryption in Telegram (PDF)"><span aria-hidden="true">↓</span></a></li>
-          </ul>
-        </details>
-      </div>
-      <div class="edu-card">
-        <div class="edu-inst-line">
-          <div class="edu-years">2018 – 2019</div>
-          <span class="edu-logo-wordmark">INSA</span>
-        </div>
-        <h3 class="edu-inst">INSA Toulouse</h3>
-        <div class="edu-degree">Mobility Semester · MSIoT: Innovative &amp; Secure IoT Systems</div>
-        <div class="edu-note">Exchange semester, part of my MSc at Politecnico di Bari. Courses in <strong>smart devices</strong>, embedded security, IoT, and <strong>innovation &amp; entrepreneurship</strong>.</div>
-        <details class="edu-projects">
-          <summary class="edu-projects-toggle">Projects <span aria-hidden="true">+</span></summary>
-          <ul class="edu-projects-list">
-            <li><span>Smart Home with Renewable Energy</span><a href="Smart-Home-Presentation.pdf" download aria-label="Download Smart Home with Renewable Energy (PDF)"><span aria-hidden="true">↓</span></a></li>
-            <li><span>MSIoT Portfolio</span><a href="insa-portfolio.pdf" download aria-label="Download MSIoT Portfolio (PDF)"><span aria-hidden="true">↓</span></a></li>
-          </ul>
-        </details>
-      </div>
-      <div class="edu-card">
-        <div class="edu-inst-line">
-          <div class="edu-years">2014 – 2017</div>
-          <img class="co-logo-edu co-logo-edu-dim" src="logo_poliba.svg" alt="Politecnico di Bari" width="369" height="369" loading="lazy" decoding="async" />
-        </div>
-        <h3 class="edu-inst">Politecnico di Bari</h3>
-        <div class="edu-degree">BSc in Electronics &amp; Telecommunications Engineering</div>
-        <div class="edu-note"><strong>Electronics</strong>, <strong>telecommunications</strong>, signal processing, RF systems.</div>
-        <details class="edu-projects">
-          <summary class="edu-projects-toggle">Projects <span aria-hidden="true">+</span></summary>
-          <ul class="edu-projects-list">
-            <li><span>Plasmonic Nano-Antenna for On-Chip Communications</span><a href="plasmonic_project.pdf" download aria-label="Download Plasmonic Nano-Antenna for On-Chip Communications (PDF)"><span aria-hidden="true">↓</span></a></li>
-          </ul>
-        </details>
-      </div>
-    </div>
+    <ul class="edu-list reveal">
+      <li class="edu-row">
+        <span class="edu-years">2023 – 2025</span>
+        <span class="edu-what"><strong>MAS in Management, Technology &amp; Economics</strong>, ETH Zurich. Capstone: SmartStamp, under Prof. Fredrik Hacklin, Chair of Entrepreneurship.</span>
+        <img class="edu-logo edu-logo-invert" src="logo_eth.svg" alt="ETH Zurich" width="192" height="32" loading="lazy" decoding="async" />
+      </li>
+      <li class="edu-row">
+        <span class="edu-years">2017 – 2019</span>
+        <span class="edu-what"><strong>MSc in Telecommunications Engineering</strong>, Politecnico di Bari. Graduated with honours.</span>
+        <img class="edu-logo edu-logo-dim edu-logo-seal" src="logo_poliba.svg" alt="Politecnico di Bari" width="369" height="369" loading="lazy" decoding="async" />
+      </li>
+      <li class="edu-row">
+        <span class="edu-years">2018 – 2019</span>
+        <span class="edu-what"><strong>Exchange semester, Innovative and Secure IoT Systems</strong>, INSA Toulouse, as part of the MSc.</span>
+        <span class="edu-logo-wordmark" role="img" aria-label="INSA Toulouse">INSA</span>
+      </li>
+      <li class="edu-row">
+        <span class="edu-years">2014 – 2017</span>
+        <span class="edu-what"><strong>BSc in Electronics &amp; Telecommunications Engineering</strong>, Politecnico di Bari.</span>
+        <img class="edu-logo edu-logo-dim edu-logo-seal" src="logo_poliba.svg" alt="Politecnico di Bari" width="369" height="369" loading="lazy" decoding="async" />
+      </li>
+    </ul>
 
-    <div class="subsection-wrap reveal">
-      <h3 class="subsection-label">Certifications</h3>
-      <div class="cert-grid">
-
-        <a class="cert-card cert-featured" href="https://www.credly.com/badges/f007a558-2ba8-4a14-979f-6eef5dfa12f5/public_url" target="_blank" rel="noopener noreferrer">
-          <div class="cert-img-wrap"><img src="cert-pspo.png" alt="PSPO I Badge" width="600" height="600" loading="lazy" decoding="async" /></div>
-          <div class="cert-body">
-            <div class="cert-issuer">Scrum.org</div>
-            <div class="cert-name">Professional Scrum Product Owner I</div>
-            <div class="cert-arrow" aria-hidden="true">↗</div><span class="visually-hidden">(opens in a new tab)</span>
-          </div>
-        </a>
-
-        <a class="cert-card" href="https://www.credly.com/badges/a14d890a-5460-49b2-b25f-1cfe5aa50181/public_url" target="_blank" rel="noopener noreferrer">
-          <div class="cert-img-wrap"><img src="cert-google-bi.png" alt="Google BI Badge" width="1440" height="1440" loading="lazy" decoding="async" /></div>
-          <div class="cert-body">
-            <div class="cert-issuer">Google · Credly</div>
-            <div class="cert-name">Business Intelligence Certificate</div>
-            <div class="cert-arrow" aria-hidden="true">↗</div><span class="visually-hidden">(opens in a new tab)</span>
-          </div>
-        </a>
-
-        <a class="cert-card" href="https://www.coursera.org/account/accomplishments/verify/8GDED73XJKQD" target="_blank" rel="noopener noreferrer">
-          <div class="cert-img-wrap cert-img-cover"><img src="cert-rutgers.jpg" alt="Rutgers BI Certificate" width="1772" height="928" loading="lazy" decoding="async" /></div>
-          <div class="cert-body">
-            <div class="cert-issuer">Rutgers University · Coursera</div>
-            <div class="cert-name">Business Intelligence &amp; Competitive Analysis</div>
-            <div class="cert-arrow" aria-hidden="true">↗</div><span class="visually-hidden">(opens in a new tab)</span>
-          </div>
-        </a>
-
-        <a class="cert-card" href="https://courses.edx.org/certificates/d970ba7273a448d3921a0c6053a4255f" target="_blank" rel="noopener noreferrer">
-          <div class="cert-img-wrap cert-img-cover"><img src="cert-edx-bu.jpg" alt="BU edX Certificate" width="378" height="225" loading="lazy" decoding="async" /></div>
-          <div class="cert-body">
-            <div class="cert-issuer">Boston University · edX</div>
-            <div class="cert-name">Business Analytics for Data-Driven Decision Making</div>
-            <div class="cert-arrow" aria-hidden="true">↗</div><span class="visually-hidden">(opens in a new tab)</span>
-          </div>
-        </a>
-
-        <a class="cert-card" href="https://www.coursera.org/account/accomplishments/specialization/JFML4PJ4QEC6" target="_blank" rel="noopener noreferrer">
-          <div class="cert-img-wrap cert-img-cover"><img src="cert-stats.jpg" alt="Business Statistics Certificate" width="1772" height="928" loading="lazy" decoding="async" /></div>
-          <div class="cert-body">
-            <div class="cert-issuer">Rice University · Coursera</div>
-            <div class="cert-name">Business Statistics and Analysis</div>
-            <div class="cert-arrow" aria-hidden="true">↗</div><span class="visually-hidden">(opens in a new tab)</span>
-          </div>
-        </a>
-
-      </div>
-    </div>
+    <p class="edu-cert">Certification: <a href="https://www.credly.com/badges/f007a558-2ba8-4a14-979f-6eef5dfa12f5/public_url" target="_blank" rel="noopener noreferrer">Professional Scrum Product Owner I, Scrum.org<span class="visually-hidden"> (opens in a new tab)</span></a></p>
 
   </div>
 </section>
@@ -1353,12 +1073,10 @@ footer {
 <!-- ════════════════════════════════════════
      SKILLS + ABOUT
 ════════════════════════════════════════ -->
-<section class="section bg-0">
+<section id="skills" class="section bg-0" data-nav-none>
   <div class="container">
 
-    <div class="section-title-wrap">
-      <h2 class="section-title">Skills</h2>
-    </div>
+    <h2 class="minor-title">Skills</h2>
 
     <div class="skills-grid reveal stagger">
       <div>
@@ -1397,10 +1115,10 @@ footer {
     <div class="footer-inner">
       <div>
         <div class="footer-name">Giuseppe Piacenza</div>
-        <div class="footer-sub">Senior Product Manager</div>
+        <div class="footer-sub">Senior Product Manager, Zürich</div>
+        <a class="footer-email" href="mailto:giuseppe.piacenza@outlook.com">giuseppe.piacenza@outlook.com</a>
       </div>
       <div class="footer-links">
-        <a class="footer-link accent-link" href="mailto:giuseppe.piacenza@outlook.com">Contact</a>
         <a class="footer-link" href="https://linkedin.com/in/gpiacenza" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
         <a class="footer-link" href="https://github.com/giuseppepiacenza-builder" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
       </div>
@@ -1479,13 +1197,15 @@ footer {
     .filter(Boolean);
 
   if (!sections.length) return;
+  var neutralZones = [].slice.call(document.querySelectorAll('[data-nav-none]'));
 
   try {
     var spy = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
         if (!e.isIntersecting) return;
+        var neutral = e.target.hasAttribute('data-nav-none');
         navLinks.forEach(function(a) {
-          var current = a.getAttribute('href') === '#' + e.target.id;
+          var current = !neutral && a.getAttribute('href') === '#' + e.target.id;
           a.classList.toggle('active', current);
           if (current) {
             a.setAttribute('aria-current', 'true');
@@ -1499,7 +1219,7 @@ footer {
         });
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    sections.forEach(function(s) { spy.observe(s); });
+    sections.concat(neutralZones).forEach(function(s) { spy.observe(s); });
   } catch (err) {
     /* the nav highlight is optional; the page works without it */
   }
