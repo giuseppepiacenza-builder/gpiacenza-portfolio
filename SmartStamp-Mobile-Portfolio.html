@@ -338,7 +338,7 @@ nav {
 .kpi-table td:first-child { width: 26%; }
 .kpi-table td:nth-child(2) { width: 34%; }
 .kpi-ns td { background: rgba(30,84,89,0.07); }
-.kpi-role-ns { display: flex; align-items: center; gap: 6px; }
+.kpi-role.kpi-role-ns { display: flex; align-items: center; gap: 6px; }
 .kpi-role-ns svg { width: 16px; height: 16px; flex: none; }
 .kpi-name { display: block; font-weight: 600; }
 .kpi-role { display: block; margin-top: 4px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--teal); }
@@ -516,7 +516,7 @@ footer { background: var(--dark); padding: 56px 80px; }
 <section class="overview" id="overview">
   <div class="overview-inner">
     <h2>Overview</h2>
-    <p class="overview-body">The app came first. Usage data then showed that galleries and auction houses, not individual collectors, were driving adoption, so the focus moved to the web platform and the app's main job became verification. Most works are now registered under a microscope, and the app guides the user through capturing the registered details again and checks them against the fingerprint on record. Each work has a record in the app with its SmartStamp ID, ownership history, surface images and documents. When a work changes hands, the current owner transfers it in the app, and once the recipient accepts, the record updates on the web platform.</p>
+    <p class="overview-body">The app came first. Usage data then showed that most adoption came from galleries and auction houses, so the focus moved to the web platform and the app's main job became verification. Most works are now registered under a microscope, and the app guides the user through capturing the registered details again and checks them against the fingerprint on record. Each work has a record in the app with its SmartStamp ID, ownership history, surface images and documents. When a work changes hands, the current owner transfers it in the app, and once the recipient accepts, the record updates on the web platform.</p>
   </div>
 </section>
 
@@ -682,12 +682,7 @@ footer { background: var(--dark); padding: 56px 80px; }
         <tr>
           <td data-label="Metric"><span class="kpi-name">Time to verify</span><span class="kpi-role">Input</span></td>
           <td data-label="How it is measured">Median time from scanning the QR code or entering the ID to the result on screen.</td>
-          <td data-label="Why it matters">A check that takes too long gets skipped, and a skipped check never counts toward the North Star.</td>
-        </tr>
-        <tr>
-          <td data-label="Metric"><span class="kpi-name">Transfers per month</span><span class="kpi-role">Input</span></td>
-          <td data-label="How it is measured">Ownership transfers accepted by the recipient each month.</td>
-          <td data-label="Why it matters">Works are usually checked when they change hands, so transfers and verifications rise together. A fall in transfers is an early warning.</td>
+          <td data-label="Why it matters">If a check takes too long, people skip it and the work goes unverified.</td>
         </tr>
         <tr>
           <td data-label="Metric"><span class="kpi-name">Phone match rate</span><span class="kpi-role">Health</span></td>
@@ -702,7 +697,7 @@ footer { background: var(--dark); padding: 56px 80px; }
         <tr>
           <td data-label="Metric"><span class="kpi-name">Account type split</span><span class="kpi-role">Segment</span></td>
           <td data-label="How it is measured">Active accounts each month, split into galleries and auction houses on one side and individual collectors on the other.</td>
-          <td data-label="Why it matters">It showed that businesses, not collectors, were driving adoption, and that finding moved the product to web first.</td>
+          <td data-label="Why it matters">This split showed that businesses were driving adoption, and it is why the product moved to web first.</td>
         </tr>
       </tbody>
     </table>
